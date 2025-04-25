@@ -17,7 +17,7 @@ import com.project.doctorya.dtos.PatientDTO;
 import com.project.doctorya.services.interf.IPatientService;
 
 @RestController
-@RequestMapping("/api/patient")
+@RequestMapping("/patient")
 public class PatientController {
 
     @Autowired

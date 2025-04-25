@@ -17,7 +17,7 @@ import com.project.doctorya.dtos.AppointmentDTO;
 import com.project.doctorya.services.interf.IAppointmentService;
 
 @RestController
-@RequestMapping("/api/appointment")
+@RequestMapping("/appointment")
 public class AppointmentController {
     @Autowired
     private IAppointmentService service;
