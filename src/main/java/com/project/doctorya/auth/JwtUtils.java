@@ -10,8 +10,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtUtils {
 
-    private static  final String jwtSecret = "mysecret"; // Ponlo en application.properties idealmente
-    private static  final long jwtExpirationMs = 86400000; // 1 día
+    private static final String jwtSecret = "VHhTS0o4cU5kMm5rSlBtZUVpc3M2MkdJYjRZV0pDMVdwVzN4S1c1Uw=="; // Ponlo en application.properties idealmente
+    private static final long jwtExpirationMs = 7200000; // 2 horas
 
     public static String generateToken(String identification) {
         return Jwts.builder()
@@ -34,5 +34,9 @@ public class JwtUtils {
             System.out.println("JWT error: " + e.getMessage());
         }
         return false;
+    }
+
+    public static long getJwtexpirationms() {
+        return jwtExpirationMs;
     }
 }

@@ -1,11 +1,9 @@
 package com.project.doctorya.dtos;
 
-import com.project.doctorya.utils.Rol;
-
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class LoginDTO {
+public class RegisterDTO {
     @NotNull
     @Size(min = 4)
     private String identification;
@@ -18,7 +16,6 @@ public class LoginDTO {
     public String getPassword() {
         return password;
     }
-
     public void setIdentification(String identification) {
         this.identification = identification;
     }
