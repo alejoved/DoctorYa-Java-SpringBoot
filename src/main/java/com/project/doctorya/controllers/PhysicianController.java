@@ -1,6 +1,7 @@
 package com.project.doctorya.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.project.doctorya.dtos.PhysicianDTO;
+
+import com.project.doctorya.dtos.physician.PhysicianDTO;
+import com.project.doctorya.dtos.physician.PhysicianResponseDTO;
 import com.project.doctorya.services.interf.IPhysicianService;
 
 @RestController
@@ -22,31 +25,31 @@ public class PhysicianController {
     private IPhysicianService service;
 
     @GetMapping
-    public ResponseEntity<List<PhysicianDTO>> getAll() {
-        List<PhysicianDTO> patients = service.getAll();
+    public ResponseEntity<List<PhysicianResponseDTO>> getAll() {
+        List<PhysicianResponseDTO> patients = service.getAll();
         return ResponseEntity.ok(patients);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PhysicianDTO> getById(@PathVariable String id) {
-        PhysicianDTO patient = service.getById(id);
+    public ResponseEntity<PhysicianResponseDTO> getById(@PathVariable UUID id) {
+        PhysicianResponseDTO patient = service.getById(id);
         return ResponseEntity.ok(patient);
     }
 
     @PostMapping
-    public ResponseEntity<PhysicianDTO> create(@RequestBody PhysicianDTO patientDTO) {
-        PhysicianDTO patient = service.create(patientDTO);
+    public ResponseEntity<PhysicianResponseDTO> create(@RequestBody PhysicianDTO patientDTO) {
+        PhysicianResponseDTO patient = service.create(patientDTO);
         return ResponseEntity.ok(patient);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PhysicianDTO> update(@PathVariable String id, @RequestBody PhysicianDTO patientDTO) {
-        PhysicianDTO patient = service.create(patientDTO);
+    public ResponseEntity<PhysicianResponseDTO> update(@PathVariable UUID id, @RequestBody PhysicianDTO patientDTO) {
+        PhysicianResponseDTO patient = service.create(patientDTO);
         return ResponseEntity.ok(patient);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id) {
+    public void delete(@PathVariable UUID id) {
         service.delete(id);
     }
 }

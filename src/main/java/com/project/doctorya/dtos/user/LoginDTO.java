@@ -1,6 +1,4 @@
-package com.project.doctorya.dtos;
-
-import com.project.doctorya.utils.Rol;
+package com.project.doctorya.dtos.user;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

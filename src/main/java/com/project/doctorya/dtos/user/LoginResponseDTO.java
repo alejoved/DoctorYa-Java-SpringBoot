@@ -1,4 +1,4 @@
-package com.project.doctorya.dtos;
+package com.project.doctorya.dtos.user;
 
 public class LoginResponseDTO {
     private String token;

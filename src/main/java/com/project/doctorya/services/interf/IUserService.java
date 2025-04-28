@@ -1,9 +1,9 @@
 package com.project.doctorya.services.interf;
 
-import com.project.doctorya.dtos.LoginDTO;
-import com.project.doctorya.dtos.LoginResponseDTO;
-import com.project.doctorya.dtos.RegisterDTO;
-import com.project.doctorya.dtos.RegisterResponseDTO;
+import com.project.doctorya.dtos.user.LoginDTO;
+import com.project.doctorya.dtos.user.LoginResponseDTO;
+import com.project.doctorya.dtos.user.RegisterDTO;
+import com.project.doctorya.dtos.user.RegisterResponseDTO;
 
 public interface IUserService {
     public RegisterResponseDTO register(RegisterDTO loginDTO);

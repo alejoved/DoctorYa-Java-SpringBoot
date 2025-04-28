@@ -1,11 +1,12 @@
 package com.project.doctorya.services.interf;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface ICRUD<T> {
-    List<T> getAll();
-    T getById(String id);
-    T create(T obj);
-    T update(T obj);
-    void delete(String id);
+public interface ICRUD<I,O> {
+    List<O> getAll();
+    O getById(UUID id);
+    O create(I obj);
+    O update(I obj, UUID id);
+    void delete(UUID id);
 }

@@ -21,13 +21,13 @@ public class ValidationExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
-    @ExceptionHandler(UserExistsException.class)
-    public ResponseEntity<String> handleUserExistsException(UserExistsException ex) {
+    @ExceptionHandler(ModelExistsException.class)
+    public ResponseEntity<String> handleModelExistsException(ModelExistsException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
-    @ExceptionHandler(UserNotExistsException.class)
-    public ResponseEntity<String> handleUserNotExistsException(UserNotExistsException ex) {
+    @ExceptionHandler(ModelNotExistsException.class)
+    public ResponseEntity<String> handleModelNotExistsException(ModelNotExistsException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 }

@@ -23,7 +23,7 @@ public class User {
     @Column(nullable = false)
     private String password;
     @Enumerated(EnumType.STRING)
-    private Rol rol; // Enum: ADMIN, MEDICO, PACIENTE, etc.
+    private Rol rol;
 
     public String getIdentification() {
         return identification;
