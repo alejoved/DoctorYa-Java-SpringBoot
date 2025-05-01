@@ -2,6 +2,7 @@ package com.project.doctorya.models;
 
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +24,38 @@ public class Physician {
     @Column(nullable = false)
     private String speciality;
 
-    @OneToOne
-    @JoinColumn(name = "identificacion")
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "identification")
     private User user;
+
+    public UUID getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getCode() {
+        return code;
+    }
+    public String getSpeciality() {
+        return speciality;
+    }
+    public User getUser() {
+        return user;
+    }
+    public void setId(UUID id) {
+        this.id = id;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setCode(String code) {
+        this.code = code;
+    }
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

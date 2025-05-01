@@ -40,4 +40,14 @@ public class Appointment {
     public Timestamp getDateAndHour() {
         return dateAndHour;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+    public void setDateAndHour(Timestamp dateAndHour) {
+        this.dateAndHour = dateAndHour;
+    }
 }

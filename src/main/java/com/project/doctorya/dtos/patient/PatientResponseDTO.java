@@ -1,11 +1,7 @@
 package com.project.doctorya.dtos.patient;
 
-import jakarta.validation.constraints.NotNull;
-
 public class PatientResponseDTO {
-    @NotNull
     private String name;
-    @NotNull
     private String insurance;
 
     public String getName() {
@@ -13,5 +9,11 @@ public class PatientResponseDTO {
     }
     public String getInsurance() {
         return insurance;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setInsurance(String insurance) {
+        this.insurance = insurance;
     }
 }

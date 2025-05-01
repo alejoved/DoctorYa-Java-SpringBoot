@@ -1,6 +1,5 @@
 package com.project.doctorya.auth;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -8,6 +7,7 @@ import java.io.IOException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +18,11 @@ public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest request,
                          HttpServletResponse response,
                          AuthenticationException authException)
-            throws IOException, ServletException {
-
+            throws IOException {
         response.setContentType("application/json");
-        response.setStatus(HttpStatus.FORBIDDEN.value());
-        response.getWriter().write("{\"error\": \"Access denied or missing token\"}");
+        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+        Throwable cause = authException.getCause();
+        String message = "Invalid token: " + cause.getMessage(); // más específico
+        response.getWriter().write("{\"error\": \"" + message + "\"}");
     }
 }

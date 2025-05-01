@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,9 @@ import com.project.doctorya.dtos.physician.PhysicianDTO;
 import com.project.doctorya.dtos.physician.PhysicianResponseDTO;
 import com.project.doctorya.services.interf.IPhysicianService;
 
+import jakarta.validation.Valid;
+
+@Validated
 @RestController
 @RequestMapping("/physician")
 public class PhysicianController {
@@ -36,18 +41,20 @@ public class PhysicianController {
         return ResponseEntity.ok(patient);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<PhysicianResponseDTO> create(@RequestBody PhysicianDTO patientDTO) {
+    public ResponseEntity<PhysicianResponseDTO> create(@RequestBody @Valid PhysicianDTO patientDTO) {
         PhysicianResponseDTO patient = service.create(patientDTO);
         return ResponseEntity.ok(patient);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PhysicianResponseDTO> update(@PathVariable UUID id, @RequestBody PhysicianDTO patientDTO) {
-        PhysicianResponseDTO patient = service.create(patientDTO);
+    public ResponseEntity<PhysicianResponseDTO> update(@PathVariable UUID id, @RequestBody @Valid PhysicianDTO patientDTO) {
+        PhysicianResponseDTO patient = service.update(patientDTO, id);
         return ResponseEntity.ok(patient);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable UUID id) {
         service.delete(id);

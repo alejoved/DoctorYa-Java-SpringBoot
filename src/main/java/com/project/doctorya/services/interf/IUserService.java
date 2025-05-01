@@ -6,6 +6,6 @@ import com.project.doctorya.dtos.user.RegisterDTO;
 import com.project.doctorya.dtos.user.RegisterResponseDTO;
 
 public interface IUserService {
-    public RegisterResponseDTO register(RegisterDTO loginDTO);
     public LoginResponseDTO login(LoginDTO loginDTO);
+    public RegisterResponseDTO register(RegisterDTO loginDTO);
 }

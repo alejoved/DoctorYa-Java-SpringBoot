@@ -1,20 +1,25 @@
 package com.project.doctorya.dtos.user;
 
+import com.project.doctorya.utils.Rol;
+
 public class LoginResponseDTO {
     private String token;
-    private String expiration;
+    private Rol rol;
 
-    public LoginResponseDTO(String token, String expiration){
+    public LoginResponseDTO(String token, Rol rol){
         this.token = token;
-        this.expiration = expiration;
+        this.rol = rol;
     }
-
     public String getToken() {
         return token;
     }
-
-    public String getExpiration() {
-        return expiration;
+    public Rol getRol() {
+        return rol;
     }
-    
+    public void setToken(String token) {
+        this.token = token;
+    }
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }    
 }

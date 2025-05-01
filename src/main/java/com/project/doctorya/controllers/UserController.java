@@ -23,12 +23,6 @@ public class UserController {
 
     @Autowired
     private IUserService service;
-
-    @PostMapping("/register")
-    public ResponseEntity<RegisterResponseDTO> register(@RequestBody @Valid RegisterDTO loginDTO) {
-        RegisterResponseDTO registerResponseDTO = service.register(loginDTO);
-        return ResponseEntity.ok(registerResponseDTO);
-    }
         
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginDTO loginDTO) {
@@ -36,5 +30,9 @@ public class UserController {
         return ResponseEntity.ok(loginResponseDTO);
     }
 
-    
+    @PostMapping("/register")
+    public ResponseEntity<RegisterResponseDTO> register(@RequestBody @Valid RegisterDTO registerDTO) {
+        RegisterResponseDTO registerResponseDTO = service.register(registerDTO);
+        return ResponseEntity.ok(registerResponseDTO);
+    }
 }
