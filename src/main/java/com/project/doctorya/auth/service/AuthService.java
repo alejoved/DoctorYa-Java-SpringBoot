@@ -16,7 +16,7 @@ import com.project.doctorya.auth.dto.RegisterResponseDTO;
 import com.project.doctorya.auth.entity.Auth;
 import com.project.doctorya.auth.repository.AuthRepository;
 import com.project.doctorya.common.Constants;
-import com.project.doctorya.common.Rol;
+import com.project.doctorya.common.Role;
 import com.project.doctorya.config.JwtUtils;
 import com.project.doctorya.exceptions.ModelExistsException;
 import com.project.doctorya.exceptions.ModelNotExistsException;
@@ -53,7 +53,7 @@ public class AuthService implements IAuthService {
             Auth auth = modelMapper.map(registerDTO, Auth.class);
             String password = passwordEncoder.encode(registerDTO.getPassword());
             auth.setPassword(password);
-            auth.setRol(Rol.ADMIN);
+            auth.setRol(Role.ADMIN);
             Auth response = authRepository.save(auth);
             RegisterResponseDTO registerResponseDTO = modelMapper.map(response, RegisterResponseDTO.class);
             return registerResponseDTO;

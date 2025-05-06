@@ -1,6 +1,6 @@
 package com.project.doctorya.auth.entity;
 
-import com.project.doctorya.common.Rol;
+import com.project.doctorya.common.Role;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,7 +18,7 @@ public class Auth {
     @Column(nullable = false)
     private String password;
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    private Role rol;
 
     public String getIdentification() {
         return identification;
@@ -28,7 +28,7 @@ public class Auth {
         return password;
     }
 
-    public Rol getRol() {
+    public Role getRol() {
         return rol;
     }
 
@@ -40,7 +40,7 @@ public class Auth {
         this.password = password;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(Role rol) {
         this.rol = rol;
     }
 }

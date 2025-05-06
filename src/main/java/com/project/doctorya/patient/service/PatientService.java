@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.project.doctorya.auth.entity.Auth;
 import com.project.doctorya.auth.repository.AuthRepository;
 import com.project.doctorya.common.Constants;
-import com.project.doctorya.common.Rol;
+import com.project.doctorya.common.Role;
 import com.project.doctorya.exceptions.ModelExistsException;
 import com.project.doctorya.exceptions.ModelNotExistsException;
 import com.project.doctorya.patient.dto.PatientDTO;
@@ -63,7 +63,7 @@ public class PatientService implements IPatientService {
             Auth user = modelMapper.map(patientDTO, Auth.class);
             String password = passwordEncoder.encode(patientDTO.getPassword());
             user.setPassword(password);
-            user.setRol(Rol.PATIENT);
+            user.setRol(Role.PATIENT);
             Patient patient = modelMapper.map(patientDTO, Patient.class);
             patient.setUser(user);
             Patient response = patientRepository.save(patient);

@@ -1,6 +1,6 @@
 package com.project.doctorya.common;
 
-public enum Rol {
+public enum Role {
     ADMIN,
     PATIENT,
     PHYSICIAN
