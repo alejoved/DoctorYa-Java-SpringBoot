@@ -91,3 +91,12 @@ GET /api (una vez corriendo el servidor)
 docker-compose up --build
 ```
 ---
+
+## Buenas practicas del proyecto
+1. Separación clara por dominio (modularización por contexto): Tener Appointment, Auth, Patient, Physician, etc. como módulos separados es excelente para escalar y mantener el proyecto.
+
+2. Subdivisión interna coherente: Controller, Dto, Entity, Repository, Service separados dentro de cada módulo permite mantener responsabilidades claras y evitar archivos gigantes.
+
+3. Centralización de utilidades: Una carpeta util separada es útil para helpers, funciones comunes o validadores personalizados.
+
+4. Carpeta exceptions: Buena práctica para manejar y centralizar errores personalizados (como NotFoundException, BadRequestException custom, etc.).
