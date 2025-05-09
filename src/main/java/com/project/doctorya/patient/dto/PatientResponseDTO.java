@@ -1,19 +1,13 @@
 package com.project.doctorya.patient.dto;
 
+import com.project.doctorya.auth.dto.AuthResponseDTO;
+
+import lombok.Data;
+
+@Data
 public class PatientResponseDTO {
     private String name;
     private String insurance;
+    private AuthResponseDTO auth;
 
-    public String getName() {
-        return name;
-    }
-    public String getInsurance() {
-        return insurance;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setInsurance(String insurance) {
-        this.insurance = insurance;
-    }
 }

@@ -1,6 +1,8 @@
 package com.project.doctorya.physician.dto;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 public class PhysicianDTO {
     @NotNull
     private String identification;
@@ -12,37 +14,4 @@ public class PhysicianDTO {
     private String code;
     @NotNull
     private String speciality;
-
-    
-    public String getIdentification() {
-        return identification;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getCode() {
-        return code;
-    }
-    public String getSpeciality() {
-        return speciality;
-    }
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setCode(String code) {
-        this.code = code;
-    }
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
-    }
-
 }

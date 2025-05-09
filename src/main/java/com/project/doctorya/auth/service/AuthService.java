@@ -18,8 +18,8 @@ import com.project.doctorya.auth.repository.AuthRepository;
 import com.project.doctorya.common.Constants;
 import com.project.doctorya.common.Role;
 import com.project.doctorya.config.JwtUtils;
-import com.project.doctorya.exceptions.ModelExistsException;
-import com.project.doctorya.exceptions.ModelNotExistsException;
+import com.project.doctorya.exceptions.EntityExistsException;
+import com.project.doctorya.exceptions.EntityNotExistsException;
 
 @Service
 public class AuthService implements IAuthService {
@@ -35,7 +35,7 @@ public class AuthService implements IAuthService {
     public LoginResponseDTO login(LoginDTO loginDTO){
         Optional<Auth> auth = authRepository.findByIdentification(loginDTO.getIdentification());
         if(auth.isEmpty()){
-            throw new ModelNotExistsException(Constants.userNotFound);
+            throw new EntityNotExistsException(Constants.authNotFound);
         }
         if (!passwordEncoder.matches(loginDTO.getPassword(), auth.get().getPassword())) {
             throw new BadCredentialsException(Constants.credentialsNotValid);
@@ -48,7 +48,7 @@ public class AuthService implements IAuthService {
         try {
             Optional<Auth> authFound = authRepository.findByIdentification(registerDTO.getIdentification());
             if(authFound.isPresent()){
-                throw new ModelExistsException(Constants.userExists);
+                throw new EntityExistsException(Constants.authExists);
             }
             Auth auth = modelMapper.map(registerDTO, Auth.class);
             String password = passwordEncoder.encode(registerDTO.getPassword());
@@ -58,7 +58,7 @@ public class AuthService implements IAuthService {
             RegisterResponseDTO registerResponseDTO = modelMapper.map(response, RegisterResponseDTO.class);
             return registerResponseDTO;
         } catch(DataIntegrityViolationException ex){
-            throw new ModelExistsException(Constants.userExists);
+            throw new EntityExistsException(Constants.authExists);
         }
     }   
 }

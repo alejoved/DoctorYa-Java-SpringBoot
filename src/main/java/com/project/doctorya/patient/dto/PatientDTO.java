@@ -1,7 +1,9 @@
 package com.project.doctorya.patient.dto;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 public class PatientDTO {
     @NotNull
     private String identification;
@@ -11,29 +13,4 @@ public class PatientDTO {
     private String name;
     @NotNull
     private String insurance;
-
-    public String getIdentification() {
-        return identification;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getInsurance() {
-        return insurance;
-    }
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setInsurance(String insurance) {
-        this.insurance = insurance;
-    }
 }

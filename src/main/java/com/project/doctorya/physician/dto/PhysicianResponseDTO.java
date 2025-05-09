@@ -1,26 +1,13 @@
 package com.project.doctorya.physician.dto;
 
+import com.project.doctorya.auth.dto.AuthResponseDTO;
+
+import lombok.Data;
+
+@Data
 public class PhysicianResponseDTO {
     private String name;
     private String code;
     private String speciality;
-
-    public String getName() {
-        return name;
-    }
-    public String getCode() {
-        return code;
-    }
-    public String getSpeciality() {
-        return speciality;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setCode(String code) {
-        this.code = code;
-    }
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
-    }
+    private AuthResponseDTO auth;
 }

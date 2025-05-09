@@ -12,7 +12,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "patient")
 public class Patient {
@@ -25,39 +27,6 @@ public class Patient {
     private String insurance;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "identification")
-    private Auth user;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getInsurance() {
-        return insurance;
-    }
-
-    public Auth getUser() {
-        return user;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setInsurance(String insurance) {
-        this.insurance = insurance;
-    }
-
-    public void setUser(Auth user) {
-        this.user = user;
-    }
-
+    @JoinColumn(name = "auth_id")
+    private Auth auth;
 }

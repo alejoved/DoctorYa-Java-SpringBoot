@@ -14,8 +14,8 @@ import com.project.doctorya.auth.entity.Auth;
 import com.project.doctorya.auth.repository.AuthRepository;
 import com.project.doctorya.common.Constants;
 import com.project.doctorya.common.Role;
-import com.project.doctorya.exceptions.ModelExistsException;
-import com.project.doctorya.exceptions.ModelNotExistsException;
+import com.project.doctorya.exceptions.EntityExistsException;
+import com.project.doctorya.exceptions.EntityNotExistsException;
 import com.project.doctorya.physician.dto.PhysicianDTO;
 import com.project.doctorya.physician.dto.PhysicianResponseDTO;
 import com.project.doctorya.physician.entity.Physician;
@@ -47,7 +47,7 @@ public class PhysicianService implements IPhysicianService {
     public PhysicianResponseDTO getById(UUID id) {
         Optional<Physician> physician = physicianRepository.findById(id);
         if(physician.isEmpty()){
-            throw new ModelNotExistsException(Constants.physicianNotFound);
+            throw new EntityNotExistsException(Constants.physicianNotFound);
         }
         PhysicianResponseDTO patientResponseDTO = modelMapper.map(physician, PhysicianResponseDTO.class);
         return patientResponseDTO;
@@ -57,14 +57,14 @@ public class PhysicianService implements IPhysicianService {
     public PhysicianResponseDTO create(PhysicianDTO physicianDTO) {
         Optional<Auth> userExists = userRepository.findByIdentification(physicianDTO.getIdentification());
         if(userExists.isPresent()){
-            throw new ModelExistsException(Constants.userExists);
+            throw new EntityExistsException(Constants.authExists);
         }
-        Auth user = modelMapper.map(physicianDTO, Auth.class);
+        Auth auth = modelMapper.map(physicianDTO, Auth.class);
         String password = passwordEncoder.encode(physicianDTO.getPassword());
-        user.setPassword(password);
-        user.setRol(Role.PHYSICIAN);
+        auth.setPassword(password);
+        auth.setRol(Role.PHYSICIAN);
         Physician physician = modelMapper.map(physicianDTO, Physician.class);
-        physician.setUser(user);
+        physician.setAuth(auth);
         Physician response = physicianRepository.save(physician);
         PhysicianResponseDTO physicianResponseDTO = modelMapper.map(response, PhysicianResponseDTO.class);
         return physicianResponseDTO;
@@ -74,7 +74,7 @@ public class PhysicianService implements IPhysicianService {
     public PhysicianResponseDTO update(PhysicianDTO physicianDTO, UUID id) {
         Optional<Physician> physician = physicianRepository.findById(id);
         if(physician.isEmpty()){
-            throw new ModelNotExistsException(Constants.physicianNotFound);
+            throw new EntityNotExistsException(Constants.physicianNotFound);
         }
         modelMapper.map(physicianDTO, physician.get());
         Physician response = physicianRepository.save(physician.get());
@@ -86,7 +86,7 @@ public class PhysicianService implements IPhysicianService {
     public void delete(UUID id) {
         Optional<Physician> physician = physicianRepository.findById(id);
         if(physician.isEmpty()){
-            throw new ModelNotExistsException(Constants.physicianNotFound);
+            throw new EntityNotExistsException(Constants.physicianNotFound);
         }
         physicianRepository.delete(physician.get());
     }

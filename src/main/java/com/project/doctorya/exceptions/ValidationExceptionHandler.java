@@ -39,15 +39,15 @@ public class ValidationExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
     }
 
-    @ExceptionHandler(ModelExistsException.class)
-    public ResponseEntity<Map<String, String>> handleModelExistsException(ModelExistsException ex) {
+    @ExceptionHandler(EntityExistsException.class)
+    public ResponseEntity<Map<String, String>> handleModelExistsException(EntityExistsException ex) {
         Map<String, String> response = new HashMap<>();
         response.put(Constants.error, ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @ExceptionHandler(ModelNotExistsException.class)
-    public ResponseEntity<Map<String, String>> handleModelNotExistsException(ModelNotExistsException ex) {
+    @ExceptionHandler(EntityNotExistsException.class)
+    public ResponseEntity<Map<String, String>> handleModelNotExistsException(EntityNotExistsException ex) {
         Map<String, String> response = new HashMap<>();
         response.put(Constants.error, ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);

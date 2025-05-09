@@ -1,5 +1,6 @@
 package com.project.doctorya.physician.repository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,5 +10,6 @@ import com.project.doctorya.physician.entity.Physician;
 
 @Repository
 public interface PhysicianRepository extends JpaRepository<Physician, UUID> {
+    Optional<Physician> findByAuthIdentification(String identification);
 
 }

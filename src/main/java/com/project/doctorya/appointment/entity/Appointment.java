@@ -1,6 +1,7 @@
 package com.project.doctorya.appointment.entity;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
+import java.util.UUID;
 
 import com.project.doctorya.patient.entity.Patient;
 import com.project.doctorya.physician.entity.Physician;
@@ -12,45 +13,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "appointment")
 public class Appointment {
     @Id
     @GeneratedValue
-    private String id;
+    private UUID id;
     @Column(nullable = false)
     private String reason;
     @Column(nullable = false)
-    private Timestamp dateAndHour;
+    private Timestamp startDate;
+    @Column(nullable = false)
+    private Timestamp endDate;
 
     @OneToOne
-    @JoinColumn(name = "id")
-    private Physician physician;
-
-    @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    public String getId() {
-        return id;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public Timestamp getDateAndHour() {
-        return dateAndHour;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-    public void setDateAndHour(Timestamp dateAndHour) {
-        this.dateAndHour = dateAndHour;
-    }
+    @OneToOne
+    @JoinColumn(name = "physician_id")
+    private Physician physician;    
 }
