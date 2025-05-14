@@ -7,11 +7,11 @@ import lombok.Data;
 
 @Data
 public class LoginDTO {
-    @Schema(description = "Identification for the login", example = "1053856098")
+    @Schema(description = "Identification for the login")
     @NotNull
     @Size(min = 4)
     private String identification;
-    @Schema(description = "Password for the login", example = "43543534aa")
+    @Schema(description = "Password for the login minimum 4 characters")
     @NotNull
     private String password;
 }

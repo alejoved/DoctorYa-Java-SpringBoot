@@ -7,11 +7,11 @@ import lombok.Data;
 
 @Data
 public class RegisterDTO {
-    @Schema(description = "Primary identification for the sign up", example = "1053748590")
+    @Schema(description = "Primary identification for the sign up")
     @NotNull
     @Size(min = 4)
     private String identification;
-    @Schema(description = "Password for the sign up", example = "43543543aa")
+    @Schema(description = "Password for the sign up")
     @NotNull
     private String password;
 }

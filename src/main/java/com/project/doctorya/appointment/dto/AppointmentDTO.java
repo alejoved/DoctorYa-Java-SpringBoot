@@ -14,16 +14,16 @@ public class AppointmentDTO {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @NotNull
     private Timestamp startDate;
-    @Schema(description = "Appointment duration in minutes", example = "30")
+    @Schema(description = "Appointment duration in minutes")
     @NotNull
     private int duration;
-    @Schema(description = "Description about the appointment", example = "Blood test review")
+    @Schema(description = "Description about the appointment")
     @NotNull
     private String reason;
-    @Schema(description = "Main identification about the patient", example = "1053856098")
+    @Schema(description = "Primary identification about the patient")
     @NotNull
     private String patientIdentification;
-    @Schema(description = "Main identification about the physician", example = "1053856097")
+    @Schema(description = "Primary identification about the physician")
     @NotNull
     private String physicianIdentification;
 }

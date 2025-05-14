@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class LoginResponseDTO {
-    @Schema(description = "JWT Token encrypt", example = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijp7ImlkZW50aWZpY2F0aW9uIjoiMTA1Mzg")
+    @Schema(description = "JWT Token encrypt")
     private String token;
     @Schema(description = "Role admin, patient, physician", example = "ADMIN")
     private Role role;

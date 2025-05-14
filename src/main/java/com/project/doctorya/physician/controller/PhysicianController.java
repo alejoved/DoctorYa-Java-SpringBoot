@@ -22,6 +22,7 @@ import com.project.doctorya.physician.service.IPhysicianService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
@@ -36,7 +37,7 @@ public class PhysicianController {
     @Operation(summary = "Get all physicians currently")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Successfully get all the doctors"),
-        @ApiResponse(responseCode = "500", description = "Internal server error")
+        @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping
     public ResponseEntity<List<PhysicianResponseDTO>> getAll() {
@@ -46,8 +47,8 @@ public class PhysicianController {
     @Operation(summary = "Get an physician existing by uuid")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Get an physician successful"),
-        @ApiResponse(responseCode = "404", description = "Physician not found"),
-        @ApiResponse(responseCode = "500", description = "Internal server error")
+        @ApiResponse(responseCode = "404", description = "Physician not found", content = @Content),
+        @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping("/{id}")
     public ResponseEntity<PhysicianResponseDTO> getById(@Parameter(description = "uuid for filter physician") @PathVariable UUID id) {
@@ -57,8 +58,8 @@ public class PhysicianController {
     @Operation(summary = "Create a new physician associated with a name and medical code")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Physician created successfull"),
-        @ApiResponse(responseCode = "404", description = "Physician not found"),
-        @ApiResponse(responseCode = "500", description = "Internal server error")
+        @ApiResponse(responseCode = "404", description = "Physician not found", content = @Content),
+        @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
@@ -69,8 +70,8 @@ public class PhysicianController {
     @Operation(summary = "Update data about a physician by uuid")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Physician updated successfull"),
-        @ApiResponse(responseCode = "404", description = "Physician not found"),
-        @ApiResponse(responseCode = "500", description = "Internal server error")
+        @ApiResponse(responseCode = "404", description = "Physician not found", content = @Content),
+        @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @PutMapping("/{id}")
     public ResponseEntity<PhysicianResponseDTO> update(@PathVariable UUID id, @RequestBody @Valid PhysicianDTO physicianDTO) {
@@ -80,8 +81,8 @@ public class PhysicianController {
     @Operation(summary = "Update data about a physician by uuid")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Physician updated successfull"),
-        @ApiResponse(responseCode = "404", description = "Physician not found"),
-        @ApiResponse(responseCode = "500", description = "Internal server error")
+        @ApiResponse(responseCode = "404", description = "Physician not found", content = @Content),
+        @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")

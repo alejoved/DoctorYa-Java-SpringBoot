@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class AuthResponseDTO {
-    @Schema(description = "Primary identification for the admin, patient, physician", example = "1053864698")
+    @Schema(description = "Primary identification for the admin, patient, physician")
     private String identification;
 }
