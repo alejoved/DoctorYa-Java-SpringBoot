@@ -65,7 +65,7 @@ public class AppointmentService implements IAppointmentService {
         }
         Timestamp starDate = appointmentDTO.getStartDate();
         Timestamp endDate = Timestamp.from(appointmentDTO.getStartDate().toInstant().plus(appointmentDTO.getDuration(), ChronoUnit.MINUTES));
-        List<Appointment> appointmentExists = appointmentRepository.findOverlapping(starDate, endDate);
+        List<Appointment> appointmentExists = appointmentRepository.findOverlapping(starDate, endDate, physicianExists.get().getAuth().getIdentification());
         if(appointmentExists.size() > 0){
             throw new EntityExistsException(Constants.appointmentExists);
         }

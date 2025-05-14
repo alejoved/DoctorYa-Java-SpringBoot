@@ -1,4 +1,4 @@
-package com.project.doctorya.common;
+package com.project.doctorya.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

@@ -13,7 +13,7 @@ import com.project.doctorya.appointment.entity.Appointment;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, UUID> {
-    @Query("SELECT a FROM Appointment a WHERE a.startDate < :endDate AND a.endDate > :startDate")
-    List<Appointment> findOverlapping(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
+    @Query("select a from Appointment a where a.startDate < :endDate and a.endDate > :startDate and a.physician.auth.identification = :physicianIdentification")
+    List<Appointment> findOverlapping(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate, @Param("physicianIdentification") String physicianIdentification);
 
 }

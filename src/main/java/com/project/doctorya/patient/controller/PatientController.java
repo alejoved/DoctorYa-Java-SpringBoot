@@ -20,6 +20,10 @@ import com.project.doctorya.patient.dto.PatientDTO;
 import com.project.doctorya.patient.dto.PatientResponseDTO;
 import com.project.doctorya.patient.service.IPatientService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 
 @Validated
@@ -30,31 +34,56 @@ public class PatientController {
     @Autowired
     private IPatientService service;
 
+    @Operation(summary = "Get all patients currently")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Successfully get all patients"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @GetMapping
     public ResponseEntity<List<PatientResponseDTO>> getAll() {
         List<PatientResponseDTO> patients = service.getAll();
         return ResponseEntity.ok(patients);
     }
-
+    @Operation(summary = "Get an patient existing by uuid")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Get an patient successful"),
+        @ApiResponse(responseCode = "404", description = "Patient not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @GetMapping("/{id}")
-    public ResponseEntity<PatientResponseDTO> getById(@PathVariable UUID id) {
+    public ResponseEntity<PatientResponseDTO> getById(@Parameter(description = "uuid for filter patient") @PathVariable UUID id) {
         PatientResponseDTO patient = service.getById(id);
         return ResponseEntity.ok(patient);
     }
-
+    @Operation(summary = "Create a new patient associated with a name and an insurance")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Patient created successfull"),
+        @ApiResponse(responseCode = "404", description = "Patient not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<PatientResponseDTO> create(@RequestBody @Valid PatientDTO patientDTO) {
         PatientResponseDTO patient = service.create(patientDTO);
         return ResponseEntity.ok(patient);
     }
-
+    @Operation(summary = "Update data about a patient by uuid")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Patient updated successfull"),
+        @ApiResponse(responseCode = "404", description = "Patient not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PutMapping("/{id}")
-    public ResponseEntity<PatientResponseDTO> update(@PathVariable UUID id, @RequestBody @Valid PatientDTO patientDTO) {
+    public ResponseEntity<PatientResponseDTO> update(@Parameter(description = "uuid for filter patient") @PathVariable UUID id, @RequestBody @Valid PatientDTO patientDTO) {
         PatientResponseDTO patient = service.update(patientDTO, id);
         return ResponseEntity.ok(patient);
     }
-
+    @Operation(summary = "Delete an patient by uuid")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Patient deleted successfull"),
+        @ApiResponse(responseCode = "404", description = "Patient not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable UUID id) {

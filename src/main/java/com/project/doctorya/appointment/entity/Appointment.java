@@ -11,7 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -29,11 +29,11 @@ public class Appointment {
     @Column(nullable = false)
     private Timestamp endDate;
 
-    @OneToOne
-    @JoinColumn(name = "patient_id")
+    @ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    @OneToOne
-    @JoinColumn(name = "physician_id")
+    @ManyToOne
+    @JoinColumn(name = "physician_id", nullable = false)
     private Physician physician;    
 }
