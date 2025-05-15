@@ -19,8 +19,8 @@ public class AppointmentResponseDTO {
     private LocalDateTime endDate;
     @Schema(description = "Description about the appointment")
     private String reason;
-    @Schema(description = "Main identification about the patient")
+    @Schema(description = "Main data about the patient")
     private PatientResponseDTO patient;
-    @Schema(description = "Main identification about the physician")
+    @Schema(description = "Main data about the physician")
     private PhysicianResponseDTO physician;
 }

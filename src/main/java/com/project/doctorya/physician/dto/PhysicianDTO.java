@@ -8,7 +8,7 @@ public class PhysicianDTO {
     @Schema(description = "Primary identification for the physician")
     @NotNull
     private String identification;
-    @Schema(description = "Password for the login")
+    @Schema(description = "Password for the log in")
     @NotNull
     private String password;
     @Schema(description = "Physician full name")

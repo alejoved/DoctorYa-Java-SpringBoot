@@ -25,8 +25,10 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Patients", description = "Patient related operations")
 @Validated
 @RestController
 @RequestMapping("/patient")
@@ -37,7 +39,7 @@ public class PatientController {
 
     @Operation(summary = "Get all patients currently")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Successfully get all patients"),
+        @ApiResponse(responseCode = "200", description = "Get all patients successfully"),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping
@@ -47,7 +49,7 @@ public class PatientController {
     }
     @Operation(summary = "Get an patient existing by uuid")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Get an patient successful"),
+        @ApiResponse(responseCode = "200", description = "Get an patient successfully"),
         @ApiResponse(responseCode = "404", description = "Patient not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
@@ -56,10 +58,10 @@ public class PatientController {
         PatientResponseDTO patient = service.getById(id);
         return ResponseEntity.ok(patient);
     }
-    @Operation(summary = "Create a new patient associated with a name and an insurance")
+    @Operation(summary = "Create a new patient associated with a identification, name and an insurance")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Patient created successfull"),
-        @ApiResponse(responseCode = "404", description = "Patient not found", content = @Content),
+        @ApiResponse(responseCode = "200", description = "Patient created successfully"),
+        @ApiResponse(responseCode = "409", description = "Patient already exists", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @PreAuthorize("hasRole('ADMIN')")
@@ -70,7 +72,7 @@ public class PatientController {
     }
     @Operation(summary = "Update data about a patient by uuid")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Patient updated successfull"),
+        @ApiResponse(responseCode = "200", description = "Patient updated successfully"),
         @ApiResponse(responseCode = "404", description = "Patient not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
@@ -81,7 +83,7 @@ public class PatientController {
     }
     @Operation(summary = "Delete an patient by uuid")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Patient deleted successfull"),
+        @ApiResponse(responseCode = "200", description = "Patient deleted successfully"),
         @ApiResponse(responseCode = "404", description = "Patient not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })

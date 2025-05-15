@@ -25,8 +25,10 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Physicians", description = "Physician related operations")
 @Validated
 @RestController
 @RequestMapping("/physician")
@@ -36,7 +38,7 @@ public class PhysicianController {
 
     @Operation(summary = "Get all physicians currently")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Successfully get all the doctors"),
+        @ApiResponse(responseCode = "200", description = "Get all the physicians successfully"),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping
@@ -46,7 +48,7 @@ public class PhysicianController {
     }
     @Operation(summary = "Get an physician existing by uuid")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Get an physician successful"),
+        @ApiResponse(responseCode = "200", description = "Get an physician successfully"),
         @ApiResponse(responseCode = "404", description = "Physician not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
@@ -57,7 +59,7 @@ public class PhysicianController {
     }
     @Operation(summary = "Create a new physician associated with a name and medical code")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Physician created successfull"),
+        @ApiResponse(responseCode = "200", description = "Physician created successfully"),
         @ApiResponse(responseCode = "404", description = "Physician not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
@@ -69,7 +71,7 @@ public class PhysicianController {
     }
     @Operation(summary = "Update data about a physician by uuid")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Physician updated successfull"),
+        @ApiResponse(responseCode = "200", description = "Physician updated successfully"),
         @ApiResponse(responseCode = "404", description = "Physician not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
@@ -80,7 +82,7 @@ public class PhysicianController {
     }
     @Operation(summary = "Update data about a physician by uuid")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Physician updated successfull"),
+        @ApiResponse(responseCode = "200", description = "Physician updated successfully"),
         @ApiResponse(responseCode = "404", description = "Physician not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })

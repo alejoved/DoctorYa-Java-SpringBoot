@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-@Tag(name = "authentication", description = "Authentication-related operations")
+@Tag(name = "Authentication", description = "Authentication related operations")
 @Validated
 @RestController
 @RequestMapping("/auth")
@@ -31,7 +31,7 @@ public class AuthController {
 
     @Operation(summary = "Sign in with credentials, identification and password")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Login successfull"),
+        @ApiResponse(responseCode = "200", description = "Log in successfully"),
         @ApiResponse(responseCode = "404", description = "Identification or password not match"),
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })    
@@ -42,7 +42,8 @@ public class AuthController {
     }
     @Operation(summary = "Sign up with credentials, identification and password")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Register credentials successfull"),
+        @ApiResponse(responseCode = "200", description = "Register credentials successfully"),
+		@ApiResponse(responseCode = "409", description = "User already exists"),
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })  
     @PostMapping("/register")

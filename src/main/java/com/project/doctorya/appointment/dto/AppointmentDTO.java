@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 public class AppointmentDTO {
-    @Schema(description = "Date for to start medical appointment", example = "2025-05-10 14:00:00")
+    @Schema(description = "Initial date of the appointment", example = "2025-05-10 14:00:00")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @NotNull
     private Timestamp startDate;
@@ -20,10 +20,10 @@ public class AppointmentDTO {
     @Schema(description = "Description about the appointment")
     @NotNull
     private String reason;
-    @Schema(description = "Primary identification about the patient")
+    @Schema(description = "Primary identification of the patient")
     @NotNull
     private String patientIdentification;
-    @Schema(description = "Primary identification about the physician")
+    @Schema(description = "Primary identification of the physician")
     @NotNull
     private String physicianIdentification;
 }

@@ -28,17 +28,17 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Appointments", description = "Appointment related operations")
 @Validated
 @RestController
 @RequestMapping("/appointment")
-@Tag(name = "Appointments", description = "Appointment-related operations")
 public class AppointmentController {
     @Autowired
     private IAppointmentService service;
 
     @Operation(summary = "Get all appointments currently")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Successfully get all appointments"),
+        @ApiResponse(responseCode = "200", description = "Get all appointments successfully"),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping
@@ -49,7 +49,7 @@ public class AppointmentController {
 
     @Operation(summary = "Get an appointment existing by uuid")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Get an appointment successful"),
+        @ApiResponse(responseCode = "200", description = "Get an appointment successfully"),
         @ApiResponse(responseCode = "404", description = "Appointment not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
@@ -61,7 +61,7 @@ public class AppointmentController {
 
     @Operation(summary = "Create a new appointment associated with a patient and physician")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Appointment create successfull"),
+        @ApiResponse(responseCode = "201", description = "Appointment created successfully"),
         @ApiResponse(responseCode = "404", description = "Patient or physician not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
@@ -74,7 +74,7 @@ public class AppointmentController {
 
     @Operation(summary = "Update data about an appointment by uuid")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Appointment updated successfull"),
+        @ApiResponse(responseCode = "200", description = "Appointment updated successfully"),
         @ApiResponse(responseCode = "404", description = "Appointment not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error",content = @Content)
     })
@@ -86,7 +86,7 @@ public class AppointmentController {
 
     @Operation(summary = "Delete an appointment by uuid")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Appointment deleted successfull"),
+        @ApiResponse(responseCode = "200", description = "Appointment deleted successfully"),
         @ApiResponse(responseCode = "404", description = "Appointment not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
