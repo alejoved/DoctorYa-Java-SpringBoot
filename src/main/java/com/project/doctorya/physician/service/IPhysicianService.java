@@ -5,5 +5,6 @@ import com.project.doctorya.physician.dto.PhysicianDTO;
 import com.project.doctorya.physician.dto.PhysicianResponseDTO;
 
 public interface IPhysicianService extends ICRUD<PhysicianDTO, PhysicianResponseDTO> {
+    public PhysicianResponseDTO getByIdentification(String identification);
 
 }

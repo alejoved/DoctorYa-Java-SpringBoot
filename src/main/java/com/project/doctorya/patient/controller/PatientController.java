@@ -47,17 +47,32 @@ public class PatientController {
         List<PatientResponseDTO> patients = service.getAll();
         return ResponseEntity.ok(patients);
     }
+
     @Operation(summary = "Get an patient existing by uuid")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Get an patient successfully"),
         @ApiResponse(responseCode = "404", description = "Patient not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<PatientResponseDTO> getById(@Parameter(description = "uuid for filter patient") @PathVariable UUID id) {
         PatientResponseDTO patient = service.getById(id);
         return ResponseEntity.ok(patient);
     }
+
+    @Operation(summary = "Get an patient existing by identification")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Get an patient successfully"),
+        @ApiResponse(responseCode = "404", description = "Patient not found", content = @Content),
+        @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    })
+    @GetMapping("/identification/{identification}")
+    public ResponseEntity<PatientResponseDTO> getByIdentification(@Parameter(description = "Identification for filter patient") @PathVariable String identification) {
+        PatientResponseDTO patient = service.getByIdentification(identification);
+        return ResponseEntity.ok(patient);
+    }
+
     @Operation(summary = "Create a new patient associated with a identification, name and an insurance")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Patient created successfully"),

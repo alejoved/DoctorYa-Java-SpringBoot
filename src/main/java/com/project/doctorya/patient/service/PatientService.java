@@ -53,6 +53,16 @@ public class PatientService implements IPatientService {
     }
 
     @Override
+    public PatientResponseDTO getByIdentification(String identification) {
+        Optional<Patient> patient = patientRepository.findByAuthIdentification(identification);
+        if(patient.isEmpty()){
+            throw new EntityNotExistsException(Constants.patientNotFound);
+        }
+        PatientResponseDTO patientResponseDTO = modelMapper.map(patient, PatientResponseDTO.class);
+        return patientResponseDTO;
+    }
+
+    @Override
     public PatientResponseDTO create(PatientDTO patientDTO) {
         Optional<Auth> userFound = userRepository.findByIdentification(patientDTO.getIdentification());
         if(userFound.isPresent()){

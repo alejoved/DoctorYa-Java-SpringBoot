@@ -6,5 +6,6 @@ import com.project.doctorya.patient.dto.PatientResponseDTO;
 
 
 public interface IPatientService extends ICRUD<PatientDTO, PatientResponseDTO> {
+    public PatientResponseDTO getByIdentification(String identification);
 
 }
