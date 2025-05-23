@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doctorya-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: doctorya-app
+  template:
+    metadata:
+      labels:
+        app: doctorya-app
+    spec:
+      containers:
+        - name: app
+          image: localhost/doctorya-app:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DATASOURCE
+              value: jdbc:postgresql://doctorya-db:5432/
+            - name: POSTGRES_DB
+              value: doctorya
+            - name: USERNAME_DB
+              value: postgres
+            - name: PASSWORD_DB
+              value: root
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: doctorya-app
+spec:
+  type: NodePort
+  selector:
+    app: doctorya-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30080
