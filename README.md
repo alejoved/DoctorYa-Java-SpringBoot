@@ -92,6 +92,23 @@ docker-compose up --build
 ```
 ---
 
+# MINIKUBE
+Descargar Minikube para windows
+Hacer la instalacion del .exe
+Si no se tiene docker-desktop iniciar minikube con hyperv
+minikube start --driver=hyperv
+kubectl get nodes
+kubectl get pods
+Posterior es necesario crear la imagen
+podman build -t doctorya-app:latest .
+Exportar la imagen
+podman save -o doctorya-app.tar doctorya-app:latest
+Cargar la imagen a minikube
+minikube image load doctorya-app.tar
+Aplicar los manifiestos de kubernetes
+kubectl apply -f k8s/
+
+
 ## Buenas practicas del proyecto
 1. Separación clara por dominio (modularización por contexto): Tener Appointment, Auth, Patient, Physician, etc. como módulos separados es excelente para escalar y mantener el proyecto.
 
