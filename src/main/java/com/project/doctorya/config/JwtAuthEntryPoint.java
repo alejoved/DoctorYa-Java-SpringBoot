@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
@@ -20,8 +21,9 @@ public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
             throws IOException {
         response.setContentType("application/json");
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
-        Throwable cause = authException.getCause();
-        String message = "Invalid token: " + cause.getMessage(); // más específico
+        String message = Optional.ofNullable(authException.getCause())
+                             .map(Throwable::getMessage)
+                             .orElse(authException.getMessage());
         response.getWriter().write("{\"error\": \"" + message + "\"}");
     }
 }
