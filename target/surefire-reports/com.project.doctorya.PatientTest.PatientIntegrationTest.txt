@@ -1,15 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.project.doctorya.PatientTest.PatientIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.526 s <<< FAILURE! -- in com.project.doctorya.PatientTest.PatientIntegrationTest
-com.project.doctorya.PatientTest.PatientIntegrationTest.testGetPatient -- Time elapsed: 0.091 s <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<401>
-	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
-	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
-	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:640)
-	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
-	at com.project.doctorya.PatientTest.PatientIntegrationTest.setUp(PatientIntegrationTest.java:50)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.050 s -- in com.project.doctorya.PatientTest.PatientIntegrationTest

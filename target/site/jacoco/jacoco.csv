@@ -1,0 +1,24 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+doctorya,com.project.doctorya.appointment.service,AppointmentService.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+doctorya,com.project.doctorya.appointment.service,AppointmentService,190,3,12,0,38,1,11,1,5,1
+doctorya,com.project.doctorya.auth.controller,AuthController,8,15,0,0,2,4,1,2,1,2
+doctorya,com.project.doctorya.patient.service,PatientService,158,20,10,0,34,4,10,2,5,2
+doctorya,com.project.doctorya.patient.service,PatientService.new TypeToken() {...},0,6,0,0,0,1,0,1,0,1
+doctorya,com.project.doctorya.appointment.controller,AppointmentController,39,3,0,0,10,1,5,1,5,1
+doctorya,com.project.doctorya.physician.service,PhysicianService,175,3,10,0,37,1,11,1,6,1
+doctorya,com.project.doctorya.physician.service,PhysicianService.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+doctorya,com.project.doctorya.auth.dto,LoginResponseDTO,0,9,0,0,0,4,0,1,0,1
+doctorya,com.project.doctorya.exceptions,ValidationExceptionHandler,85,3,0,0,16,1,6,1,6,1
+doctorya,com.project.doctorya.exceptions,EntityExistsException,4,0,0,0,2,0,1,0,1,0
+doctorya,com.project.doctorya.exceptions,EntityNotExistsException,4,0,0,0,2,0,1,0,1,0
+doctorya,com.project.doctorya,DoctoryaApplication,5,3,0,0,2,1,1,1,1,1
+doctorya,com.project.doctorya.physician.controller,PhysicianController,48,3,0,0,12,1,6,1,6,1
+doctorya,com.project.doctorya.auth.service,AuthService,64,42,4,2,14,6,4,2,1,2
+doctorya,com.project.doctorya.common,Constants,24,0,0,0,11,0,2,0,2,0
+doctorya,com.project.doctorya.common,Role,0,21,0,0,0,4,0,1,0,1
+doctorya,com.project.doctorya.patient.controller,PatientController,41,10,0,0,10,3,5,2,5,2
+doctorya,com.project.doctorya.config,Config,0,7,0,0,0,2,0,2,0,2
+doctorya,com.project.doctorya.config,JwtAuthEntryPoint,23,3,0,0,7,1,1,1,1,1
+doctorya,com.project.doctorya.config,SecurityConfig,0,109,0,0,0,24,0,11,0,11
+doctorya,com.project.doctorya.config,JwtUtils,0,36,0,0,0,10,0,3,0,3
+doctorya,com.project.doctorya.config,SwaggerConfig,0,17,0,0,0,6,0,2,0,2

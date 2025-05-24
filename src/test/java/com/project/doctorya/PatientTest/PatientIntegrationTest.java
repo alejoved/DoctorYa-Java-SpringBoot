@@ -2,14 +2,13 @@ package com.project.doctorya.PatientTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.doctorya.patient.dto.PatientResponseDTO;
@@ -27,11 +26,9 @@ import java.util.Map;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PatientIntegrationTest {
-    @Autowired
-    private MockMvc mockMvc;
 
     @Autowired
-    private ModelMapper modelMapper;
+    private MockMvc mockMvc;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -44,7 +41,7 @@ public class PatientIntegrationTest {
         loginRequest.put("identification", "1053847601");
         loginRequest.put("password", "12345");
 
-        String response = mockMvc.perform(post("http://localhost:8080/api/auth/login")
+        String response = mockMvc.perform(post("/auth/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(loginRequest)))
                 .andExpect(status().isOk())
@@ -59,7 +56,7 @@ public class PatientIntegrationTest {
 
     @Test
     void testGetPatient() throws Exception {
-        String responseJson = mockMvc.perform(get("http://localhost:8080/api/patient")
+        String responseJson = mockMvc.perform(get("/patient")
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
                             .andExpect(status().isOk())
@@ -67,7 +64,7 @@ public class PatientIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        List<PatientResponseDTO> patients = modelMapper.map(responseJson, new TypeToken<List<PatientResponseDTO>>() {}.getType());
+        List<PatientResponseDTO> patients = objectMapper.readValue(responseJson, new TypeReference<List<PatientResponseDTO>>(){});
         assertNotNull(patients);
         assertFalse(patients.isEmpty());
     }

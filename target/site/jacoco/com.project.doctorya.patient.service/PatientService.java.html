@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">doctorya</a> &gt; <a href="index.source.html" class="el_package">com.project.doctorya.patient.service</a> &gt; <span class="el_source">PatientService.java</span></div><h1>PatientService.java</h1><pre class="source lang-java linenums">package com.project.doctorya.patient.service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.project.doctorya.auth.entity.Auth;
+import com.project.doctorya.auth.repository.AuthRepository;
+import com.project.doctorya.common.Constants;
+import com.project.doctorya.common.Role;
+import com.project.doctorya.exceptions.EntityExistsException;
+import com.project.doctorya.exceptions.EntityNotExistsException;
+import com.project.doctorya.patient.dto.PatientDTO;
+import com.project.doctorya.patient.dto.PatientResponseDTO;
+import com.project.doctorya.patient.entity.Patient;
+import com.project.doctorya.patient.repository.PatientRepository;
+
+@Service
+<span class="fc" id="L24">public class PatientService implements IPatientService {</span>
+
+    @Autowired
+    private PatientRepository patientRepository;
+
+    @Autowired
+    private AuthRepository userRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Override
+    public List&lt;PatientResponseDTO&gt; getAll() {
+<span class="fc" id="L40">        List&lt;Patient&gt; patient = patientRepository.findAll();</span>
+<span class="fc" id="L41">        List&lt;PatientResponseDTO&gt; patientResponseDTO = modelMapper.map(patient, new TypeToken&lt;List&lt;PatientResponseDTO&gt;&gt;() {}.getType());</span>
+<span class="fc" id="L42">        return patientResponseDTO;</span>
+    }
+
+    @Override
+    public PatientResponseDTO getById(UUID id) {
+<span class="nc" id="L47">        Optional&lt;Patient&gt; patient = patientRepository.findById(id);</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if(patient.isEmpty()){</span>
+<span class="nc" id="L49">            throw new EntityNotExistsException(Constants.patientNotFound);</span>
+        }
+<span class="nc" id="L51">        PatientResponseDTO patientResponseDTO = modelMapper.map(patient, PatientResponseDTO.class);</span>
+<span class="nc" id="L52">        return patientResponseDTO;</span>
+    }
+
+    @Override
+    public PatientResponseDTO getByIdentification(String identification) {
+<span class="nc" id="L57">        Optional&lt;Patient&gt; patient = patientRepository.findByAuthIdentification(identification);</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if(patient.isEmpty()){</span>
+<span class="nc" id="L59">            throw new EntityNotExistsException(Constants.patientNotFound);</span>
+        }
+<span class="nc" id="L61">        PatientResponseDTO patientResponseDTO = modelMapper.map(patient, PatientResponseDTO.class);</span>
+<span class="nc" id="L62">        return patientResponseDTO;</span>
+    }
+
+    @Override
+    public PatientResponseDTO create(PatientDTO patientDTO) {
+<span class="nc" id="L67">        Optional&lt;Auth&gt; userFound = userRepository.findByIdentification(patientDTO.getIdentification());</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        if(userFound.isPresent()){</span>
+<span class="nc" id="L69">            throw new EntityExistsException(Constants.authExists);</span>
+        }
+<span class="nc" id="L71">        Auth auth = modelMapper.map(patientDTO, Auth.class);</span>
+<span class="nc" id="L72">        String password = passwordEncoder.encode(patientDTO.getPassword());</span>
+<span class="nc" id="L73">        auth.setPassword(password);</span>
+<span class="nc" id="L74">        auth.setRol(Role.PATIENT);</span>
+<span class="nc" id="L75">        Patient patient = modelMapper.map(patientDTO, Patient.class);</span>
+<span class="nc" id="L76">        patient.setAuth(auth);</span>
+<span class="nc" id="L77">        Patient response = patientRepository.save(patient);</span>
+<span class="nc" id="L78">        PatientResponseDTO patientResponseDTO = modelMapper.map(response, PatientResponseDTO.class);</span>
+<span class="nc" id="L79">        return patientResponseDTO; </span>
+    }
+
+    @Override
+    public PatientResponseDTO update(PatientDTO patientDTO, UUID id) {
+<span class="nc" id="L84">        Optional&lt;Patient&gt; patient = patientRepository.findById(id);</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        if(patient.isEmpty()){</span>
+<span class="nc" id="L86">            throw new EntityNotExistsException(Constants.patientNotFound);</span>
+        }
+<span class="nc" id="L88">        modelMapper.map(patientDTO, patient.get());</span>
+<span class="nc" id="L89">        Patient response = patientRepository.save(patient.get());</span>
+<span class="nc" id="L90">        PatientResponseDTO patientResponseDTO = modelMapper.map(response, PatientResponseDTO.class);</span>
+<span class="nc" id="L91">        return patientResponseDTO;</span>
+    }
+
+    @Override
+    public void delete(UUID id) {
+<span class="nc" id="L96">        Optional&lt;Patient&gt; patient = patientRepository.findById(id);</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        if(patient.isEmpty()){</span>
+<span class="nc" id="L98">            throw new EntityNotExistsException(Constants.appointmentNotFound);</span>
+        }
+<span class="nc" id="L100">        patientRepository.delete(patient.get());</span>
+<span class="nc" id="L101">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

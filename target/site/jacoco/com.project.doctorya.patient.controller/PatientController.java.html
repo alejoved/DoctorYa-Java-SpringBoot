@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">doctorya</a> &gt; <a href="index.source.html" class="el_package">com.project.doctorya.patient.controller</a> &gt; <span class="el_source">PatientController.java</span></div><h1>PatientController.java</h1><pre class="source lang-java linenums">package com.project.doctorya.patient.controller;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.doctorya.patient.dto.PatientDTO;
+import com.project.doctorya.patient.dto.PatientResponseDTO;
+import com.project.doctorya.patient.service.IPatientService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
+@Tag(name = &quot;Patients&quot;, description = &quot;Patient related operations&quot;)
+@Validated
+@RestController
+@RequestMapping(&quot;/patient&quot;)
+<span class="fc" id="L35">public class PatientController {</span>
+
+    @Autowired
+    private IPatientService service;
+
+    @Operation(summary = &quot;Get all patients currently&quot;)
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Get all patients successfully&quot;),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;, content = @Content)
+    })
+    @GetMapping
+    public ResponseEntity&lt;List&lt;PatientResponseDTO&gt;&gt; getAll() {
+<span class="fc" id="L47">        List&lt;PatientResponseDTO&gt; patients = service.getAll();</span>
+<span class="fc" id="L48">        return ResponseEntity.ok(patients);</span>
+    }
+
+    @Operation(summary = &quot;Get an patient existing by uuid&quot;)
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Get an patient successfully&quot;),
+        @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Patient not found&quot;, content = @Content),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;, content = @Content)
+    })
+    @PreAuthorize(&quot;hasRole('ADMIN')&quot;)
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;PatientResponseDTO&gt; getById(@Parameter(description = &quot;uuid for filter patient&quot;) @PathVariable UUID id) {
+<span class="nc" id="L60">        PatientResponseDTO patient = service.getById(id);</span>
+<span class="nc" id="L61">        return ResponseEntity.ok(patient);</span>
+    }
+
+    @Operation(summary = &quot;Get an patient existing by identification&quot;)
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Get an patient successfully&quot;),
+        @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Patient not found&quot;, content = @Content),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;, content = @Content)
+    })
+    @GetMapping(&quot;/identification/{identification}&quot;)
+    public ResponseEntity&lt;PatientResponseDTO&gt; getByIdentification(@Parameter(description = &quot;Identification for filter patient&quot;) @PathVariable String identification) {
+<span class="nc" id="L72">        PatientResponseDTO patient = service.getByIdentification(identification);</span>
+<span class="nc" id="L73">        return ResponseEntity.ok(patient);</span>
+    }
+
+    @Operation(summary = &quot;Create a new patient associated with a identification, name and an insurance&quot;)
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Patient created successfully&quot;),
+        @ApiResponse(responseCode = &quot;409&quot;, description = &quot;Patient already exists&quot;, content = @Content),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;, content = @Content)
+    })
+    @PreAuthorize(&quot;hasRole('ADMIN')&quot;)
+    @PostMapping
+    public ResponseEntity&lt;PatientResponseDTO&gt; create(@RequestBody @Valid PatientDTO patientDTO) {
+<span class="nc" id="L85">        PatientResponseDTO patient = service.create(patientDTO);</span>
+<span class="nc" id="L86">        return ResponseEntity.ok(patient);</span>
+    }
+    @Operation(summary = &quot;Update data about a patient by uuid&quot;)
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Patient updated successfully&quot;),
+        @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Patient not found&quot;, content = @Content),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;, content = @Content)
+    })
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;PatientResponseDTO&gt; update(@Parameter(description = &quot;uuid for filter patient&quot;) @PathVariable UUID id, @RequestBody @Valid PatientDTO patientDTO) {
+<span class="nc" id="L96">        PatientResponseDTO patient = service.update(patientDTO, id);</span>
+<span class="nc" id="L97">        return ResponseEntity.ok(patient);</span>
+    }
+    @Operation(summary = &quot;Delete an patient by uuid&quot;)
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Patient deleted successfully&quot;),
+        @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Patient not found&quot;, content = @Content),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;, content = @Content)
+    })
+    @PreAuthorize(&quot;hasRole('ADMIN')&quot;)
+    @DeleteMapping(&quot;/{id}&quot;)
+    public void delete(@PathVariable UUID id) {
+<span class="nc" id="L108">        service.delete(id);</span>
+<span class="nc" id="L109">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
