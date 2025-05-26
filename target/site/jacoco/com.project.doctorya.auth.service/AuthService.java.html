@@ -46,17 +46,17 @@ import com.project.doctorya.exceptions.EntityNotExistsException;
 
     public RegisterResponseDTO register(RegisterDTO registerDTO){
         try {
-<span class="nc" id="L49">            Optional&lt;Auth&gt; authFound = authRepository.findByIdentification(registerDTO.getIdentification());</span>
-<span class="nc bnc" id="L50" title="All 2 branches missed.">            if(authFound.isPresent()){</span>
+<span class="fc" id="L49">            Optional&lt;Auth&gt; authFound = authRepository.findByIdentification(registerDTO.getIdentification());</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if(authFound.isPresent()){</span>
 <span class="nc" id="L51">                throw new EntityExistsException(Constants.authExists);</span>
             }
-<span class="nc" id="L53">            Auth auth = modelMapper.map(registerDTO, Auth.class);</span>
-<span class="nc" id="L54">            String password = passwordEncoder.encode(registerDTO.getPassword());</span>
-<span class="nc" id="L55">            auth.setPassword(password);</span>
-<span class="nc" id="L56">            auth.setRol(Role.ADMIN);</span>
-<span class="nc" id="L57">            Auth response = authRepository.save(auth);</span>
-<span class="nc" id="L58">            RegisterResponseDTO registerResponseDTO = modelMapper.map(response, RegisterResponseDTO.class);</span>
-<span class="nc" id="L59">            return registerResponseDTO;</span>
+<span class="fc" id="L53">            Auth auth = modelMapper.map(registerDTO, Auth.class);</span>
+<span class="fc" id="L54">            String password = passwordEncoder.encode(registerDTO.getPassword());</span>
+<span class="fc" id="L55">            auth.setPassword(password);</span>
+<span class="fc" id="L56">            auth.setRol(Role.ADMIN);</span>
+<span class="fc" id="L57">            Auth response = authRepository.save(auth);</span>
+<span class="fc" id="L58">            RegisterResponseDTO registerResponseDTO = modelMapper.map(response, RegisterResponseDTO.class);</span>
+<span class="fc" id="L59">            return registerResponseDTO;</span>
 <span class="nc" id="L60">        } catch(DataIntegrityViolationException ex){</span>
 <span class="nc" id="L61">            throw new EntityExistsException(Constants.authExists);</span>
         }

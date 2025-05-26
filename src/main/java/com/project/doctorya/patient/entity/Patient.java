@@ -26,7 +26,7 @@ public class Patient {
     @Column(nullable = false)
     private String insurance;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JoinColumn(name = "auth_id")
     private Auth auth;
 }

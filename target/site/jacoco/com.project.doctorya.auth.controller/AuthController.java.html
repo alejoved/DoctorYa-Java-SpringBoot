@@ -49,8 +49,8 @@ import jakarta.validation.Valid;
     })  
     @PostMapping(&quot;/register&quot;)
     public ResponseEntity&lt;RegisterResponseDTO&gt; register(@RequestBody @Valid RegisterDTO registerDTO) {
-<span class="nc" id="L52">        RegisterResponseDTO registerResponseDTO = service.register(registerDTO);</span>
-<span class="nc" id="L53">        return ResponseEntity.ok(registerResponseDTO);</span>
+<span class="fc" id="L52">        RegisterResponseDTO registerResponseDTO = service.register(registerDTO);</span>
+<span class="fc" id="L53">        return ResponseEntity.ok(registerResponseDTO);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

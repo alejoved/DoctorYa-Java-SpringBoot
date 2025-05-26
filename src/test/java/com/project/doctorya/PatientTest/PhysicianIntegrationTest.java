@@ -1,5 +1,12 @@
 package com.project.doctorya.PatientTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +25,21 @@ import com.project.doctorya.auth.repository.AuthRepository;
 import com.project.doctorya.patient.dto.PatientDTO;
 import com.project.doctorya.patient.dto.PatientResponseDTO;
 import com.project.doctorya.patient.entity.Patient;
-import com.project.doctorya.patient.repository.PatientRepository;
+import com.project.doctorya.physician.dto.PhysicianDTO;
+import com.project.doctorya.physician.dto.PhysicianResponseDTO;
+import com.project.doctorya.physician.entity.Physician;
+import com.project.doctorya.physician.repository.PhysicianRepository;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import java.util.List;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PatientIntegrationTest {
+public class PhysicianIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -38,18 +48,18 @@ public class PatientIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private PatientRepository patientRepository;
+    private PhysicianRepository physicianRepository;
 
     @Autowired
     private AuthRepository authRepository;
 
     private String accessToken;
     
-    private Patient patientDB;
+    private Physician physicianDB;
 
     @BeforeEach
     void beforeTest() throws Exception {
-        patientRepository.deleteAll();
+        physicianRepository.deleteAll();
         authRepository.deleteAll();
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setIdentification("1053847601");
@@ -75,42 +85,44 @@ public class PatientIntegrationTest {
 
         JsonNode jsonNode = objectMapper.readTree(response);
         accessToken = jsonNode.get("token").asText(); 
-        patientDB = new Patient();
-        patientDB.setName("Test Name");
-        patientDB.setInsurance("Test Insurance");
-        patientDB.setAuth(new Auth());
-        patientDB.getAuth().setIdentification("1053847610");
-        patientDB.getAuth().setPassword("12345");
+        physicianDB = new Physician();
+        physicianDB.setName("Test Name");
+        physicianDB.setCode("Test Code");
+        physicianDB.setSpeciality("Test Speciality");
+        physicianDB.setAuth(new Auth());
+        physicianDB.getAuth().setIdentification("1053847620");
+        physicianDB.getAuth().setPassword("12345");
     }
 
     @Test
-    void testCreatePatient() throws Exception {
-        PatientDTO patientDTO = new PatientDTO();
-        patientDTO.setIdentification("1053847610");
-        patientDTO.setPassword("password");
-        patientDTO.setName("Test Name");
-        patientDTO.setInsurance("Test Insurance");
+    void testCreatePhysician() throws Exception {
+        PhysicianDTO physicianDTO = new PhysicianDTO();
+        physicianDTO.setIdentification("1053847620");
+        physicianDTO.setPassword("password");
+        physicianDTO.setName("Test Name");
+        physicianDTO.setCode("Test Code");
+        physicianDTO.setSpeciality("Test Speciality");
 
-        String responseJson = mockMvc.perform(post("/patient")
+        String responseJson = mockMvc.perform(post("/physician")
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON)
-                            .content(objectMapper.writeValueAsString(patientDTO)))
+                            .content(objectMapper.writeValueAsString(physicianDTO)))
                             .andExpect(status().isOk())
                             .andReturn()
                             .getResponse()
                             .getContentAsString();
 
-        PatientResponseDTO patient = objectMapper.readValue(responseJson, PatientResponseDTO.class);
-        assertNotNull(patient);
-        assertEquals(patient.getAuth().getIdentification(), patientDTO.getIdentification());
-        assertEquals(patient.getName(), patientDTO.getName());
-        assertEquals(patient.getInsurance(), patientDTO.getInsurance());
+        PhysicianResponseDTO physician = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
+        assertNotNull(physician);
+        assertEquals(physician.getAuth().getIdentification(), physicianDTO.getIdentification());
+        assertEquals(physician.getName(), physicianDTO.getName());
+        assertEquals(physician.getCode(), physicianDTO.getCode());
     }
 
     @Test
-    void testGetPatient() throws Exception {
-        Patient patient = patientRepository.save(this.patientDB);
-        String responseJson = mockMvc.perform(get("/patient")
+    void testGetPhysician() throws Exception {
+        Physician physician = physicianRepository.save(this.physicianDB);
+        String responseJson = mockMvc.perform(get("/physician")
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
                             .andExpect(status().isOk())
@@ -118,15 +130,15 @@ public class PatientIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        List<PatientResponseDTO> patientResponseDTO = objectMapper.readValue(responseJson, new TypeReference<List<PatientResponseDTO>>(){});
-        assertNotNull(patientResponseDTO);
-        assertFalse(patientResponseDTO.isEmpty());
+        List<PhysicianResponseDTO> physicianResponseDTO = objectMapper.readValue(responseJson, new TypeReference<List<PhysicianResponseDTO>>(){});
+        assertNotNull(physicianResponseDTO);
+        assertFalse(physicianResponseDTO.isEmpty());
     }
 
     @Test
-    void testGetByIdPatient() throws Exception {
-        Patient patient = patientRepository.save(this.patientDB);
-        String responseJson = mockMvc.perform(get("/patient/"+patient.getId())
+    void testGetByIdPhysician() throws Exception {
+        Physician physician = physicianRepository.save(this.physicianDB);
+        String responseJson = mockMvc.perform(get("/physician/"+physician.getId())
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
                             .andExpect(status().isOk())
@@ -134,15 +146,16 @@ public class PatientIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
+        PhysicianResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
         assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getAuth().getIdentification(), patient.getAuth().getIdentification());
-        assertEquals(patientResponseDTO.getName(), patient.getName());
-        assertEquals(patientResponseDTO.getInsurance(), patient.getInsurance());
+        assertEquals(patientResponseDTO.getAuth().getIdentification(), physician.getAuth().getIdentification());
+        assertEquals(patientResponseDTO.getName(), physician.getName());
+        assertEquals(patientResponseDTO.getCode(), physician.getCode());
+        assertEquals(patientResponseDTO.getSpeciality(), physician.getSpeciality());
     }
 
     @Test
-    void testGetByIdentificationPatient() throws Exception {
+    void testGetByIdentificationPhysician() throws Exception {
         Patient patient = patientRepository.save(patientDB);
         String responseJson = mockMvc.perform(get("/patient/identification/"+patient.getAuth().getIdentification())
                             .header("Authorization", "Bearer " + accessToken)
