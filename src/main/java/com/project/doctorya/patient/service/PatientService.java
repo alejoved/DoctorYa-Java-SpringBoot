@@ -95,7 +95,7 @@ public class PatientService implements IPatientService {
     public void delete(UUID id) {
         Optional<Patient> patient = patientRepository.findById(id);
         if(patient.isEmpty()){
-            throw new EntityNotExistsException(Constants.appointmentNotFound);
+            throw new EntityNotExistsException(Constants.patientNotFound);
         }
         patientRepository.delete(patient.get());
     }

@@ -114,6 +114,29 @@ public class PatientIntegrationTest {
     }
 
     @Test
+    void testExistsCreatePatient() throws Exception {
+        patientRepository.save(this.patientDB);
+        PatientDTO patientDTO = new PatientDTO();
+        patientDTO.setIdentification("1053847610");
+        patientDTO.setPassword("password");
+        patientDTO.setName("Test Name");
+        patientDTO.setInsurance("Test Insurance");
+
+        String responseJson = mockMvc.perform(post("/patient")
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(patientDTO)))
+                            .andExpect(status().isConflict())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+        String expectedError = "Auth already exists";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
+    }
+
+    @Test
     void testGetPatient() throws Exception {
         patientRepository.save(this.patientDB);
         String responseJson = mockMvc.perform(get("/patient")
@@ -222,6 +245,30 @@ public class PatientIntegrationTest {
     }
 
     @Test
+    void testNotFoundUpdatePatient() throws Exception {
+        UUID id = UUID.randomUUID();
+        Patient patient = patientRepository.save(this.patientDB);
+        PatientDTO patientDTO = new PatientDTO();
+        patientDTO.setIdentification(patient.getAuth().getIdentification());
+        patientDTO.setPassword(patient.getAuth().getPassword());
+        patientDTO.setName("Test Name 2");
+        patientDTO.setInsurance("Test Insurance 2");
+        String responseJson = mockMvc.perform(put("/patient/"+ id)
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(patientDTO)))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+
+        String expectedError = "Patient not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
+    }
+
+    @Test
     void testDeletePatient() throws Exception {
         Patient patient = patientRepository.save(this.patientDB);
         mockMvc.perform(delete("/patient/"+ patient.getId())
@@ -232,6 +279,24 @@ public class PatientIntegrationTest {
                         .getResponse()
                         .getContentAsString();
         assertTrue(patientRepository.findById(patient.getId()).isEmpty());
+    }
+
+
+    @Test
+    void testNotFoundDeletePatient() throws Exception {
+        UUID id = UUID.randomUUID();
+        patientRepository.save(this.patientDB);
+        String responseJson = mockMvc.perform(delete("/patient/"+ id)
+                        .header("Authorization", "Bearer " + accessToken)
+                        .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isNotFound())
+                        .andReturn()
+                        .getResponse()
+                        .getContentAsString();
+        String expectedError = "Patient not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
     }
 
 }

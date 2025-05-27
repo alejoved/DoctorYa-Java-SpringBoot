@@ -147,6 +147,54 @@ public class AppointmentIntegrationTest {
     }
 
     @Test
+    void testPatientNotFoundCreateAppointment() throws Exception {
+        AppointmentDTO appointmentDTO = new AppointmentDTO();
+        appointmentDTO.setStartDate(Timestamp.valueOf("2025-05-01 10:00:00"));
+        appointmentDTO.setDuration(20);
+        appointmentDTO.setReason("Test Reason");
+        appointmentDTO.setPatientIdentification("1053847600");
+        appointmentDTO.setPhysicianIdentification("1053847620");
+
+        String responseJson = mockMvc.perform(post("/appointment")
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(appointmentDTO)))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+
+        String expectedError = "Patient not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
+    }
+
+    @Test
+    void testPhysicianNotFoundCreateAppointment() throws Exception {
+        AppointmentDTO appointmentDTO = new AppointmentDTO();
+        appointmentDTO.setStartDate(Timestamp.valueOf("2025-05-01 10:00:00"));
+        appointmentDTO.setDuration(20);
+        appointmentDTO.setReason("Test Reason");
+        appointmentDTO.setPatientIdentification("1053847610");
+        appointmentDTO.setPhysicianIdentification("1053847600");
+
+        String responseJson = mockMvc.perform(post("/appointment")
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(appointmentDTO)))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+
+        String expectedError = "Physician not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
+    }
+
+    @Test
     void testGetAppointment() throws Exception {
         appointmentRepository.save(this.appointmentDB);
         String responseJson = mockMvc.perform(get("/appointment")
@@ -223,6 +271,31 @@ public class AppointmentIntegrationTest {
     }
 
     @Test
+    void testUpdateNotFoundAppointment() throws Exception {
+        Appointment appointment = appointmentRepository.save(this.appointmentDB);
+        AppointmentDTO appointmentDTO = new AppointmentDTO();
+        appointmentDTO.setPatientIdentification(appointment.getPatient().getAuth().getIdentification());
+        appointmentDTO.setPhysicianIdentification(appointment.getPhysician().getAuth().getIdentification());
+        appointmentDTO.setDuration(50);
+        appointmentDTO.setReason("Test Reason 2");
+        appointmentDTO.setStartDate(Timestamp.valueOf("2025-05-01 15:00:00"));
+        UUID id = UUID.randomUUID(); 
+        String responseJson = mockMvc.perform(put("/appointment/"+ id)
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(appointmentDTO)))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+
+        String expectedError = "Appointment not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
+    }
+
+    @Test
     void testDeleteAppointment() throws Exception {
         Appointment appointment = appointmentRepository.save(this.appointmentDB);
         mockMvc.perform(delete("/appointment/"+ appointment.getId())
@@ -233,6 +306,22 @@ public class AppointmentIntegrationTest {
                         .getResponse()
                         .getContentAsString();
         assertTrue(appointmentRepository.findById(appointment.getId()).isEmpty());
+    }
+
+    @Test
+    void testDeleteNotFoundAppointment() throws Exception {
+        UUID id = UUID.randomUUID();
+        String responseJson = mockMvc.perform(delete("/appointment/"+ id)
+                        .header("Authorization", "Bearer " + accessToken)
+                        .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isNotFound())
+                        .andReturn()
+                        .getResponse()
+                        .getContentAsString();
+        String expectedError = "Appointment not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
     }
 
 }

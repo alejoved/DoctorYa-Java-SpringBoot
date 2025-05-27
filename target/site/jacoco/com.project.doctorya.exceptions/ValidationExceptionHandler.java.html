@@ -41,9 +41,9 @@ import com.project.doctorya.common.Constants;
 
     @ExceptionHandler(EntityExistsException.class)
     public ResponseEntity&lt;Map&lt;String, String&gt;&gt; handleModelExistsException(EntityExistsException ex) {
-<span class="nc" id="L44">        Map&lt;String, String&gt; response = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L45">        response.put(Constants.error, ex.getMessage());</span>
-<span class="nc" id="L46">        return new ResponseEntity&lt;&gt;(response, HttpStatus.CONFLICT);</span>
+<span class="fc" id="L44">        Map&lt;String, String&gt; response = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L45">        response.put(Constants.error, ex.getMessage());</span>
+<span class="fc" id="L46">        return new ResponseEntity&lt;&gt;(response, HttpStatus.CONFLICT);</span>
     }
 
     @ExceptionHandler(EntityNotExistsException.class)

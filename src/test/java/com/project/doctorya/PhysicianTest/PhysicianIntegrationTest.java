@@ -24,6 +24,7 @@ import com.project.doctorya.auth.dto.LoginDTO;
 import com.project.doctorya.auth.dto.RegisterDTO;
 import com.project.doctorya.auth.entity.Auth;
 import com.project.doctorya.auth.repository.AuthRepository;
+import com.project.doctorya.patient.dto.PatientDTO;
 import com.project.doctorya.physician.dto.PhysicianDTO;
 import com.project.doctorya.physician.dto.PhysicianResponseDTO;
 import com.project.doctorya.physician.entity.Physician;
@@ -116,6 +117,31 @@ public class PhysicianIntegrationTest {
         assertEquals(physician.getName(), physicianDTO.getName());
         assertEquals(physician.getCode(), physicianDTO.getCode());
     }
+
+    @Test
+    void testExistsCreatePhysician() throws Exception {
+        physicianRepository.save(this.physicianDB);
+        PhysicianDTO physicianDTO = new PhysicianDTO();
+        physicianDTO.setIdentification("1053847620");
+        physicianDTO.setPassword("password");
+        physicianDTO.setName("Test Name");
+        physicianDTO.setCode("Test Code");
+        physicianDTO.setSpeciality("Test Speciality");
+
+        String responseJson = mockMvc.perform(post("/physician")
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(physicianDTO)))
+                            .andExpect(status().isConflict())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+        String expectedError = "Auth already exists";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
+    }
+
 
     @Test
     void testGetPhysician() throws Exception {
@@ -230,6 +256,31 @@ public class PhysicianIntegrationTest {
     }
 
     @Test
+    void testNotFoundUpdatePhysician() throws Exception {
+        UUID id = UUID.randomUUID();
+        Physician physician = physicianRepository.save(this.physicianDB);
+        PhysicianDTO physicianDTO = new PhysicianDTO();
+        physicianDTO.setIdentification(physician.getAuth().getIdentification());
+        physicianDTO.setPassword(physician.getAuth().getPassword());
+        physicianDTO.setName("Test Name 2");
+        physicianDTO.setCode("Test Code 2");
+        physicianDTO.setSpeciality("Test Speciality 2");
+        String responseJson = mockMvc.perform(put("/physician/"+ id)
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(physicianDTO)))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+
+        String expectedError = "Physician not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
+    }
+
+    @Test
     void testDeletePhysician() throws Exception {
         Physician physician = physicianRepository.save(this.physicianDB);
         mockMvc.perform(delete("/physician/"+ physician.getId())
@@ -240,5 +291,22 @@ public class PhysicianIntegrationTest {
                         .getResponse()
                         .getContentAsString();
         assertTrue(physicianRepository.findById(physician.getId()).isEmpty());
+    }
+
+    @Test
+    void testNotFoundDeletePhysician() throws Exception {
+        UUID id = UUID.randomUUID();
+        physicianRepository.save(this.physicianDB);
+        String responseJson = mockMvc.perform(delete("/physician/"+ id)
+                        .header("Authorization", "Bearer " + accessToken)
+                        .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isNotFound())
+                        .andReturn()
+                        .getResponse()
+                        .getContentAsString();
+        String expectedError = "Physician not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
     }
 }
