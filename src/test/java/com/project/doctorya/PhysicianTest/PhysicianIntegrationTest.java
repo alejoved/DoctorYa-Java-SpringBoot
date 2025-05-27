@@ -24,7 +24,6 @@ import com.project.doctorya.auth.dto.LoginDTO;
 import com.project.doctorya.auth.dto.RegisterDTO;
 import com.project.doctorya.auth.entity.Auth;
 import com.project.doctorya.auth.repository.AuthRepository;
-import com.project.doctorya.patient.dto.PatientDTO;
 import com.project.doctorya.physician.dto.PhysicianDTO;
 import com.project.doctorya.physician.dto.PhysicianResponseDTO;
 import com.project.doctorya.physician.entity.Physician;
