@@ -48,9 +48,9 @@ import com.project.doctorya.common.Constants;
 
     @ExceptionHandler(EntityNotExistsException.class)
     public ResponseEntity&lt;Map&lt;String, String&gt;&gt; handleModelNotExistsException(EntityNotExistsException ex) {
-<span class="nc" id="L51">        Map&lt;String, String&gt; response = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L52">        response.put(Constants.error, ex.getMessage());</span>
-<span class="nc" id="L53">        return new ResponseEntity&lt;&gt;(response, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L51">        Map&lt;String, String&gt; response = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L52">        response.put(Constants.error, ex.getMessage());</span>
+<span class="fc" id="L53">        return new ResponseEntity&lt;&gt;(response, HttpStatus.NOT_FOUND);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

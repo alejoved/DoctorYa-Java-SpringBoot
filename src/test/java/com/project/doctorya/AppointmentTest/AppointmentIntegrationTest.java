@@ -33,6 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.UUID;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -177,6 +178,22 @@ public class AppointmentIntegrationTest {
         assertEquals(appointmentResponseDTO.getPhysician().getAuth().getIdentification(), appointment.getPhysician().getAuth().getIdentification());
         assertEquals(appointmentResponseDTO.getReason(), appointment.getReason());
         assertEquals(appointmentResponseDTO.getStartDate(), appointment.getStartDate());
+    }
+
+    @Test
+    void testGetByIdNotFoundAppointment() throws Exception {
+        UUID id = UUID.randomUUID();
+        String responseJson = mockMvc.perform(get("/appointment/" + id)
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+        String expectedError = "Appointment not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
     }
 
     @Test

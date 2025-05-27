@@ -27,6 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import java.util.List;
+import java.util.UUID;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -147,6 +148,22 @@ public class PatientIntegrationTest {
     }
 
     @Test
+    void testGetByIdNotFoundPatient() throws Exception {
+        UUID id = UUID.randomUUID();
+        String responseJson = mockMvc.perform(get("/patient/" + id)
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+        String expectedError = "Patient not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
+    }
+
+    @Test
     void testGetByIdentificationPatient() throws Exception {
         Patient patient = patientRepository.save(patientDB);
         String responseJson = mockMvc.perform(get("/patient/identification/"+patient.getAuth().getIdentification())
@@ -162,6 +179,22 @@ public class PatientIntegrationTest {
         assertEquals(patientResponseDTO.getAuth().getIdentification(), patient.getAuth().getIdentification());
         assertEquals(patientResponseDTO.getName(), patient.getName());
         assertEquals(patientResponseDTO.getInsurance(), patient.getInsurance());
+    }
+
+    @Test
+    void testGetByIdentificationNotFoundPatient() throws Exception {
+        String identification = "1053847600";
+        String responseJson = mockMvc.perform(get("/patient/identification/" + identification)
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+        String expectedError = "Patient not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
     }
 
     @Test

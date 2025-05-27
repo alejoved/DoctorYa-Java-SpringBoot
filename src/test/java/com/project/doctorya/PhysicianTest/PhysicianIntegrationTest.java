@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -152,6 +153,22 @@ public class PhysicianIntegrationTest {
     }
 
     @Test
+    void testGetByIdNotFoundPhysician() throws Exception {
+        UUID id = UUID.randomUUID();
+        String responseJson = mockMvc.perform(get("/physician/" + id)
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+        String expectedError = "Physician not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
+    }
+
+    @Test
     void testGetByIdentificationPhysician() throws Exception {
         Physician physician = physicianRepository.save(physicianDB);
         String responseJson = mockMvc.perform(get("/physician/identification/" + physician.getAuth().getIdentification())
@@ -168,6 +185,22 @@ public class PhysicianIntegrationTest {
         assertEquals(physicianResponseDTO.getName(), physician.getName());
         assertEquals(physicianResponseDTO.getCode(), physician.getCode());
         assertEquals(physicianResponseDTO.getSpeciality(), physician.getSpeciality());
+    }
+
+    @Test
+    void testGetByIdentificationNotFoundPhysician() throws Exception {
+        String identification = "1053847600";
+        String responseJson = mockMvc.perform(get("/physician/identification/" + identification)
+                            .header("Authorization", "Bearer " + accessToken)
+                            .contentType(MediaType.APPLICATION_JSON))
+                            .andExpect(status().isNotFound())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+        String expectedError = "Physician not found";
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode response = objectMapper.readTree(responseJson);
+        assertEquals(expectedError, response.get("error").asText());
     }
 
     @Test

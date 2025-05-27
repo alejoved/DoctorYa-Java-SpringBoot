@@ -46,8 +46,8 @@ import com.project.doctorya.physician.repository.PhysicianRepository;
     @Override
     public AppointmentResponseDTO getById(UUID id) {
 <span class="fc" id="L48">        Optional&lt;Appointment&gt; appointment = appointmentRepository.findById(id);</span>
-<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        if(appointment.isEmpty()){</span>
-<span class="nc" id="L50">            throw new EntityNotExistsException(Constants.appointmentNotFound);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if(appointment.isEmpty()){</span>
+<span class="fc" id="L50">            throw new EntityNotExistsException(Constants.appointmentNotFound);</span>
         }
 <span class="fc" id="L52">        AppointmentResponseDTO appointmentResponseDTO = modelMapper.map(appointment, AppointmentResponseDTO.class);</span>
 <span class="fc" id="L53">        return appointmentResponseDTO;</span>

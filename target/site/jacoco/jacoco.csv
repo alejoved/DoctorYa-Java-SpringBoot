@@ -1,20 +1,20 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 doctorya,com.project.doctorya.appointment.service,AppointmentService.new TypeToken() {...},0,6,0,0,0,1,0,1,0,1
-doctorya,com.project.doctorya.appointment.service,AppointmentService,30,163,6,6,6,33,6,6,0,6
+doctorya,com.project.doctorya.appointment.service,AppointmentService,25,168,5,7,5,34,5,7,0,6
 doctorya,com.project.doctorya.auth.controller,AuthController,0,23,0,0,0,6,0,3,0,3
-doctorya,com.project.doctorya.patient.service,PatientService,25,153,5,5,5,33,5,7,0,7
+doctorya,com.project.doctorya.patient.service,PatientService,15,163,3,7,3,35,3,9,0,7
 doctorya,com.project.doctorya.patient.service,PatientService.new TypeToken() {...},0,6,0,0,0,1,0,1,0,1
 doctorya,com.project.doctorya.appointment.controller,AppointmentController,0,43,0,0,0,11,0,6,0,6
-doctorya,com.project.doctorya.physician.service,PhysicianService,25,153,5,5,5,33,5,7,0,7
+doctorya,com.project.doctorya.physician.service,PhysicianService,15,163,3,7,3,35,3,9,0,7
 doctorya,com.project.doctorya.physician.service,PhysicianService.new TypeToken() {...},0,6,0,0,0,1,0,1,0,1
 doctorya,com.project.doctorya.auth.dto,LoginResponseDTO,0,9,0,0,0,4,0,1,0,1
-doctorya,com.project.doctorya.exceptions,ValidationExceptionHandler,85,3,0,0,16,1,6,1,6,1
+doctorya,com.project.doctorya.exceptions,ValidationExceptionHandler,69,19,0,0,13,4,5,2,5,2
 doctorya,com.project.doctorya.exceptions,EntityExistsException,4,0,0,0,2,0,1,0,1,0
-doctorya,com.project.doctorya.exceptions,EntityNotExistsException,4,0,0,0,2,0,1,0,1,0
+doctorya,com.project.doctorya.exceptions,EntityNotExistsException,0,4,0,0,0,2,0,1,0,1
 doctorya,com.project.doctorya,DoctoryaApplication,5,3,0,0,2,1,1,1,1,1
 doctorya,com.project.doctorya.physician.controller,PhysicianController,0,51,0,0,0,13,0,7,0,7
 doctorya,com.project.doctorya.auth.service,AuthService,21,85,3,3,5,15,3,3,0,3
-doctorya,com.project.doctorya.common,Constants,24,0,0,0,11,0,2,0,2,0
+doctorya,com.project.doctorya.common,Constants,3,21,0,0,1,10,1,1,1,1
 doctorya,com.project.doctorya.common,Role,0,21,0,0,0,4,0,1,0,1
 doctorya,com.project.doctorya.patient.controller,PatientController,0,51,0,0,0,13,0,7,0,7
 doctorya,com.project.doctorya.config,Config,0,7,0,0,0,2,0,2,0,2

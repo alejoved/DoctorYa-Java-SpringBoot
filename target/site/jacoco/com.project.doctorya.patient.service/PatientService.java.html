@@ -45,8 +45,8 @@ import com.project.doctorya.patient.repository.PatientRepository;
     @Override
     public PatientResponseDTO getById(UUID id) {
 <span class="fc" id="L47">        Optional&lt;Patient&gt; patient = patientRepository.findById(id);</span>
-<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        if(patient.isEmpty()){</span>
-<span class="nc" id="L49">            throw new EntityNotExistsException(Constants.patientNotFound);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        if(patient.isEmpty()){</span>
+<span class="fc" id="L49">            throw new EntityNotExistsException(Constants.patientNotFound);</span>
         }
 <span class="fc" id="L51">        PatientResponseDTO patientResponseDTO = modelMapper.map(patient, PatientResponseDTO.class);</span>
 <span class="fc" id="L52">        return patientResponseDTO;</span>
@@ -55,8 +55,8 @@ import com.project.doctorya.patient.repository.PatientRepository;
     @Override
     public PatientResponseDTO getByIdentification(String identification) {
 <span class="fc" id="L57">        Optional&lt;Patient&gt; patient = patientRepository.findByAuthIdentification(identification);</span>
-<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        if(patient.isEmpty()){</span>
-<span class="nc" id="L59">            throw new EntityNotExistsException(Constants.patientNotFound);</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if(patient.isEmpty()){</span>
+<span class="fc" id="L59">            throw new EntityNotExistsException(Constants.patientNotFound);</span>
         }
 <span class="fc" id="L61">        PatientResponseDTO patientResponseDTO = modelMapper.map(patient, PatientResponseDTO.class);</span>
 <span class="fc" id="L62">        return patientResponseDTO;</span>
