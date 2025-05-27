@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.project.doctorya.PatientTest.PatientIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.900 s -- in com.project.doctorya.PatientTest.PatientIntegrationTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.142 s -- in com.project.doctorya.PatientTest.PatientIntegrationTest

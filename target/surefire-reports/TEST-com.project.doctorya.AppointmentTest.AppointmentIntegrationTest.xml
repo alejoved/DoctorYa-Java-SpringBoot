@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.project.doctorya.PatientTest.PatientIntegrationTest" time="1.142" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.project.doctorya.AppointmentTest.AppointmentIntegrationTest" time="14.584" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -48,7 +48,7 @@
     <property name="localRepository" value="C:\Users\joaaguir\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-17/issues/"/>
     <property name="java.io.tmpdir" value="C:\Users\joaaguir\AppData\Local\Temp\"/>
-    <property name="com.zaxxer.hikari.pool_number" value="2"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
     <property name="java.version" value="17.0.6"/>
     <property name="user.dir" value="C:\Users\joaaguir\Documents\github\DoctorYa-Java-SpringBoot"/>
     <property name="os.arch" value="amd64"/>
@@ -65,168 +65,255 @@
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[doctorya] "/>
   </properties>
-  <testcase name="testCreatePatient" classname="com.project.doctorya.PatientTest.PatientIntegrationTest" time="0.277">
-    <system-out><![CDATA[2025-05-27T11:23:20.418-05:00  INFO 19732 --- [doctorya] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.project.doctorya.PatientTest.PatientIntegrationTest]: PatientIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-05-27T11:23:20.446-05:00  INFO 19732 --- [doctorya] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.project.doctorya.DoctoryaApplication for test class com.project.doctorya.PatientTest.PatientIntegrationTest
-2025-05-27T11:23:20.453-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
-2025-05-27T11:23:20.454-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:20.454-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+  <testcase name="testGetByIdAppointment" classname="com.project.doctorya.AppointmentTest.AppointmentIntegrationTest" time="1.647">
+    <system-out><![CDATA[11:23:05.301 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.project.doctorya.AppointmentTest.AppointmentIntegrationTest]: AppointmentIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:23:05.817 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.project.doctorya.DoctoryaApplication for test class com.project.doctorya.AppointmentTest.AppointmentIntegrationTest
+11:23:06.409 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2025-05-27T11:23:06.898-05:00  INFO 19732 --- [doctorya] [           main] c.p.d.A.AppointmentIntegrationTest       : Starting AppointmentIntegrationTest using Java 17.0.6 with PID 19732 (started by joaaguir in C:\Users\joaaguir\Documents\github\DoctorYa-Java-SpringBoot)
+2025-05-27T11:23:06.900-05:00  INFO 19732 --- [doctorya] [           main] c.p.d.A.AppointmentIntegrationTest       : No active profile set, falling back to 1 default profile: "default"
+2025-05-27T11:23:08.758-05:00  INFO 19732 --- [doctorya] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-27T11:23:08.871-05:00  INFO 19732 --- [doctorya] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99 ms. Found 4 JPA repository interfaces.
+2025-05-27T11:23:09.847-05:00  INFO 19732 --- [doctorya] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-27T11:23:09.994-05:00  INFO 19732 --- [doctorya] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-27T11:23:10.056-05:00  INFO 19732 --- [doctorya] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-27T11:23:10.665-05:00  INFO 19732 --- [doctorya] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-27T11:23:10.705-05:00  INFO 19732 --- [doctorya] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-27T11:23:11.102-05:00  INFO 19732 --- [doctorya] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@74cc987a
+2025-05-27T11:23:11.105-05:00  INFO 19732 --- [doctorya] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-27T11:23:11.336-05:00  INFO 19732 --- [doctorya] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 13.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-27T11:23:13.052-05:00  INFO 19732 --- [doctorya] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: set client_min_messages = WARNING
+Hibernate: alter table if exists appointment drop constraint if exists FK4apif2ewfyf14077ichee8g06
+Hibernate: alter table if exists appointment drop constraint if exists FK68g9pht8khvj6imavqgopylme
+Hibernate: alter table if exists patient drop constraint if exists FKd0938jirih56x9extwo7ostuc
+Hibernate: alter table if exists physician drop constraint if exists FKhe1w4md7rlf6d2t2c2abtxjmw
+Hibernate: drop table if exists appointment cascade
+Hibernate: drop table if exists auth cascade
+Hibernate: drop table if exists patient cascade
+Hibernate: drop table if exists physician cascade
+Hibernate: create table appointment (end_date timestamp(6) not null, start_date timestamp(6) not null, id uuid not null, patient_id uuid not null, physician_id uuid not null, reason varchar(255) not null, primary key (id))
+Hibernate: create table auth (id uuid not null, identification varchar(255) not null unique, password varchar(255) not null, rol varchar(255) check (rol in ('ADMIN','PATIENT','PHYSICIAN')), primary key (id))
+Hibernate: create table patient (auth_id uuid unique, id uuid not null, insurance varchar(255) not null, name varchar(255) not null, primary key (id))
+Hibernate: create table physician (auth_id uuid unique, id uuid not null, code varchar(255) not null, name varchar(255) not null, speciality varchar(255) not null, primary key (id))
+Hibernate: alter table if exists appointment add constraint FK4apif2ewfyf14077ichee8g06 foreign key (patient_id) references patient
+Hibernate: alter table if exists appointment add constraint FK68g9pht8khvj6imavqgopylme foreign key (physician_id) references physician
+Hibernate: alter table if exists patient add constraint FKd0938jirih56x9extwo7ostuc foreign key (auth_id) references auth
+Hibernate: alter table if exists physician add constraint FKhe1w4md7rlf6d2t2c2abtxjmw foreign key (auth_id) references auth
+2025-05-27T11:23:13.156-05:00  INFO 19732 --- [doctorya] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-27T11:23:13.624-05:00  INFO 19732 --- [doctorya] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-27T11:23:15.011-05:00  WARN 19732 --- [doctorya] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-27T11:23:15.052-05:00 DEBUG 19732 --- [doctorya] [           main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-05-27T11:23:16.003-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, BearerTokenAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-05-27T11:23:16.844-05:00  INFO 19732 --- [doctorya] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-05-27T11:23:16.844-05:00  INFO 19732 --- [doctorya] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-05-27T11:23:16.845-05:00  INFO 19732 --- [doctorya] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-05-27T11:23:16.872-05:00  INFO 19732 --- [doctorya] [           main] c.p.d.A.AppointmentIntegrationTest       : Started AppointmentIntegrationTest in 10.497 seconds (process running for 14.155)
+2025-05-27T11:23:17.832-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-05-27T11:23:17.841-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:17.843-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
 Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
-2025-05-27T11:23:20.541-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
-2025-05-27T11:23:20.541-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:20.541-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+2025-05-27T11:23:18.232-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-05-27T11:23:18.232-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:18.232-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
 1053847601
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
-2025-05-27T11:23:20.611-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /patient
-2025-05-27T11:23:20.612-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
-2025-05-27T11:23:20.612-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@2d4ae4d4, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
-2025-05-27T11:23:20.613-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /patient
-2025-05-27T11:23:20.620-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.patient.controller.PatientController.create(com.project.doctorya.patient.dto.PatientDTO); target is of class [com.project.doctorya.patient.controller.PatientController]
-2025-05-27T11:23:20.621-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.patient.controller.PatientController.create(com.project.doctorya.patient.dto.PatientDTO); target is of class [com.project.doctorya.patient.controller.PatientController]
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
 Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
 Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
-Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
-Hibernate: delete from patient where id=?
-Hibernate: delete from auth where id=?
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0
-Hibernate: delete from auth where id=?
-]]></system-out>
-  </testcase>
-  <testcase name="testGetPatient" classname="com.project.doctorya.PatientTest.PatientIntegrationTest" time="0.156">
-    <system-out><![CDATA[2025-05-27T11:23:20.731-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
-2025-05-27T11:23:20.732-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:20.732-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
 Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
-2025-05-27T11:23:20.800-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
-2025-05-27T11:23:20.800-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:20.800-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
-1053847601
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
-Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
-Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
-2025-05-27T11:23:20.865-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing GET /patient
-2025-05-27T11:23:20.866-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
-2025-05-27T11:23:20.866-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@2d4ae4d4, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
-2025-05-27T11:23:20.867-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured GET /patient
-Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
-Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
-Hibernate: delete from patient where id=?
-Hibernate: delete from auth where id=?
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0
-Hibernate: delete from auth where id=?
-]]></system-out>
-  </testcase>
-  <testcase name="testUpdatePatient" classname="com.project.doctorya.PatientTest.PatientIntegrationTest" time="0.161">
-    <system-out><![CDATA[2025-05-27T11:23:20.887-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
-2025-05-27T11:23:20.888-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:20.888-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
-Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
-2025-05-27T11:23:20.953-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
-2025-05-27T11:23:20.954-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:20.954-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
-1053847601
-Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
-Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
-Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
-2025-05-27T11:23:21.022-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing PUT /patient/b16627c8-02f8-45f2-8c9b-7b55441b1813
-2025-05-27T11:23:21.023-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
-2025-05-27T11:23:21.023-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@1ff5b27e, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
-2025-05-27T11:23:21.023-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured PUT /patient/b16627c8-02f8-45f2-8c9b-7b55441b1813
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+Hibernate: insert into appointment (end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?)
+2025-05-27T11:23:18.378-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing GET /appointment/5e1a9086-5dbf-42d9-907d-16c944e33c0e
+2025-05-27T11:23:18.438-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-05-27T11:23:18.439-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@1a7ec6c0, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-05-27T11:23:18.439-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured GET /appointment/5e1a9086-5dbf-42d9-907d-16c944e33c0e
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.rol,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.rol,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
 Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
-Hibernate: update patient set auth_id=?,insurance=?,name=? where id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: delete from appointment where id=?
 Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
 Hibernate: delete from patient where id=?
 Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0
 Hibernate: delete from auth where id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testGetByIdPatient" classname="com.project.doctorya.PatientTest.PatientIntegrationTest" time="0.153">
-    <system-out><![CDATA[2025-05-27T11:23:21.050-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
-2025-05-27T11:23:21.050-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:21.050-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+  <testcase name="testUpdateAppointment" classname="com.project.doctorya.AppointmentTest.AppointmentIntegrationTest" time="0.19">
+    <system-out><![CDATA[2025-05-27T11:23:18.540-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-05-27T11:23:18.540-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:18.540-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
 Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
-2025-05-27T11:23:21.116-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
-2025-05-27T11:23:21.116-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:21.116-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+2025-05-27T11:23:18.609-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-05-27T11:23:18.609-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:18.609-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
 1053847601
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
 Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
 Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
-2025-05-27T11:23:21.186-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing GET /patient/a83a4adc-4b69-42f5-881c-de390477f8c0
-2025-05-27T11:23:21.186-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
-2025-05-27T11:23:21.186-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@1ff5b27e, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
-2025-05-27T11:23:21.186-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured GET /patient/a83a4adc-4b69-42f5-881c-de390477f8c0
-2025-05-27T11:23:21.187-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.patient.controller.PatientController.getById(java.util.UUID); target is of class [com.project.doctorya.patient.controller.PatientController]
-2025-05-27T11:23:21.188-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.patient.controller.PatientController.getById(java.util.UUID); target is of class [com.project.doctorya.patient.controller.PatientController]
+Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+Hibernate: insert into appointment (end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?)
+2025-05-27T11:23:18.685-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing PUT /appointment/ab8b6102-911c-4ff5-9e45-f3c1659723e0
+2025-05-27T11:23:18.685-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-05-27T11:23:18.686-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@1a7ec6c0, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-05-27T11:23:18.686-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured PUT /appointment/ab8b6102-911c-4ff5-9e45-f3c1659723e0
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.rol,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.rol,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: update appointment set end_date=?,patient_id=?,physician_id=?,reason=?,start_date=? where id=?
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
 Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: delete from appointment where id=?
 Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
 Hibernate: delete from patient where id=?
 Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0
 Hibernate: delete from auth where id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testDeletePatient" classname="com.project.doctorya.PatientTest.PatientIntegrationTest" time="0.181">
-    <system-out><![CDATA[2025-05-27T11:23:21.204-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
-2025-05-27T11:23:21.204-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:21.204-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+  <testcase name="testDeleteAppointment" classname="com.project.doctorya.AppointmentTest.AppointmentIntegrationTest" time="0.206">
+    <system-out><![CDATA[2025-05-27T11:23:18.729-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-05-27T11:23:18.729-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:18.730-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
 Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
-2025-05-27T11:23:21.281-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
-2025-05-27T11:23:21.281-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:21.281-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+2025-05-27T11:23:18.796-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-05-27T11:23:18.797-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:18.797-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
 1053847601
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
 Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
 Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
-2025-05-27T11:23:21.364-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing DELETE /patient/c988f2f8-d219-4c08-b4c4-4e6266e06ae6
-2025-05-27T11:23:21.365-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
-2025-05-27T11:23:21.365-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@1ff5b27e, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
-2025-05-27T11:23:21.365-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured DELETE /patient/c988f2f8-d219-4c08-b4c4-4e6266e06ae6
-2025-05-27T11:23:21.366-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public void com.project.doctorya.patient.controller.PatientController.delete(java.util.UUID); target is of class [com.project.doctorya.patient.controller.PatientController]
-2025-05-27T11:23:21.367-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public void com.project.doctorya.patient.controller.PatientController.delete(java.util.UUID); target is of class [com.project.doctorya.patient.controller.PatientController]
-Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+Hibernate: insert into appointment (end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?)
+2025-05-27T11:23:18.878-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing DELETE /appointment/3fc96974-53f4-4fd1-a091-7e59ff55b7bb
+2025-05-27T11:23:18.879-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-05-27T11:23:18.879-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@1a7ec6c0, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-05-27T11:23:18.879-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured DELETE /appointment/3fc96974-53f4-4fd1-a091-7e59ff55b7bb
+2025-05-27T11:23:18.881-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public void com.project.doctorya.appointment.controller.AppointmentController.delete(java.util.UUID); target is of class [com.project.doctorya.appointment.controller.AppointmentController]
+2025-05-27T11:23:18.896-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public void com.project.doctorya.appointment.controller.AppointmentController.delete(java.util.UUID); target is of class [com.project.doctorya.appointment.controller.AppointmentController]
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.rol,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.rol,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: delete from appointment where id=?
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.rol,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.rol,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
 Hibernate: delete from patient where id=?
 Hibernate: delete from auth where id=?
-Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
-Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0
 Hibernate: delete from auth where id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testGetByIdentificationPatient" classname="com.project.doctorya.PatientTest.PatientIntegrationTest" time="0.172">
-    <system-out><![CDATA[2025-05-27T11:23:21.386-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
-2025-05-27T11:23:21.386-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:21.386-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+  <testcase name="testGetAppointment" classname="com.project.doctorya.AppointmentTest.AppointmentIntegrationTest" time="0.178">
+    <system-out><![CDATA[2025-05-27T11:23:18.936-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-05-27T11:23:18.936-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:18.937-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
 Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
-2025-05-27T11:23:21.457-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
-2025-05-27T11:23:21.457-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
-2025-05-27T11:23:21.458-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+2025-05-27T11:23:19.007-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-05-27T11:23:19.007-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:19.007-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
 1053847601
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
 Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
 Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
-2025-05-27T11:23:21.535-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing GET /patient/identification/1053847610
-2025-05-27T11:23:21.535-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
-2025-05-27T11:23:21.535-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@1ff5b27e, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
-2025-05-27T11:23:21.535-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured GET /patient/identification/1053847610
+Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+Hibernate: insert into appointment (end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?)
+2025-05-27T11:23:19.076-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing GET /appointment
+2025-05-27T11:23:19.076-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-05-27T11:23:19.076-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@1dbc3690, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-05-27T11:23:19.077-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured GET /appointment
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: delete from appointment where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0
+Hibernate: delete from auth where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAppointment" classname="com.project.doctorya.AppointmentTest.AppointmentIntegrationTest" time="0.173">
+    <system-out><![CDATA[2025-05-27T11:23:19.114-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-05-27T11:23:19.114-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:19.114-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
+2025-05-27T11:23:19.181-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-05-27T11:23:19.181-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-27T11:23:19.181-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+1053847601
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,rol,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+2025-05-27T11:23:19.247-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /appointment
+2025-05-27T11:23:19.247-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-05-27T11:23:19.247-05:00 DEBUG 19732 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@1dbc3690, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-05-27T11:23:19.247-05:00 DEBUG 19732 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /appointment
+2025-05-27T11:23:19.248-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.appointment.controller.AppointmentController.create(com.project.doctorya.appointment.dto.AppointmentDTO); target is of class [com.project.doctorya.appointment.controller.AppointmentController]
+2025-05-27T11:23:19.249-05:00 DEBUG 19732 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.appointment.controller.AppointmentController.create(com.project.doctorya.appointment.dto.AppointmentDTO); target is of class [com.project.doctorya.appointment.controller.AppointmentController]
 Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where a1_0.identification=?
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where a1_0.identification=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0 join physician p2_0 on p2_0.id=a1_0.physician_id join auth a2_0 on a2_0.id=p2_0.auth_id where a1_0.start_date<? and a1_0.end_date>? and a2_0.identification=?
+Hibernate: insert into appointment (end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?)
+Hibernate: select a1_0.id,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.rol,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: delete from appointment where id=?
 Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
 Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
 Hibernate: delete from auth where id=?
 Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.rol from auth a1_0
 Hibernate: delete from auth where id=?

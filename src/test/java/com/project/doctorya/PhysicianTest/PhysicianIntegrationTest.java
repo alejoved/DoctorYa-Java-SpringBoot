@@ -1,4 +1,4 @@
-package com.project.doctorya.PatientTest;
+package com.project.doctorya.PhysicianTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +23,10 @@ import com.project.doctorya.auth.dto.LoginDTO;
 import com.project.doctorya.auth.dto.RegisterDTO;
 import com.project.doctorya.auth.entity.Auth;
 import com.project.doctorya.auth.repository.AuthRepository;
-import com.project.doctorya.patient.dto.PatientDTO;
-import com.project.doctorya.patient.dto.PatientResponseDTO;
-import com.project.doctorya.patient.entity.Patient;
 import com.project.doctorya.physician.dto.PhysicianDTO;
 import com.project.doctorya.physician.dto.PhysicianResponseDTO;
 import com.project.doctorya.physician.entity.Physician;
 import com.project.doctorya.physician.repository.PhysicianRepository;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -59,8 +52,6 @@ public class PhysicianIntegrationTest {
 
     @BeforeEach
     void beforeTest() throws Exception {
-        physicianRepository.deleteAll();
-        authRepository.deleteAll();
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setIdentification("1053847601");
         registerDTO.setPassword("12345");
@@ -94,6 +85,12 @@ public class PhysicianIntegrationTest {
         physicianDB.getAuth().setPassword("12345");
     }
 
+    @AfterEach
+    void afterEach(){
+        physicianRepository.deleteAll();
+        authRepository.deleteAll();
+    }
+
     @Test
     void testCreatePhysician() throws Exception {
         PhysicianDTO physicianDTO = new PhysicianDTO();
@@ -121,7 +118,7 @@ public class PhysicianIntegrationTest {
 
     @Test
     void testGetPhysician() throws Exception {
-        Physician physician = physicianRepository.save(this.physicianDB);
+        physicianRepository.save(this.physicianDB);
         String responseJson = mockMvc.perform(get("/physician")
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
@@ -156,8 +153,8 @@ public class PhysicianIntegrationTest {
 
     @Test
     void testGetByIdentificationPhysician() throws Exception {
-        Patient patient = patientRepository.save(patientDB);
-        String responseJson = mockMvc.perform(get("/patient/identification/"+patient.getAuth().getIdentification())
+        Physician physician = physicianRepository.save(physicianDB);
+        String responseJson = mockMvc.perform(get("/physician/identification/" + physician.getAuth().getIdentification())
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
                             .andExpect(status().isOk())
@@ -165,48 +162,50 @@ public class PhysicianIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
-        assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getAuth().getIdentification(), patient.getAuth().getIdentification());
-        assertEquals(patientResponseDTO.getName(), patient.getName());
-        assertEquals(patientResponseDTO.getInsurance(), patient.getInsurance());
+        PhysicianResponseDTO physicianResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
+        assertNotNull(physicianResponseDTO);
+        assertEquals(physicianResponseDTO.getAuth().getIdentification(), physician.getAuth().getIdentification());
+        assertEquals(physicianResponseDTO.getName(), physician.getName());
+        assertEquals(physicianResponseDTO.getCode(), physician.getCode());
+        assertEquals(physicianResponseDTO.getSpeciality(), physician.getSpeciality());
     }
 
     @Test
-    void testUpdatePatient() throws Exception {
-        Patient patient = patientRepository.save(this.patientDB);
-        PatientDTO patientDTO = new PatientDTO();
-        patientDTO.setIdentification(patient.getAuth().getIdentification());
-        patientDTO.setPassword(patient.getAuth().getPassword());
-        patientDTO.setName("Test Name 2");
-        patientDTO.setInsurance("Test Insurance 2");
-        String responseJson = mockMvc.perform(put("/patient/"+ patient.getId())
+    void testUpdatePhysician() throws Exception {
+        Physician physician = physicianRepository.save(this.physicianDB);
+        PhysicianDTO physicianDTO = new PhysicianDTO();
+        physicianDTO.setIdentification(physician.getAuth().getIdentification());
+        physicianDTO.setPassword(physician.getAuth().getPassword());
+        physicianDTO.setName("Test Name 2");
+        physicianDTO.setCode("Test Code 2");
+        physicianDTO.setSpeciality("Test Speciality 2");
+        String responseJson = mockMvc.perform(put("/physician/"+ physician.getId())
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON)
-                            .content(objectMapper.writeValueAsString(patientDTO)))
+                            .content(objectMapper.writeValueAsString(physicianDTO)))
                             .andExpect(status().isOk())
                             .andReturn()
                             .getResponse()
                             .getContentAsString();
 
-        PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
-        assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getAuth().getIdentification(), patientDTO.getIdentification());
-        assertEquals(patientResponseDTO.getName(), patientDTO.getName());
-        assertEquals(patientResponseDTO.getInsurance(), patientDTO.getInsurance());
+        PhysicianResponseDTO physicianResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
+        assertNotNull(physicianResponseDTO);
+        assertEquals(physicianResponseDTO.getAuth().getIdentification(), physicianDTO.getIdentification());
+        assertEquals(physicianResponseDTO.getName(), physicianDTO.getName());
+        assertEquals(physicianResponseDTO.getCode(), physicianDTO.getCode());
+        assertEquals(physicianResponseDTO.getSpeciality(), physicianDTO.getSpeciality());
     }
 
     @Test
-    void testDeletePatient() throws Exception {
-        Patient patient = patientRepository.save(this.patientDB);
-        mockMvc.perform(delete("/patient/"+ patient.getId())
+    void testDeletePhysician() throws Exception {
+        Physician physician = physicianRepository.save(this.physicianDB);
+        mockMvc.perform(delete("/physician/"+ physician.getId())
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk())
                         .andReturn()
                         .getResponse()
                         .getContentAsString();
-        assertTrue(patientRepository.findById(patient.getId()).isEmpty());
+        assertTrue(physicianRepository.findById(physician.getId()).isEmpty());
     }
-
 }

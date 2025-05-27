@@ -1,6 +1,6 @@
 package com.project.doctorya.appointment.dto;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -16,10 +16,10 @@ public class AppointmentResponseDTO {
     private UUID  id;
     @Schema(description = "Date for to start medical appointment", example = "2025-05-10 14:00:00")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime  startDate;
+    private Timestamp  startDate;
     @Schema(description = "Date for to end medical appointment", example = "2025-05-10 14:20:00")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime endDate;
+    private Timestamp endDate;
     @Schema(description = "Description about the appointment")
     private String reason;
     @Schema(description = "Main data about the patient")

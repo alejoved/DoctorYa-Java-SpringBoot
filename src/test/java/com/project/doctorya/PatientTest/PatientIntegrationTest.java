@@ -1,5 +1,6 @@
 package com.project.doctorya.PatientTest;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +50,6 @@ public class PatientIntegrationTest {
 
     @BeforeEach
     void beforeTest() throws Exception {
-        patientRepository.deleteAll();
-        authRepository.deleteAll();
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setIdentification("1053847601");
         registerDTO.setPassword("12345");
@@ -83,6 +82,12 @@ public class PatientIntegrationTest {
         patientDB.getAuth().setPassword("12345");
     }
 
+    @AfterEach
+    void afterEach(){
+        patientRepository.deleteAll();
+        authRepository.deleteAll();
+    }
+
     @Test
     void testCreatePatient() throws Exception {
         PatientDTO patientDTO = new PatientDTO();
@@ -109,7 +114,7 @@ public class PatientIntegrationTest {
 
     @Test
     void testGetPatient() throws Exception {
-        Patient patient = patientRepository.save(this.patientDB);
+        patientRepository.save(this.patientDB);
         String responseJson = mockMvc.perform(get("/patient")
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))

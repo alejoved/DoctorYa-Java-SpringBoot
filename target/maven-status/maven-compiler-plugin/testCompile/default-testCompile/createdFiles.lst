@@ -1,3 +1,7 @@
 com\project\doctorya\PatientTest\PatientIntegrationTest$1.class
+com\project\doctorya\PhysicianTest\PhysicianIntegrationTest$1.class
+com\project\doctorya\PhysicianTest\PhysicianIntegrationTest.class
 com\project\doctorya\PatientTest\PatientIntegrationTest.class
 com\project\doctorya\DoctoryaApplicationTests.class
+com\project\doctorya\AppointmentTest\AppointmentIntegrationTest.class
+com\project\doctorya\AppointmentTest\AppointmentIntegrationTest$1.class

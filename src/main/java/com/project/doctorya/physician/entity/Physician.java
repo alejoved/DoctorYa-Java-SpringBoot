@@ -28,7 +28,7 @@ public class Physician {
     @Column(nullable = false)
     private String speciality;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JoinColumn(name = "auth_id")
     private Auth auth;
 }

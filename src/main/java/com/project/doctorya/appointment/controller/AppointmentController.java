@@ -65,7 +65,7 @@ public class AppointmentController {
         @ApiResponse(responseCode = "404", description = "Patient or physician not found", content = @Content),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
-    @PreAuthorize("hasRole('PATIENT')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<AppointmentResponseDTO> create(@RequestBody @Valid AppointmentDTO appointmentDTO) {
         AppointmentResponseDTO appointment = service.create(appointmentDTO);
@@ -80,7 +80,7 @@ public class AppointmentController {
     })
     @PutMapping("/{id}")
     public ResponseEntity<AppointmentResponseDTO> update(@Parameter(description = "uuid for filter appointment") @PathVariable UUID id, @RequestBody @Valid AppointmentDTO appointmentDTO) {
-        AppointmentResponseDTO appointment = service.create(appointmentDTO);
+        AppointmentResponseDTO appointment = service.update(appointmentDTO, id);
         return ResponseEntity.ok(appointment);
     }
 

@@ -43,8 +43,8 @@ import jakarta.validation.Valid;
     })
     @GetMapping
     public ResponseEntity&lt;List&lt;AppointmentResponseDTO&gt;&gt; getAll() {
-<span class="nc" id="L46">        List&lt;AppointmentResponseDTO&gt; appointments = service.getAll();</span>
-<span class="nc" id="L47">        return ResponseEntity.ok(appointments);</span>
+<span class="fc" id="L46">        List&lt;AppointmentResponseDTO&gt; appointments = service.getAll();</span>
+<span class="fc" id="L47">        return ResponseEntity.ok(appointments);</span>
     }
 
     @Operation(summary = &quot;Get an appointment existing by uuid&quot;)
@@ -55,8 +55,8 @@ import jakarta.validation.Valid;
     })
     @GetMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;AppointmentResponseDTO&gt; getById(@Parameter(description = &quot;uuid for filter appointment&quot;) @PathVariable UUID id) {
-<span class="nc" id="L58">        AppointmentResponseDTO appointment = service.getById(id);</span>
-<span class="nc" id="L59">        return ResponseEntity.ok(appointment);</span>
+<span class="fc" id="L58">        AppointmentResponseDTO appointment = service.getById(id);</span>
+<span class="fc" id="L59">        return ResponseEntity.ok(appointment);</span>
     }
 
     @Operation(summary = &quot;Create a new appointment associated with a patient and physician&quot;)
@@ -65,11 +65,11 @@ import jakarta.validation.Valid;
         @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Patient or physician not found&quot;, content = @Content),
         @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;, content = @Content)
     })
-    @PreAuthorize(&quot;hasRole('PATIENT')&quot;)
+    @PreAuthorize(&quot;hasRole('ADMIN')&quot;)
     @PostMapping
     public ResponseEntity&lt;AppointmentResponseDTO&gt; create(@RequestBody @Valid AppointmentDTO appointmentDTO) {
-<span class="nc" id="L71">        AppointmentResponseDTO appointment = service.create(appointmentDTO);</span>
-<span class="nc" id="L72">        return ResponseEntity.ok(appointment);</span>
+<span class="fc" id="L71">        AppointmentResponseDTO appointment = service.create(appointmentDTO);</span>
+<span class="fc" id="L72">        return ResponseEntity.ok(appointment);</span>
     }
 
     @Operation(summary = &quot;Update data about an appointment by uuid&quot;)
@@ -80,8 +80,8 @@ import jakarta.validation.Valid;
     })
     @PutMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;AppointmentResponseDTO&gt; update(@Parameter(description = &quot;uuid for filter appointment&quot;) @PathVariable UUID id, @RequestBody @Valid AppointmentDTO appointmentDTO) {
-<span class="nc" id="L83">        AppointmentResponseDTO appointment = service.create(appointmentDTO);</span>
-<span class="nc" id="L84">        return ResponseEntity.ok(appointment);</span>
+<span class="fc" id="L83">        AppointmentResponseDTO appointment = service.update(appointmentDTO, id);</span>
+<span class="fc" id="L84">        return ResponseEntity.ok(appointment);</span>
     }
 
     @Operation(summary = &quot;Delete an appointment by uuid&quot;)
@@ -93,7 +93,7 @@ import jakarta.validation.Valid;
     @PreAuthorize(&quot;hasRole('ADMIN')&quot;)
     @DeleteMapping(&quot;/{id}&quot;)
     public void delete(@PathVariable UUID id) {
-<span class="nc" id="L96">        service.delete(id);</span>
-<span class="nc" id="L97">    }</span>
+<span class="fc" id="L96">        service.delete(id);</span>
+<span class="fc" id="L97">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
