@@ -1,4 +1,4 @@
-package com.project.doctorya.PhysicianTest;
+package com.project.doctorya;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

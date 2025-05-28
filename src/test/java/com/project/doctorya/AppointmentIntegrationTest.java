@@ -1,4 +1,4 @@
-package com.project.doctorya.AppointmentTest;
+package com.project.doctorya;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
