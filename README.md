@@ -88,7 +88,8 @@ GET /api (una vez corriendo el servidor)
 ## 📦 Docker
 
 ```bash
-docker-compose up --build
+podman compose up
+podman build -t doctorya-app:latest .
 ```
 ---
 
@@ -96,18 +97,18 @@ docker-compose up --build
 Descargar Minikube para windows
 Hacer la instalacion del .exe
 Si no se tiene docker-desktop iniciar minikube con hyperv
+```bash
 minikube start --driver=hyperv
 kubectl get nodes
 kubectl get pods
+```
 Posterior es necesario crear la imagen
-podman build -t doctorya-app:latest .
-Exportar la imagen
+Exportar la imagen y cargar la imagen a minikube y por ultimo aplicar los manifiestos
+```bash
 podman save -o doctorya-app.tar doctorya-app:latest
-Cargar la imagen a minikube
 minikube image load doctorya-app.tar
-Aplicar los manifiestos de kubernetes
 kubectl apply -f k8s/
-
+```
 
 ## Buenas practicas del proyecto
 1. Separación clara por dominio (modularización por contexto): Tener Appointment, Auth, Patient, Physician, etc. como módulos separados es excelente para escalar y mantener el proyecto.
