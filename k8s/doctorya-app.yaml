@@ -18,9 +18,16 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "500m"
           env:
-            - name: DATASOURCE
-              value: jdbc:postgresql://doctorya-db:5432/
+            - name: HOST_DB
+              value: doctorya-db
+            - name: PORT_DB
+              value: "5432"
             - name: POSTGRES_DB
               value: doctorya
             - name: USERNAME_DB
@@ -41,3 +48,22 @@ spec:
       port: 8080
       targetPort: 8080
       nodePort: 30080
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: doctorya-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: doctorya-app
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50

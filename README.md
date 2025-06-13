@@ -88,8 +88,8 @@ GET /api (una vez corriendo el servidor)
 ## 📦 Docker
 
 ```bash
-podman compose up
 podman build -t doctorya-app:latest .
+podman compose up
 ```
 ---
 
@@ -98,7 +98,8 @@ Descargar Minikube para windows
 Hacer la instalacion del .exe
 Si no se tiene docker-desktop iniciar minikube con hyperv
 ```bash
-minikube start --driver=hyperv
+minikube delete
+minikube start
 kubectl get nodes
 kubectl get pods
 ```
@@ -108,6 +109,9 @@ Exportar la imagen y cargar la imagen a minikube y por ultimo aplicar los manifi
 podman save -o doctorya-app.tar doctorya-app:latest
 minikube image load doctorya-app.tar
 kubectl apply -f k8s/
+kubectl logs "pod"
+kubectl delete pod "pod"
+minikube service
 ```
 
 ## Buenas practicas del proyecto
