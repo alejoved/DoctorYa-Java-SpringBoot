@@ -21,8 +21,10 @@ spec:
           resources:
             requests:
               cpu: "100m"
+              memory: "250Mi"
             limits:
               cpu: "500m"
+              memory: "512Mi"
           env:
             - name: HOST_DB
               value: doctorya-db
@@ -58,7 +60,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: doctorya-app
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 5
   metrics:
     - type: Resource
@@ -66,4 +68,10 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 50
+          averageUtilization: 80
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80

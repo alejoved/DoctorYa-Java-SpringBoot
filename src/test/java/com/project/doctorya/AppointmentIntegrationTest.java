@@ -14,16 +14,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.doctorya.auth.dto.LoginDTO;
 import com.project.doctorya.auth.dto.RegisterDTO;
-import com.project.doctorya.auth.entity.Auth;
-import com.project.doctorya.auth.repository.AuthRepository;
-import com.project.doctorya.patient.entity.Patient;
-import com.project.doctorya.patient.repository.PatientRepository;
-import com.project.doctorya.physician.entity.Physician;
-import com.project.doctorya.physician.repository.PhysicianRepository;
+import com.project.doctorya.auth.infrastructure.entity.Auth;
+import com.project.doctorya.auth.infrastructure.repository.AuthRepository;
+import com.project.doctorya.patient.infrastructure.entity.Patient;
+import com.project.doctorya.patient.infrastructure.repository.IPatientJpaRepository;
+import com.project.doctorya.physician.infrastructure.entity.Physician;
+import com.project.doctorya.physician.infrastructure.repository.IPhysicianJpaRepository;
 import com.project.doctorya.appointment.dto.AppointmentDTO;
 import com.project.doctorya.appointment.dto.AppointmentResponseDTO;
-import com.project.doctorya.appointment.entity.Appointment;
-import com.project.doctorya.appointment.repository.AppointmentRepository;
+import com.project.doctorya.appointment.infrastructure.entity.Appointment;
+import com.project.doctorya.appointment.infrastructure.repository.IAppointmentJpaRepository;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -46,13 +47,13 @@ public class AppointmentIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private AppointmentRepository appointmentRepository;
+    private IAppointmentJpaRepository appointmentRepository;
 
     @Autowired
-    private PatientRepository patientRepository;
+    private IPatientJpaRepository patientRepository;
 
     @Autowired
-    private PhysicianRepository physicianRepository;
+    private IPhysicianJpaRepository physicianRepository;
 
     @Autowired
     private AuthRepository authRepository;

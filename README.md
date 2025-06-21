@@ -41,16 +41,46 @@ Sistema backend para la gestión de citas médicas entre pacientes y doctores. D
 
 ---
 
-## 📁 Estructura del Proyecto
-
-```
+📁 Estructura de Carpetas — Arquitectura Hexagonal
 src/
-├── doctors/
-├── patients/
-├── appointments/
-├── common/
-test/
-```
+├── application/                # Lógica de aplicación (Casos de uso)
+│   ├── use-cases/
+│   │   └── create-customer.use-case.ts
+│   └── services/               # Servicios de orquestación si aplica
+│       └── customer.service.ts
+│
+├── domain/                    # Modelo del dominio puro
+│   ├── models/                # Entidades y objetos de valor
+│   │   └── customer.model.ts
+│   ├── repositories/          # Interfaces (puertos primarios)
+│   │   └── customer.repository.interface.ts
+│   └── exceptions/            # Errores de dominio
+│       └── customer-not-found.exception.ts
+│
+├── infrastructure/            # Adaptadores secundarios (implementaciones técnicas)
+│   ├── database/              # ORMs, entidades, migraciones
+│   │   ├── entities/
+│   │   │   └── customer.entity.ts
+│   │   └── repositories/
+│   │       └── customer.repository.impl.ts
+│   ├── config/                # Configuración del entorno, .env, etc.
+│   └── services/              # Adaptadores como APIs externas, correo, etc.
+│
+├── interface/                 # Adaptadores primarios (entradas)
+│   ├── rest/                  # Controladores HTTP
+│   │   ├── controllers/
+│   │   │   └── customer.controller.ts
+│   │   ├── dtos/
+│   │   │   └── customer.dto.ts
+│   │   └── mappers/
+│   │       └── customer.mapper.ts
+│
+├── shared/                    # Utilidades, constantes, logging, etc.
+│   ├── utils/
+│   ├── constants/
+│   └── middleware/
+│
+└── main.ts                    # Punto de entrada principal
 
 ---
 
@@ -100,6 +130,7 @@ Si no se tiene docker-desktop iniciar minikube con hyperv
 ```bash
 minikube delete
 minikube start
+minikube addons enable metrics-server
 kubectl get nodes
 kubectl get pods
 ```

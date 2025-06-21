@@ -11,7 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.project.doctorya.common.Constants;
+import com.project.doctorya.shared.Constants;
 
 @ControllerAdvice
 public class ValidationExceptionHandler {

@@ -22,12 +22,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.doctorya.auth.dto.LoginDTO;
 import com.project.doctorya.auth.dto.RegisterDTO;
-import com.project.doctorya.auth.entity.Auth;
-import com.project.doctorya.auth.repository.AuthRepository;
+import com.project.doctorya.auth.infrastructure.entity.Auth;
+import com.project.doctorya.auth.infrastructure.repository.AuthRepository;
 import com.project.doctorya.physician.dto.PhysicianDTO;
 import com.project.doctorya.physician.dto.PhysicianResponseDTO;
-import com.project.doctorya.physician.entity.Physician;
-import com.project.doctorya.physician.repository.PhysicianRepository;
+import com.project.doctorya.physician.infrastructure.entity.Physician;
+import com.project.doctorya.physician.infrastructure.repository.IPhysicianJpaRepository;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -42,7 +43,7 @@ public class PhysicianIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private PhysicianRepository physicianRepository;
+    private IPhysicianJpaRepository physicianRepository;
 
     @Autowired
     private AuthRepository authRepository;

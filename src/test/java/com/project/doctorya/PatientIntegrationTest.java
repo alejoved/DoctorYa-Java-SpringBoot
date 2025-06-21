@@ -14,12 +14,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.doctorya.auth.dto.LoginDTO;
 import com.project.doctorya.auth.dto.RegisterDTO;
-import com.project.doctorya.auth.entity.Auth;
-import com.project.doctorya.auth.repository.AuthRepository;
+import com.project.doctorya.auth.infrastructure.entity.Auth;
+import com.project.doctorya.auth.infrastructure.repository.AuthRepository;
 import com.project.doctorya.patient.dto.PatientDTO;
 import com.project.doctorya.patient.dto.PatientResponseDTO;
-import com.project.doctorya.patient.entity.Patient;
-import com.project.doctorya.patient.repository.PatientRepository;
+import com.project.doctorya.patient.infrastructure.entity.Patient;
+import com.project.doctorya.patient.infrastructure.repository.IPatientJpaRepository;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -40,7 +41,7 @@ public class PatientIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private PatientRepository patientRepository;
+    private IPatientJpaRepository patientRepository;
 
     @Autowired
     private AuthRepository authRepository;
