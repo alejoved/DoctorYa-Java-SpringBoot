@@ -12,12 +12,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.doctorya.auth.dto.LoginDTO;
-import com.project.doctorya.auth.dto.RegisterDTO;
 import com.project.doctorya.auth.infrastructure.entity.Auth;
-import com.project.doctorya.auth.infrastructure.repository.AuthRepository;
-import com.project.doctorya.patient.dto.PatientDTO;
-import com.project.doctorya.patient.dto.PatientResponseDTO;
+import com.project.doctorya.auth.infrastructure.repository.IAuthJpaRepository;
+import com.project.doctorya.auth.rest.dto.AuthDTO;
+import com.project.doctorya.patient.rest.dto.PatientDTO;
+import com.project.doctorya.patient.rest.dto.PatientResponseDTO;
 import com.project.doctorya.patient.infrastructure.entity.Patient;
 import com.project.doctorya.patient.infrastructure.repository.IPatientJpaRepository;
 
@@ -44,7 +43,7 @@ public class PatientIntegrationTest {
     private IPatientJpaRepository patientRepository;
 
     @Autowired
-    private AuthRepository authRepository;
+    private IAuthJpaRepository authRepository;
 
     private String accessToken;
     
@@ -52,7 +51,7 @@ public class PatientIntegrationTest {
 
     @BeforeEach
     void beforeTest() throws Exception {
-        RegisterDTO registerDTO = new RegisterDTO();
+        AuthDTO registerDTO = new AuthDTO();
         registerDTO.setIdentification("1053847601");
         registerDTO.setPassword("12345");
 
@@ -62,7 +61,7 @@ public class PatientIntegrationTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        LoginDTO loginDTO = new LoginDTO();
+        AuthDTO loginDTO = new AuthDTO();
         loginDTO.setIdentification(registerDTO.getIdentification());
         loginDTO.setPassword(registerDTO.getPassword());
 
@@ -109,7 +108,7 @@ public class PatientIntegrationTest {
 
         PatientResponseDTO patient = objectMapper.readValue(responseJson, PatientResponseDTO.class);
         assertNotNull(patient);
-        assertEquals(patient.getAuth().getIdentification(), patientDTO.getIdentification());
+        assertEquals(patient.getIdentification(), patientDTO.getIdentification());
         assertEquals(patient.getName(), patientDTO.getName());
         assertEquals(patient.getInsurance(), patientDTO.getInsurance());
     }
@@ -166,7 +165,7 @@ public class PatientIntegrationTest {
 
         PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
         assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getAuth().getIdentification(), patient.getAuth().getIdentification());
+        assertEquals(patientResponseDTO.getIdentification(), patient.getAuth().getIdentification());
         assertEquals(patientResponseDTO.getName(), patient.getName());
         assertEquals(patientResponseDTO.getInsurance(), patient.getInsurance());
     }
@@ -200,7 +199,7 @@ public class PatientIntegrationTest {
 
         PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
         assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getAuth().getIdentification(), patient.getAuth().getIdentification());
+        assertEquals(patientResponseDTO.getIdentification(), patient.getAuth().getIdentification());
         assertEquals(patientResponseDTO.getName(), patient.getName());
         assertEquals(patientResponseDTO.getInsurance(), patient.getInsurance());
     }
@@ -240,7 +239,7 @@ public class PatientIntegrationTest {
 
         PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
         assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getAuth().getIdentification(), patientDTO.getIdentification());
+        assertEquals(patientResponseDTO.getIdentification(), patientDTO.getIdentification());
         assertEquals(patientResponseDTO.getName(), patientDTO.getName());
         assertEquals(patientResponseDTO.getInsurance(), patientDTO.getInsurance());
     }

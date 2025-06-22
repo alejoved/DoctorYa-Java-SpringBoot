@@ -14,6 +14,8 @@ import com.project.doctorya.appointment.infrastructure.mapper.AppointmentMapper;
 import com.project.doctorya.exceptions.EntityNotExistsException;
 import com.project.doctorya.shared.Constants;
 
+import jakarta.persistence.EntityNotFoundException;
+
 public class AppointmentRespository implements IAppointmentRepository{
 
     @Autowired
@@ -43,7 +45,11 @@ public class AppointmentRespository implements IAppointmentRepository{
     }
 
     @Override
-    public AppointmentModel update(AppointmentModel appointmentModel) {
+    public AppointmentModel update(AppointmentModel appointmentModel, UUID id) {
+        Optional<Appointment> appointmentExists = appointmentRepository.findById(id);
+        if(appointmentExists.isEmpty()){
+            throw new EntityNotFoundException(Constants.appointmentNotFound);
+        }
         Appointment appointment = AppointmentMapper.toEntity(appointmentModel);
         Appointment response = appointmentRepository.save(appointment);
         return AppointmentMapper.toDomain(response);

@@ -11,7 +11,6 @@ import com.project.doctorya.patient.domain.model.PatientModel;
 import com.project.doctorya.patient.domain.repository.IPatientRepository;
 import com.project.doctorya.patient.infrastructure.entity.Patient;
 import com.project.doctorya.patient.infrastructure.mapper.PatientMapper;
-import com.project.doctorya.physician.infrastructure.entity.Physician;
 import com.project.doctorya.shared.Constants;
 
 import jakarta.persistence.EntityNotFoundException;

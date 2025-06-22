@@ -25,8 +25,6 @@ import com.project.doctorya.appointment.domain.model.AppointmentModel;
 import com.project.doctorya.appointment.rest.dto.AppointmentDTO;
 import com.project.doctorya.appointment.rest.dto.AppointmentResponseDTO;
 import com.project.doctorya.appointment.rest.mapper.AppointmentRestMapper;
-import com.project.doctorya.patient.rest.mapper.PatientRestMapper;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -100,6 +98,7 @@ public class AppointmentController {
     public ResponseEntity<AppointmentResponseDTO> update(@Parameter(description = "uuid for filter appointment") @PathVariable UUID id, @RequestBody @Valid AppointmentDTO appointmentDTO) {
         AppointmentModel appointmentModel = AppointmentRestMapper.toDomain(appointmentDTO);
         AppointmentModel response = appointmentUpdateUseCase.execute(appointmentModel, id);
+        AppointmentResponseDTO appointment = AppointmentRestMapper.toDTO(response);
         return ResponseEntity.ok(appointment);
     }
 
@@ -112,6 +111,6 @@ public class AppointmentController {
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable UUID id) {
-        service.delete(id);
+        aAppointmentDeleteUseCase.execute(id);
     }
 }

@@ -1,4 +1,4 @@
-package com.project.doctorya.config;
+package com.project.doctorya.shared.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

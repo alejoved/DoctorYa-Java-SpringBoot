@@ -1,4 +1,4 @@
-package com.project.doctorya.common;
+package com.project.doctorya.shared;
 
 public enum Role {
     ADMIN,

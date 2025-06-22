@@ -1,4 +1,4 @@
-package com.project.doctorya.common;
+package com.project.doctorya.shared;
 
 import java.util.List;
 import java.util.UUID;

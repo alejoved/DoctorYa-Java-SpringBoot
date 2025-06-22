@@ -8,6 +8,6 @@ public interface IAppointmentRepository {
     public List<AppointmentModel> get();
     public AppointmentModel getById(UUID id);
     public AppointmentModel create(AppointmentModel appointmentModel);
-    public AppointmentModel update(AppointmentModel appointmentModel);
+    public AppointmentModel update(AppointmentModel appointmentModel, UUID id);
     public void delete(UUID id);
 }

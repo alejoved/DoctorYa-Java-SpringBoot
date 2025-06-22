@@ -4,10 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.List;
 import java.util.UUID;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,19 +14,16 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.doctorya.auth.dto.LoginDTO;
-import com.project.doctorya.auth.dto.RegisterDTO;
 import com.project.doctorya.auth.infrastructure.entity.Auth;
-import com.project.doctorya.auth.infrastructure.repository.AuthRepository;
-import com.project.doctorya.physician.dto.PhysicianDTO;
-import com.project.doctorya.physician.dto.PhysicianResponseDTO;
+import com.project.doctorya.auth.infrastructure.repository.IAuthJpaRepository;
+import com.project.doctorya.auth.rest.dto.AuthDTO;
+import com.project.doctorya.physician.rest.dto.PhysicianDTO;
+import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
 import com.project.doctorya.physician.infrastructure.entity.Physician;
 import com.project.doctorya.physician.infrastructure.repository.IPhysicianJpaRepository;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -46,7 +41,7 @@ public class PhysicianIntegrationTest {
     private IPhysicianJpaRepository physicianRepository;
 
     @Autowired
-    private AuthRepository authRepository;
+    private IAuthJpaRepository authRepository;
 
     private String accessToken;
     
@@ -54,7 +49,7 @@ public class PhysicianIntegrationTest {
 
     @BeforeEach
     void beforeTest() throws Exception {
-        RegisterDTO registerDTO = new RegisterDTO();
+        AuthDTO registerDTO = new AuthDTO();
         registerDTO.setIdentification("1053847601");
         registerDTO.setPassword("12345");
 
@@ -64,7 +59,7 @@ public class PhysicianIntegrationTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        LoginDTO loginDTO = new LoginDTO();
+        AuthDTO loginDTO = new AuthDTO();
         loginDTO.setIdentification(registerDTO.getIdentification());
         loginDTO.setPassword(registerDTO.getPassword());
 
@@ -113,7 +108,7 @@ public class PhysicianIntegrationTest {
 
         PhysicianResponseDTO physician = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
         assertNotNull(physician);
-        assertEquals(physician.getAuth().getIdentification(), physicianDTO.getIdentification());
+        assertEquals(physician.getIdentification(), physicianDTO.getIdentification());
         assertEquals(physician.getName(), physicianDTO.getName());
         assertEquals(physician.getCode(), physicianDTO.getCode());
     }
@@ -172,7 +167,7 @@ public class PhysicianIntegrationTest {
 
         PhysicianResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
         assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getAuth().getIdentification(), physician.getAuth().getIdentification());
+        assertEquals(patientResponseDTO.getIdentification(), physician.getAuth().getIdentification());
         assertEquals(patientResponseDTO.getName(), physician.getName());
         assertEquals(patientResponseDTO.getCode(), physician.getCode());
         assertEquals(patientResponseDTO.getSpeciality(), physician.getSpeciality());
@@ -207,7 +202,7 @@ public class PhysicianIntegrationTest {
 
         PhysicianResponseDTO physicianResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
         assertNotNull(physicianResponseDTO);
-        assertEquals(physicianResponseDTO.getAuth().getIdentification(), physician.getAuth().getIdentification());
+        assertEquals(physicianResponseDTO.getIdentification(), physician.getAuth().getIdentification());
         assertEquals(physicianResponseDTO.getName(), physician.getName());
         assertEquals(physicianResponseDTO.getCode(), physician.getCode());
         assertEquals(physicianResponseDTO.getSpeciality(), physician.getSpeciality());
@@ -249,7 +244,7 @@ public class PhysicianIntegrationTest {
 
         PhysicianResponseDTO physicianResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
         assertNotNull(physicianResponseDTO);
-        assertEquals(physicianResponseDTO.getAuth().getIdentification(), physicianDTO.getIdentification());
+        assertEquals(physicianResponseDTO.getIdentification(), physicianDTO.getIdentification());
         assertEquals(physicianResponseDTO.getName(), physicianDTO.getName());
         assertEquals(physicianResponseDTO.getCode(), physicianDTO.getCode());
         assertEquals(physicianResponseDTO.getSpeciality(), physicianDTO.getSpeciality());

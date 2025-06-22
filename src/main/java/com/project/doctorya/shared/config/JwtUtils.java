@@ -1,4 +1,4 @@
-package com.project.doctorya.config;
+package com.project.doctorya.shared.config;
 
 import java.util.Date;
 import java.util.List;

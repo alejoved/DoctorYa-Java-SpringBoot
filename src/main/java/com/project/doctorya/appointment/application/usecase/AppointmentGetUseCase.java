@@ -3,21 +3,32 @@ package com.project.doctorya.appointment.application.usecase;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.project.doctorya.appointment.application.port.IAppointmentGetUseCase;
 import com.project.doctorya.appointment.domain.model.AppointmentModel;
+import com.project.doctorya.appointment.domain.repository.IAppointmentRepository;
+import com.project.doctorya.exceptions.EntityNotExistsException;
+import com.project.doctorya.shared.Constants;
 
 public class AppointmentGetUseCase implements IAppointmentGetUseCase {
 
+    @Autowired
+    private IAppointmentRepository appointmentRepository;
+
     @Override
     public List<AppointmentModel> execute() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'execute'");
+        List<AppointmentModel> appointments = appointmentRepository.get();
+        return appointments;
     }
 
     @Override
     public AppointmentModel executeById(UUID id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'executeById'");
+        AppointmentModel appointmentModel = appointmentRepository.getById(id);
+        if (appointmentModel == null){
+            throw new EntityNotExistsException(Constants.patientNotFound);
+        }
+        return appointmentModel;
     }
     
 }

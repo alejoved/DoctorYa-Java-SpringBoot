@@ -1,4 +1,4 @@
-package com.project.doctorya.config;
+package com.project.doctorya.shared.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -12,16 +12,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.doctorya.auth.dto.LoginDTO;
-import com.project.doctorya.auth.dto.RegisterDTO;
 import com.project.doctorya.auth.infrastructure.entity.Auth;
-import com.project.doctorya.auth.infrastructure.repository.AuthRepository;
+import com.project.doctorya.auth.infrastructure.repository.IAuthJpaRepository;
+import com.project.doctorya.auth.rest.dto.AuthDTO;
 import com.project.doctorya.patient.infrastructure.entity.Patient;
 import com.project.doctorya.patient.infrastructure.repository.IPatientJpaRepository;
 import com.project.doctorya.physician.infrastructure.entity.Physician;
 import com.project.doctorya.physician.infrastructure.repository.IPhysicianJpaRepository;
-import com.project.doctorya.appointment.dto.AppointmentDTO;
-import com.project.doctorya.appointment.dto.AppointmentResponseDTO;
+import com.project.doctorya.appointment.rest.dto.AppointmentDTO;
+import com.project.doctorya.appointment.rest.dto.AppointmentResponseDTO;
 import com.project.doctorya.appointment.infrastructure.entity.Appointment;
 import com.project.doctorya.appointment.infrastructure.repository.IAppointmentJpaRepository;
 
@@ -56,7 +55,7 @@ public class AppointmentIntegrationTest {
     private IPhysicianJpaRepository physicianRepository;
 
     @Autowired
-    private AuthRepository authRepository;
+    private IAuthJpaRepository authRepository;
 
     private String accessToken;
     
@@ -64,19 +63,19 @@ public class AppointmentIntegrationTest {
 
     @BeforeEach
     void beforeTest() throws Exception {
-        RegisterDTO registerDTO = new RegisterDTO();
-        registerDTO.setIdentification("1053847601");
-        registerDTO.setPassword("12345");
+        AuthDTO authDTO = new AuthDTO();
+        authDTO.setIdentification("1053847601");
+        authDTO.setPassword("12345");
 
         mockMvc.perform(post("/auth/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(registerDTO)))
+                        .content(objectMapper.writeValueAsString(authDTO)))
                 .andExpect(status().isOk())
                 .andReturn();
 
-        LoginDTO loginDTO = new LoginDTO();
-        loginDTO.setIdentification(registerDTO.getIdentification());
-        loginDTO.setPassword(registerDTO.getPassword());
+        AuthDTO loginDTO = new AuthDTO();
+        loginDTO.setIdentification(authDTO.getIdentification());
+        loginDTO.setPassword(authDTO.getPassword());
 
         String response = mockMvc.perform(post("/auth/login")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -141,8 +140,8 @@ public class AppointmentIntegrationTest {
 
         AppointmentResponseDTO appointment = objectMapper.readValue(responseJson, AppointmentResponseDTO.class);
         assertNotNull(appointment);
-        assertEquals(appointment.getPatient().getAuth().getIdentification(), appointmentDTO.getPatientIdentification());
-        assertEquals(appointment.getPhysician().getAuth().getIdentification(), appointmentDTO.getPhysicianIdentification());
+        assertEquals(appointment.getPatient().getIdentification(), appointmentDTO.getPatientIdentification());
+        assertEquals(appointment.getPhysician().getIdentification(), appointmentDTO.getPhysicianIdentification());
         assertEquals(appointment.getReason(), appointmentDTO.getReason());
         assertEquals(appointment.getStartDate(), appointmentDTO.getStartDate());
     }
@@ -223,8 +222,8 @@ public class AppointmentIntegrationTest {
                             .getContentAsString();
         AppointmentResponseDTO appointmentResponseDTO = objectMapper.readValue(responseJson, AppointmentResponseDTO.class);
         assertNotNull(appointmentResponseDTO);
-        assertEquals(appointmentResponseDTO.getPatient().getAuth().getIdentification(), appointment.getPatient().getAuth().getIdentification());
-        assertEquals(appointmentResponseDTO.getPhysician().getAuth().getIdentification(), appointment.getPhysician().getAuth().getIdentification());
+        assertEquals(appointmentResponseDTO.getPatient().getIdentification(), appointment.getPatient().getAuth().getIdentification());
+        assertEquals(appointmentResponseDTO.getPhysician().getIdentification(), appointment.getPhysician().getAuth().getIdentification());
         assertEquals(appointmentResponseDTO.getReason(), appointment.getReason());
         assertEquals(appointmentResponseDTO.getStartDate(), appointment.getStartDate());
     }
@@ -265,8 +264,8 @@ public class AppointmentIntegrationTest {
 
         AppointmentResponseDTO appointmentResponseDTO = objectMapper.readValue(responseJson, AppointmentResponseDTO.class);
         assertNotNull(appointmentResponseDTO);
-        assertEquals(appointmentResponseDTO.getPatient().getAuth().getIdentification(), appointmentDTO.getPatientIdentification());
-        assertEquals(appointmentResponseDTO.getPhysician().getAuth().getIdentification(), appointmentDTO.getPhysicianIdentification());
+        assertEquals(appointmentResponseDTO.getPatient().getIdentification(), appointmentDTO.getPatientIdentification());
+        assertEquals(appointmentResponseDTO.getPhysician().getIdentification(), appointmentDTO.getPhysicianIdentification());
         assertEquals(appointmentResponseDTO.getReason(), appointmentDTO.getReason());
         assertEquals(appointmentResponseDTO.getStartDate(), appointmentDTO.getStartDate());
     }
