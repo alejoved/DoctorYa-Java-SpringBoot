@@ -1,11 +1,14 @@
 package com.project.doctorya.appointment.infrastructure.repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
 
 import com.project.doctorya.appointment.domain.model.AppointmentModel;
 import com.project.doctorya.appointment.domain.repository.IAppointmentRepository;
@@ -16,6 +19,8 @@ import com.project.doctorya.shared.Constants;
 
 import jakarta.persistence.EntityNotFoundException;
 
+@Repository
+@Primary
 public class AppointmentRespository implements IAppointmentRepository{
 
     @Autowired
@@ -58,6 +63,12 @@ public class AppointmentRespository implements IAppointmentRepository{
     @Override
     public void delete(UUID id) {
         appointmentRepository.deleteById(id);
+    }
+
+    @Override
+    public List<AppointmentModel> getOverLapping(Timestamp startDate, Timestamp endDate, String physicianIdentification) {
+        List<Appointment> appointments = appointmentRepository.findOverlapping(startDate, endDate, physicianIdentification);
+        return appointments.stream().map(AppointmentMapper::toDomain).collect(Collectors.toList());
     }
     
 }

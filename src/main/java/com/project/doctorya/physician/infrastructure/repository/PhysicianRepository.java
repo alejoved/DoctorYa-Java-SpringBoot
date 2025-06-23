@@ -5,6 +5,9 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
+
 import com.project.doctorya.exceptions.EntityNotExistsException;
 import com.project.doctorya.physician.domain.model.PhysicianModel;
 import com.project.doctorya.physician.domain.repository.IPhysicianRepository;
@@ -14,6 +17,8 @@ import com.project.doctorya.shared.Constants;
 
 import jakarta.persistence.EntityNotFoundException;
 
+@Repository
+@Primary
 public class PhysicianRepository implements IPhysicianRepository {
     @Autowired
     private IPhysicianJpaRepository physicianRepository;
@@ -28,7 +33,7 @@ public class PhysicianRepository implements IPhysicianRepository {
     public PhysicianModel getById(UUID id) {
         Optional<Physician> physician = physicianRepository.findById(id);
         if(physician.isEmpty()){
-            throw new EntityNotExistsException(Constants.physicianNotFound);
+            return null;
         }
         return PhysicianMapper.toDomain(physician.get());
 
@@ -38,7 +43,7 @@ public class PhysicianRepository implements IPhysicianRepository {
     public PhysicianModel getByIdentification(String identification) {
         Optional<Physician> physician = physicianRepository.findByAuthIdentification(identification);
         if(physician.isEmpty()){
-            throw new EntityNotExistsException(Constants.physicianNotFound);
+            return null;
         }
         return PhysicianMapper.toDomain(physician.get());
     }

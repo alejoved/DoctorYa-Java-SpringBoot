@@ -13,7 +13,7 @@ public class PhysicianMapper{
         physicianModel.setSpeciality(physician.getSpeciality());
         physicianModel.setAuthModel(new AuthModel());
         physicianModel.getAuthModel().setIdentification(physician.getAuth().getIdentification());
-        physicianModel.getAuthModel().setRole(physician.getAuth().getRole());
+        physicianModel.getAuthModel().setPassword(physician.getAuth().getPassword());
         return physicianModel;
 
     }
@@ -23,7 +23,8 @@ public class PhysicianMapper{
         physician.setCode(physicianModel.getCode());
         physician.setSpeciality(physicianModel.getSpeciality());
         physician.setAuth(new Auth());
-        physician.getAuth().setId(physicianModel.getAuthModel().getId());
+        physician.getAuth().setIdentification(physicianModel.getAuthModel().getIdentification());
+        physician.getAuth().setPassword(physicianModel.getAuthModel().getPassword());
         return physician;
     }
 }

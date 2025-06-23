@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.doctorya.physician.application.port.IPhysicianGetUseCase;
 import com.project.doctorya.physician.domain.model.PhysicianModel;
 import com.project.doctorya.physician.domain.repository.IPhysicianRepository;
 
+@Service
 public class PhysicianGetUseCase implements IPhysicianGetUseCase {
 
     @Autowired

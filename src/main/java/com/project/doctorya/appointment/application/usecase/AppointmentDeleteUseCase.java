@@ -3,10 +3,12 @@ package com.project.doctorya.appointment.application.usecase;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.doctorya.appointment.application.port.IAppointmentDeleteUseCase;
 import com.project.doctorya.appointment.domain.repository.IAppointmentRepository;
 
+@Service
 public class AppointmentDeleteUseCase implements IAppointmentDeleteUseCase {
 
     @Autowired

@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
+
 import com.project.doctorya.auth.domain.model.AuthModel;
 import com.project.doctorya.auth.domain.repository.IAuthRepository;
 import com.project.doctorya.auth.infrastructure.entity.Auth;
 import com.project.doctorya.auth.infrastructure.mapper.AuthMapper;
-import com.project.doctorya.exceptions.EntityNotExistsException;
-import com.project.doctorya.shared.Constants;
 
+@Repository
+@Primary
 public class AuthRepository implements IAuthRepository {
 
     @Autowired
@@ -26,7 +29,7 @@ public class AuthRepository implements IAuthRepository {
     public AuthModel getByIdentification(String identification) {
         Optional<Auth> auth = authRepository.findByIdentification(identification);
         if(auth.isEmpty()){
-            throw new EntityNotExistsException(Constants.authNotFound);
+            return null;
         }
         return AuthMapper.toDomain(auth.get());
     }

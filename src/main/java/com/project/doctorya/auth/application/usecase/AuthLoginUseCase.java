@@ -3,6 +3,8 @@ package com.project.doctorya.auth.application.usecase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import com.project.doctorya.auth.application.port.IAuthLoginUseCase;
 import com.project.doctorya.auth.domain.model.AuthModel;
 import com.project.doctorya.auth.domain.repository.IAuthRepository;
@@ -10,6 +12,7 @@ import com.project.doctorya.shared.Constants;
 import com.project.doctorya.shared.config.JwtUtils;
 import com.project.doctorya.exceptions.EntityNotExistsException;
 
+@Service
 public class AuthLoginUseCase implements IAuthLoginUseCase {
 
     @Autowired
