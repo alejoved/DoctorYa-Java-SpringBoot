@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.doctorya.appointment.application.port.IAppointmentDeleteUseCase;
+import com.project.doctorya.appointment.domain.model.AppointmentModel;
 import com.project.doctorya.appointment.domain.repository.IAppointmentRepository;
+import com.project.doctorya.exceptions.EntityNotExistsException;
+import com.project.doctorya.shared.Constants;
 
 @Service
 public class AppointmentDeleteUseCase implements IAppointmentDeleteUseCase {
@@ -16,6 +19,10 @@ public class AppointmentDeleteUseCase implements IAppointmentDeleteUseCase {
 
     @Override
     public void execute(UUID id) {
+        AppointmentModel appointmentModel = appointmentRepository.getById(id);
+        if(appointmentModel == null){
+            throw new EntityNotExistsException(Constants.appointmentNotFound);
+        }
         appointmentRepository.delete(id);
     }
     

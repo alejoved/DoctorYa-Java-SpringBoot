@@ -10,6 +10,6 @@ public interface IAppointmentRepository {
     public AppointmentModel getById(UUID id);
     public List<AppointmentModel> getOverLapping(Timestamp startDate, Timestamp endDate, String physicianIdentification);
     public AppointmentModel create(AppointmentModel appointmentModel);
-    public AppointmentModel update(AppointmentModel appointmentModel, UUID id);
+    public AppointmentModel update(AppointmentModel appointmentModel);
     public void delete(UUID id);
 }

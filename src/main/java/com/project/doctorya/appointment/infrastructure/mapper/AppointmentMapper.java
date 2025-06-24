@@ -37,6 +37,7 @@ public class AppointmentMapper {
     }
     public static Appointment toEntity(AppointmentModel appointmentModel){
         Appointment appointment = new Appointment();
+        appointment.setId(appointmentModel.getId());
         appointment.setReason(appointmentModel.getReason());
         appointment.setDuration(appointmentModel.getDuration());
         appointment.setStartDate(appointmentModel.getStartDate());

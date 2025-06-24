@@ -48,11 +48,7 @@ public class AppointmentRespository implements IAppointmentRepository{
     }
 
     @Override
-    public AppointmentModel update(AppointmentModel appointmentModel, UUID id) {
-        Optional<Appointment> appointmentExists = appointmentRepository.findById(id);
-        if(appointmentExists.isEmpty()){
-            throw new EntityNotExistsException(Constants.appointmentNotFound);
-        }
+    public AppointmentModel update(AppointmentModel appointmentModel) {
         Appointment appointment = AppointmentMapper.toEntity(appointmentModel);
         Appointment response = appointmentRepository.save(appointment);
         return AppointmentMapper.toDomain(response);
