@@ -1,155 +1,161 @@
-# 🩺 API de Reservas de Citas Médicas
 
-Sistema backend para la gestión de citas médicas entre pacientes y doctores. Diseñado para demostrar habilidades como desarrollador backend senior, incluyendo modelado de datos, validaciones de reglas de negocio, estructura limpia, y documentación de API.
+# 🩺 API de Reservas de Citas Médicas — *DoctorYa*
+
+Sistema backend para la gestión de citas médicas entre pacientes y doctores. Este proyecto ha sido desarrollado como una muestra de habilidades de un **desarrollador backend senior**, incorporando buenas prácticas de arquitectura, reglas de negocio robustas, pruebas automatizadas y despliegue en contenedores.
 
 ---
 
-## 🚀 Funcionalidades
+## 🚀 Funcionalidades Principales
 
 ### 👨‍⚕️ Doctores
-- CRUD completo
-- Campos: `id`, `name`, `specialty`
-
+- CRUD completo (`id`, `name`, `specialty`)
+  
 ### 🧑 Pacientes
-- CRUD completo
-- Campos: `id`, `name`, `email`
-
+- CRUD completo (`id`, `name`, `email`)
+  
 ### 📆 Citas Médicas
 - Crear, listar y cancelar citas
-- Campos: `id`, `doctorId`, `patientId`, `startTime`, `endTime`, `notes`
+- Atributos: `id`, `doctorId`, `patientId`, `startTime`, `endTime`, `notes`
 
 ---
 
 ## 📋 Reglas de Negocio
 
-- ⛔ **No se permite solapamiento de citas para el mismo doctor**
-- ⛔ **Un paciente no puede tener dos citas al mismo tiempo**
-- ✅ `startTime` debe ser anterior a `endTime`
-- ✅ Ver disponibilidad de un doctor por día o rango de fechas
-- 🧠 Validaciones personalizadas con excepciones claras
+- ❌ No se permite el **solapamiento de citas** para un mismo doctor
+- ❌ Un paciente no puede tener **dos citas al mismo tiempo**
+- ✅ `startTime` debe ser **anterior a** `endTime`
+- ✅ Posibilidad de consultar la **disponibilidad de un doctor**
+- ⚠️ Validaciones personalizadas con manejo de excepciones controlado
 
 ---
 
-## 🧪 Tecnologías utilizadas
+## ⚙️ Tecnologías Utilizadas
 
-- **SpringBoot** - Framework backend (Java)
-- **JPQL** - ORM para PostgreSQL
-- **PostgreSQL** - Base de datos relacional
-- **Swagger** - Documentación automática de la API
-- **JUnit** - Testing unitario
-- **Docker** - Entorno de desarrollo reproducible
+| Categoría         | Tecnología                        |
+|------------------|-----------------------------------|
+| Lenguaje          | Java                              |
+| Framework         | Spring Boot                       |
+| ORM               | JPA + JPQL                        |
+| Base de datos     | PostgreSQL                        |
+| Documentación API | Swagger                           |
+| Testing           | JUnit                             |
+| Contenedores      | Docker, Podman, Minikube (K8s)    |
 
 ---
 
-📁 Estructura de Carpetas — Arquitectura Hexagonal
+## 🗂️ Arquitectura del Proyecto
+
+> 🧱 Basada en principios de **Arquitectura Hexagonal** / Clean Architecture
+
+```
 src/
-├── application/                # Lógica de aplicación (Casos de uso)
-│   ├── use-cases/
-│   │   └── create-customer.use-case.ts
-│   └── services/               # Servicios de orquestación si aplica
-│       └── customer.service.ts
-│
-├── domain/                    # Modelo del dominio puro
-│   ├── models/                # Entidades y objetos de valor
-│   │   └── customer.model.ts
-│   ├── repositories/          # Interfaces (puertos primarios)
-│   │   └── customer.repository.interface.ts
-│   └── exceptions/            # Errores de dominio
-│       └── customer-not-found.exception.ts
-│
-├── infrastructure/            # Adaptadores secundarios (implementaciones técnicas)
-│   ├── database/              # ORMs, entidades, migraciones
-│   │   ├── entities/
-│   │   │   └── customer.entity.ts
-│   │   └── repositories/
-│   │       └── customer.repository.impl.ts
-│   ├── config/                # Configuración del entorno, .env, etc.
-│   └── services/              # Adaptadores como APIs externas, correo, etc.
-│
-├── interface/                 # Adaptadores primarios (entradas)
-│   ├── rest/                  # Controladores HTTP
-│   │   ├── controllers/
-│   │   │   └── customer.controller.ts
-│   │   ├── dtos/
-│   │   │   └── customer.dto.ts
-│   │   └── mappers/
-│   │       └── customer.mapper.ts
-│
-├── shared/                    # Utilidades, constantes, logging, etc.
-│   ├── utils/
-│   ├── constants/
-│   └── middleware/
-│
-└── main.ts                    # Punto de entrada principal
-
----
-
-## 🎯 Qué demuestra este proyecto
-
-| Área                        | Habilidad |
-|-----------------------------|-----------|
-| Relaciones entre entidades  | Manejo de `ManyToOne`, `OneToMany` |
-| Validaciones de negocio     | Manejo de solapamientos y rangos horarios |
-| Arquitectura limpia         | Separación por módulos, uso de DTOs, servicios, controladores |
-| Testing                     | Unit tests para la lógica de validación |
-| Seguridad                   | Autenticación con JWT y control de roles |
-| DevOps                      | Docker, Docker Compose, scripts de CI/CD |
-
----
-
-## 🧪 Scripts
-
-```bash
-# instalar dependencias
-maven install
-
-# correr la app
-java --jar
-
-# correr tests
-java --jar test
-
-# ver docs Swagger
-GET /api (una vez corriendo el servidor)
+├── application/        # Casos de uso y servicios de aplicación
+├── domain/             # Modelos, interfaces y reglas de negocio
+├── infrastructure/     # Adaptadores secundarios (DB, servicios externos)
+├── interface/          # Adaptadores primarios (controllers REST)
+├── shared/             # Utilidades, constantes, middlewares
+└── main.ts             # Punto de entrada principal
 ```
 
+✅ Separación clara de responsabilidades  
+✅ Diseño orientado a dominios  
+✅ Módulos desacoplados y escalables
+
 ---
 
-## 📦 Docker
+## 🧪 Ejecución y Pruebas
 
+### ▶️ Ejecución Local
+```bash
+# Instalar dependencias
+mvn install
+
+# Ejecutar el proyecto
+java -jar target/doctorya-app.jar
+```
+
+### 🧪 Ejecutar Tests
+```bash
+mvn test
+```
+
+### 📘 Documentación Swagger
+Disponible automáticamente en:  
+`http://localhost:8080/swagger-ui.html`
+
+---
+
+## 📦 Docker / Contenedores
+
+### 🐳 Build & Run con Podman
 ```bash
 podman build -t doctorya-app:latest .
 podman compose up
 ```
+
 ---
 
-# MINIKUBE
-Descargar Minikube para windows
-Hacer la instalacion del .exe
-Si no se tiene docker-desktop iniciar minikube con hyperv
+## ☸️ Despliegue en Kubernetes con Minikube
+
+### ✅ Requisitos
+- [x] Minikube instalado
+- [x] Podman (o Docker)
+- [x] Manifiestos en `k8s/`
+
+### 🚀 Pasos de Despliegue
 ```bash
 minikube delete
 minikube start
 minikube addons enable metrics-server
-kubectl get nodes
-kubectl get pods
-```
-Posterior es necesario crear la imagen
-Exportar la imagen y cargar la imagen a minikube y por ultimo aplicar los manifiestos
-```bash
+
+# Crear y exportar imagen
+podman build -t doctorya-app:latest .
 podman save -o doctorya-app.tar doctorya-app:latest
+
+# Cargar imagen en Minikube
 minikube image load doctorya-app.tar
+
+# Aplicar manifiestos K8s
 kubectl apply -f k8s/
-kubectl logs "pod"
-kubectl delete pod "pod"
-minikube service
+
+# Ver logs o exponer servicio
+kubectl logs <pod-name>
+minikube service doctorya-service
 ```
 
-## Buenas practicas del proyecto
-1. Separación clara por dominio (modularización por contexto): Tener Appointment, Auth, Patient, Physician, etc. como módulos separados es excelente para escalar y mantener el proyecto.
+---
 
-2. Subdivisión interna coherente: Controller, Dto, Entity, Repository, Service separados dentro de cada módulo permite mantener responsabilidades claras y evitar archivos gigantes.
+## 🧠 Buenas Prácticas Aplicadas
 
-3. Centralización de utilidades: Una carpeta util separada es útil para helpers, funciones comunes o validadores personalizados.
+1. **Separación modular clara** (`Appointment`, `Auth`, `Patient`, `Physician`)
+2. **Subcarpetas por responsabilidad**: `Controller`, `DTO`, `Entity`, `Service`, `Repository`
+3. **Centralización de lógica común**: `utils/`, `exceptions/`
+4. **Validaciones robustas**: Uso de excepciones personalizadas
+5. **Documentación y demo accesible**: Swagger + comandos en README
+6. **Preparado para producción**: Docker, K8s, configuración desacoplada
 
-4. Carpeta exceptions: Buena práctica para manejar y centralizar errores personalizados (como NotFoundException, BadRequestException custom, etc.).
+---
+
+## 📌 Qué Demuestra Este Proyecto
+
+| Habilidad                           | Evidencia                                                 |
+|------------------------------------|------------------------------------------------------------|
+| Diseño de dominios                 | Entidades ricas + reglas de negocio aplicadas             |
+| Arquitectura escalable             | Hexagonal, modular, separación de capas                   |
+| Testing profesional                | JUnit, validaciones y casos límite cubiertos              |
+| Seguridad                          | JWT, control de roles (si aplica en tu repo)              |
+| DevOps básico                      | Docker, Podman, Minikube                                  |
+| Documentación y mantenimiento      | Código limpio + README claro + Swagger                    |
+
+---
+
+## 👤 Autor
+
+Desarrollado por **Alejandro Aguirre**  
+[LinkedIn](https://www.linkedin.com/in/jorge-alejandro-aguirre-gutierrez-1836a0187) • [GitHub](https://github.com/alejoved) • Backend Engineer
+
+---
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la [MIT License](LICENSE).
