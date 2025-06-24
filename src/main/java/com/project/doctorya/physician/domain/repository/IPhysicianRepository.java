@@ -9,6 +9,6 @@ public interface IPhysicianRepository {
     public PhysicianModel getById(UUID id);
     public PhysicianModel getByIdentification(String identification);
     public PhysicianModel create(PhysicianModel patientModel);
-    public PhysicianModel update(PhysicianModel patientModel, UUID id);
+    public PhysicianModel update(PhysicianModel patientModel);
     public void delete(UUID id);
 }

@@ -28,7 +28,7 @@ public class AppointmentGetUseCase implements IAppointmentGetUseCase {
     public AppointmentModel executeById(UUID id) {
         AppointmentModel appointmentModel = appointmentRepository.getById(id);
         if (appointmentModel == null){
-            throw new EntityNotExistsException(Constants.patientNotFound);
+            throw new EntityNotExistsException(Constants.appointmentNotFound);
         }
         return appointmentModel;
     }

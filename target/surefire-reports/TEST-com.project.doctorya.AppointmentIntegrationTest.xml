@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.project.doctorya.AppointmentIntegrationTest" time="15.292" tests="10" errors="2" skipped="0" failures="1">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\joaaguir\Documents\github\DoctorYa-Java-SpringBoot\target\test-classes;C:\Users\joaaguir\Documents\github\DoctorYa-Java-SpringBoot\target\classes;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.4.5\spring-boot-starter-web-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter\3.4.5\spring-boot-starter-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.4.5\spring-boot-starter-logging-3.4.5.jar;C:\Users\joaaguir\.m2\repository\ch\qos\logback\logback-classic\1.5.18\logback-classic-1.5.18.jar;C:\Users\joaaguir\.m2\repository\ch\qos\logback\logback-core\1.5.18\logback-core-1.5.18.jar;C:\Users\joaaguir\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.3\log4j-to-slf4j-2.24.3.jar;C:\Users\joaaguir\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.3\log4j-api-2.24.3.jar;C:\Users\joaaguir\.m2\repository\org\slf4j\jul-to-slf4j\2.0.17\jul-to-slf4j-2.0.17.jar;C:\Users\joaaguir\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\joaaguir\.m2\repository\org\yaml\snakeyaml\2.3\snakeyaml-2.3.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.4.5\spring-boot-starter-json-3.4.5.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.18.3\jackson-datatype-jdk8-2.18.3.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.18.3\jackson-datatype-jsr310-2.18.3.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.18.3\jackson-module-parameter-names-2.18.3.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.4.5\spring-boot-starter-tomcat-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.40\tomcat-embed-core-10.1.40.jar;C:\Users\joaaguir\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.40\tomcat-embed-el-10.1.40.jar;C:\Users\joaaguir\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.40\tomcat-embed-websocket-10.1.40.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-web\6.2.6\spring-web-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-beans\6.2.6\spring-beans-6.2.6.jar;C:\Users\joaaguir\.m2\repository\io\micrometer\micrometer-observation\1.14.6\micrometer-observation-1.14.6.jar;C:\Users\joaaguir\.m2\repository\io\micrometer\micrometer-commons\1.14.6\micrometer-commons-1.14.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-webmvc\6.2.6\spring-webmvc-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-context\6.2.6\spring-context-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-expression\6.2.6\spring-expression-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-devtools\3.4.5\spring-boot-devtools-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot\3.4.5\spring-boot-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.4.5\spring-boot-autoconfigure-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.4.5\spring-boot-starter-data-jpa-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.4.5\spring-boot-starter-jdbc-3.4.5.jar;C:\Users\joaaguir\.m2\repository\com\zaxxer\HikariCP\5.1.0\HikariCP-5.1.0.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-jdbc\6.2.6\spring-jdbc-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\hibernate\orm\hibernate-core\6.6.13.Final\hibernate-core-6.6.13.Final.jar;C:\Users\joaaguir\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\joaaguir\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\joaaguir\.m2\repository\org\hibernate\common\hibernate-commons-annotations\7.0.3.Final\hibernate-commons-annotations-7.0.3.Final.jar;C:\Users\joaaguir\.m2\repository\io\smallrye\jandex\3.2.0\jandex-3.2.0.jar;C:\Users\joaaguir\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\joaaguir\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\joaaguir\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\joaaguir\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\joaaguir\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\joaaguir\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\joaaguir\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\joaaguir\.m2\repository\org\springframework\data\spring-data-jpa\3.4.5\spring-data-jpa-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\data\spring-data-commons\3.4.5\spring-data-commons-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-orm\6.2.6\spring-orm-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-tx\6.2.6\spring-tx-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\slf4j\slf4j-api\2.0.17\slf4j-api-2.0.17.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-aspects\6.2.6\spring-aspects-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\aspectj\aspectjweaver\1.9.24\aspectjweaver-1.9.24.jar;C:\Users\joaaguir\.m2\repository\org\postgresql\postgresql\42.7.5\postgresql-42.7.5.jar;C:\Users\joaaguir\.m2\repository\org\checkerframework\checker-qual\3.48.3\checker-qual-3.48.3.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-security\3.4.5\spring-boot-starter-security-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-aop\6.2.6\spring-aop-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-config\6.4.5\spring-security-config-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-web\6.4.5\spring-security-web-6.4.5.jar;C:\Users\joaaguir\.m2\repository\io\jsonwebtoken\jjwt-api\0.11.5\jjwt-api-0.11.5.jar;C:\Users\joaaguir\.m2\repository\io\jsonwebtoken\jjwt-impl\0.11.5\jjwt-impl-0.11.5.jar;C:\Users\joaaguir\.m2\repository\io\jsonwebtoken\jjwt-jackson\0.11.5\jjwt-jackson-0.11.5.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.18.3\jackson-databind-2.18.3.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.18.3\jackson-annotations-2.18.3.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.18.3\jackson-core-2.18.3.jar;C:\Users\joaaguir\.m2\repository\org\modelmapper\modelmapper\3.1.1\modelmapper-3.1.1.jar;C:\Users\joaaguir\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\joaaguir\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.2.Final\hibernate-validator-8.0.2.Final.jar;C:\Users\joaaguir\.m2\repository\org\jboss\logging\jboss-logging\3.6.1.Final\jboss-logging-3.6.1.Final.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\classmate\1.7.0\classmate-1.7.0.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-oauth2-resource-server\3.4.5\spring-boot-starter-oauth2-resource-server-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-core\6.4.5\spring-security-core-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-crypto\6.4.5\spring-security-crypto-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-oauth2-resource-server\6.4.5\spring-security-oauth2-resource-server-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-oauth2-core\6.4.5\spring-security-oauth2-core-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-oauth2-jose\6.4.5\spring-security-oauth2-jose-6.4.5.jar;C:\Users\joaaguir\.m2\repository\com\nimbusds\nimbus-jose-jwt\9.37.3\nimbus-jose-jwt-9.37.3.jar;C:\Users\joaaguir\.m2\repository\com\github\stephenc\jcip\jcip-annotations\1.0-1\jcip-annotations-1.0-1.jar;C:\Users\joaaguir\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-ui\2.8.8\springdoc-openapi-starter-webmvc-ui-2.8.8.jar;C:\Users\joaaguir\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-api\2.8.8\springdoc-openapi-starter-webmvc-api-2.8.8.jar;C:\Users\joaaguir\.m2\repository\org\springdoc\springdoc-openapi-starter-common\2.8.8\springdoc-openapi-starter-common-2.8.8.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.4.5\spring-boot-starter-validation-3.4.5.jar;C:\Users\joaaguir\.m2\repository\io\swagger\core\v3\swagger-core-jakarta\2.2.30\swagger-core-jakarta-2.2.30.jar;C:\Users\joaaguir\.m2\repository\org\apache\commons\commons-lang3\3.17.0\commons-lang3-3.17.0.jar;C:\Users\joaaguir\.m2\repository\io\swagger\core\v3\swagger-annotations-jakarta\2.2.30\swagger-annotations-jakarta-2.2.30.jar;C:\Users\joaaguir\.m2\repository\io\swagger\core\v3\swagger-models-jakarta\2.2.30\swagger-models-jakarta-2.2.30.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-yaml\2.18.3\jackson-dataformat-yaml-2.18.3.jar;C:\Users\joaaguir\.m2\repository\org\webjars\swagger-ui\5.21.0\swagger-ui-5.21.0.jar;C:\Users\joaaguir\.m2\repository\org\webjars\webjars-locator-lite\1.0.1\webjars-locator-lite-1.0.1.jar;C:\Users\joaaguir\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\joaaguir\.m2\repository\me\paulschwarz\spring-dotenv\2.2.0\spring-dotenv-2.2.0.jar;C:\Users\joaaguir\.m2\repository\io\github\cdimascio\dotenv-java\2.0.0\dotenv-java-2.0.0.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.4.5\spring-boot-starter-test-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-test\3.4.5\spring-boot-test-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.4.5\spring-boot-test-autoconfigure-3.4.5.jar;C:\Users\joaaguir\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\joaaguir\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\joaaguir\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\joaaguir\.m2\repository\net\minidev\json-smart\2.5.2\json-smart-2.5.2.jar;C:\Users\joaaguir\.m2\repository\net\minidev\accessors-smart\2.5.2\accessors-smart-2.5.2.jar;C:\Users\joaaguir\.m2\repository\org\ow2\asm\asm\9.7.1\asm-9.7.1.jar;C:\Users\joaaguir\.m2\repository\org\assertj\assertj-core\3.26.3\assertj-core-3.26.3.jar;C:\Users\joaaguir\.m2\repository\org\awaitility\awaitility\4.2.2\awaitility-4.2.2.jar;C:\Users\joaaguir\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\joaaguir\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.4\junit-jupiter-5.11.4.jar;C:\Users\joaaguir\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.4\junit-jupiter-params-5.11.4.jar;C:\Users\joaaguir\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.4\junit-jupiter-engine-5.11.4.jar;C:\Users\joaaguir\.m2\repository\org\junit\platform\junit-platform-engine\1.11.4\junit-platform-engine-1.11.4.jar;C:\Users\joaaguir\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\joaaguir\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-core\6.2.6\spring-core-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-jcl\6.2.6\spring-jcl-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-test\6.2.6\spring-test-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\xmlunit\xmlunit-core\2.10.0\xmlunit-core-2.10.0.jar;C:\Users\joaaguir\.m2\repository\org\mockito\mockito-core\5.14.2\mockito-core-5.14.2.jar;C:\Users\joaaguir\.m2\repository\net\bytebuddy\byte-buddy\1.15.11\byte-buddy-1.15.11.jar;C:\Users\joaaguir\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar;C:\Users\joaaguir\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\joaaguir\.m2\repository\org\mockito\mockito-junit-jupiter\5.14.2\mockito-junit-jupiter-5.14.2.jar;C:\Users\joaaguir\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.4\junit-jupiter-api-5.11.4.jar;C:\Users\joaaguir\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\joaaguir\.m2\repository\org\junit\platform\junit-platform-commons\1.11.4\junit-platform-commons-1.11.4.jar;C:\Users\joaaguir\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="America/Bogota"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="APPLICATION_NAME" value="doctorya"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CO"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Amazon Corretto\jdk21.0.7_6\bin"/>
+    <property name="sun.java.command" value="C:\Users\joaaguir\AppData\Local\Temp\surefire3395180301586721392\surefirebooter-20250624102440362_3.jar C:\Users\joaaguir\AppData\Local\Temp\surefire3395180301586721392 2025-06-24T10-24-40_156-jvmRun1 surefire-20250624102440362_1tmp surefire_0-20250624102440362_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\joaaguir\Documents\github\DoctorYa-Java-SpringBoot\target\test-classes;C:\Users\joaaguir\Documents\github\DoctorYa-Java-SpringBoot\target\classes;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.4.5\spring-boot-starter-web-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter\3.4.5\spring-boot-starter-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.4.5\spring-boot-starter-logging-3.4.5.jar;C:\Users\joaaguir\.m2\repository\ch\qos\logback\logback-classic\1.5.18\logback-classic-1.5.18.jar;C:\Users\joaaguir\.m2\repository\ch\qos\logback\logback-core\1.5.18\logback-core-1.5.18.jar;C:\Users\joaaguir\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.3\log4j-to-slf4j-2.24.3.jar;C:\Users\joaaguir\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.3\log4j-api-2.24.3.jar;C:\Users\joaaguir\.m2\repository\org\slf4j\jul-to-slf4j\2.0.17\jul-to-slf4j-2.0.17.jar;C:\Users\joaaguir\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\joaaguir\.m2\repository\org\yaml\snakeyaml\2.3\snakeyaml-2.3.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.4.5\spring-boot-starter-json-3.4.5.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.18.3\jackson-datatype-jdk8-2.18.3.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.18.3\jackson-datatype-jsr310-2.18.3.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.18.3\jackson-module-parameter-names-2.18.3.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.4.5\spring-boot-starter-tomcat-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.40\tomcat-embed-core-10.1.40.jar;C:\Users\joaaguir\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.40\tomcat-embed-el-10.1.40.jar;C:\Users\joaaguir\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.40\tomcat-embed-websocket-10.1.40.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-web\6.2.6\spring-web-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-beans\6.2.6\spring-beans-6.2.6.jar;C:\Users\joaaguir\.m2\repository\io\micrometer\micrometer-observation\1.14.6\micrometer-observation-1.14.6.jar;C:\Users\joaaguir\.m2\repository\io\micrometer\micrometer-commons\1.14.6\micrometer-commons-1.14.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-webmvc\6.2.6\spring-webmvc-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-context\6.2.6\spring-context-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-expression\6.2.6\spring-expression-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-devtools\3.4.5\spring-boot-devtools-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot\3.4.5\spring-boot-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.4.5\spring-boot-autoconfigure-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.4.5\spring-boot-starter-data-jpa-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.4.5\spring-boot-starter-jdbc-3.4.5.jar;C:\Users\joaaguir\.m2\repository\com\zaxxer\HikariCP\5.1.0\HikariCP-5.1.0.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-jdbc\6.2.6\spring-jdbc-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\hibernate\orm\hibernate-core\6.6.13.Final\hibernate-core-6.6.13.Final.jar;C:\Users\joaaguir\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\joaaguir\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\joaaguir\.m2\repository\org\hibernate\common\hibernate-commons-annotations\7.0.3.Final\hibernate-commons-annotations-7.0.3.Final.jar;C:\Users\joaaguir\.m2\repository\io\smallrye\jandex\3.2.0\jandex-3.2.0.jar;C:\Users\joaaguir\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\joaaguir\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\joaaguir\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\joaaguir\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\joaaguir\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\joaaguir\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\joaaguir\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\joaaguir\.m2\repository\org\springframework\data\spring-data-jpa\3.4.5\spring-data-jpa-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\data\spring-data-commons\3.4.5\spring-data-commons-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-orm\6.2.6\spring-orm-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-tx\6.2.6\spring-tx-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\slf4j\slf4j-api\2.0.17\slf4j-api-2.0.17.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-aspects\6.2.6\spring-aspects-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\aspectj\aspectjweaver\1.9.24\aspectjweaver-1.9.24.jar;C:\Users\joaaguir\.m2\repository\org\postgresql\postgresql\42.7.5\postgresql-42.7.5.jar;C:\Users\joaaguir\.m2\repository\org\checkerframework\checker-qual\3.48.3\checker-qual-3.48.3.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-security\3.4.5\spring-boot-starter-security-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-aop\6.2.6\spring-aop-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-config\6.4.5\spring-security-config-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-web\6.4.5\spring-security-web-6.4.5.jar;C:\Users\joaaguir\.m2\repository\io\jsonwebtoken\jjwt-api\0.11.5\jjwt-api-0.11.5.jar;C:\Users\joaaguir\.m2\repository\io\jsonwebtoken\jjwt-impl\0.11.5\jjwt-impl-0.11.5.jar;C:\Users\joaaguir\.m2\repository\io\jsonwebtoken\jjwt-jackson\0.11.5\jjwt-jackson-0.11.5.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.18.3\jackson-databind-2.18.3.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.18.3\jackson-annotations-2.18.3.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.18.3\jackson-core-2.18.3.jar;C:\Users\joaaguir\.m2\repository\org\modelmapper\modelmapper\3.1.1\modelmapper-3.1.1.jar;C:\Users\joaaguir\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\joaaguir\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.2.Final\hibernate-validator-8.0.2.Final.jar;C:\Users\joaaguir\.m2\repository\org\jboss\logging\jboss-logging\3.6.1.Final\jboss-logging-3.6.1.Final.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\classmate\1.7.0\classmate-1.7.0.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-oauth2-resource-server\3.4.5\spring-boot-starter-oauth2-resource-server-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-core\6.4.5\spring-security-core-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-crypto\6.4.5\spring-security-crypto-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-oauth2-resource-server\6.4.5\spring-security-oauth2-resource-server-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-oauth2-core\6.4.5\spring-security-oauth2-core-6.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\security\spring-security-oauth2-jose\6.4.5\spring-security-oauth2-jose-6.4.5.jar;C:\Users\joaaguir\.m2\repository\com\nimbusds\nimbus-jose-jwt\9.37.3\nimbus-jose-jwt-9.37.3.jar;C:\Users\joaaguir\.m2\repository\com\github\stephenc\jcip\jcip-annotations\1.0-1\jcip-annotations-1.0-1.jar;C:\Users\joaaguir\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-ui\2.8.8\springdoc-openapi-starter-webmvc-ui-2.8.8.jar;C:\Users\joaaguir\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-api\2.8.8\springdoc-openapi-starter-webmvc-api-2.8.8.jar;C:\Users\joaaguir\.m2\repository\org\springdoc\springdoc-openapi-starter-common\2.8.8\springdoc-openapi-starter-common-2.8.8.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.4.5\spring-boot-starter-validation-3.4.5.jar;C:\Users\joaaguir\.m2\repository\io\swagger\core\v3\swagger-core-jakarta\2.2.30\swagger-core-jakarta-2.2.30.jar;C:\Users\joaaguir\.m2\repository\org\apache\commons\commons-lang3\3.17.0\commons-lang3-3.17.0.jar;C:\Users\joaaguir\.m2\repository\io\swagger\core\v3\swagger-annotations-jakarta\2.2.30\swagger-annotations-jakarta-2.2.30.jar;C:\Users\joaaguir\.m2\repository\io\swagger\core\v3\swagger-models-jakarta\2.2.30\swagger-models-jakarta-2.2.30.jar;C:\Users\joaaguir\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-yaml\2.18.3\jackson-dataformat-yaml-2.18.3.jar;C:\Users\joaaguir\.m2\repository\org\webjars\swagger-ui\5.21.0\swagger-ui-5.21.0.jar;C:\Users\joaaguir\.m2\repository\org\webjars\webjars-locator-lite\1.0.1\webjars-locator-lite-1.0.1.jar;C:\Users\joaaguir\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\joaaguir\.m2\repository\me\paulschwarz\spring-dotenv\2.2.0\spring-dotenv-2.2.0.jar;C:\Users\joaaguir\.m2\repository\io\github\cdimascio\dotenv-java\2.0.0\dotenv-java-2.0.0.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.4.5\spring-boot-starter-test-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-test\3.4.5\spring-boot-test-3.4.5.jar;C:\Users\joaaguir\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.4.5\spring-boot-test-autoconfigure-3.4.5.jar;C:\Users\joaaguir\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\joaaguir\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\joaaguir\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\joaaguir\.m2\repository\net\minidev\json-smart\2.5.2\json-smart-2.5.2.jar;C:\Users\joaaguir\.m2\repository\net\minidev\accessors-smart\2.5.2\accessors-smart-2.5.2.jar;C:\Users\joaaguir\.m2\repository\org\ow2\asm\asm\9.7.1\asm-9.7.1.jar;C:\Users\joaaguir\.m2\repository\org\assertj\assertj-core\3.26.3\assertj-core-3.26.3.jar;C:\Users\joaaguir\.m2\repository\org\awaitility\awaitility\4.2.2\awaitility-4.2.2.jar;C:\Users\joaaguir\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\joaaguir\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.4\junit-jupiter-5.11.4.jar;C:\Users\joaaguir\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.4\junit-jupiter-params-5.11.4.jar;C:\Users\joaaguir\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.4\junit-jupiter-engine-5.11.4.jar;C:\Users\joaaguir\.m2\repository\org\junit\platform\junit-platform-engine\1.11.4\junit-platform-engine-1.11.4.jar;C:\Users\joaaguir\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\joaaguir\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-core\6.2.6\spring-core-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-jcl\6.2.6\spring-jcl-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\springframework\spring-test\6.2.6\spring-test-6.2.6.jar;C:\Users\joaaguir\.m2\repository\org\xmlunit\xmlunit-core\2.10.0\xmlunit-core-2.10.0.jar;C:\Users\joaaguir\.m2\repository\org\mockito\mockito-core\5.14.2\mockito-core-5.14.2.jar;C:\Users\joaaguir\.m2\repository\net\bytebuddy\byte-buddy\1.15.11\byte-buddy-1.15.11.jar;C:\Users\joaaguir\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar;C:\Users\joaaguir\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\joaaguir\.m2\repository\org\mockito\mockito-junit-jupiter\5.14.2\mockito-junit-jupiter-5.14.2.jar;C:\Users\joaaguir\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.4\junit-jupiter-api-5.11.4.jar;C:\Users\joaaguir\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\joaaguir\.m2\repository\org\junit\platform\junit-platform-commons\1.11.4\junit-platform-commons-1.11.4.jar;C:\Users\joaaguir\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\joaaguir"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-04-15"/>
+    <property name="java.home" value="C:\Program Files\Amazon Corretto\jdk21.0.7_6"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\joaaguir\Documents\github\DoctorYa-Java-SpringBoot"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="C:\Users\joaaguir\AppData\Local\Temp\surefire3395180301586721392\surefirebooter-20250624102440362_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.7+6-LTS"/>
+    <property name="user.name" value="joaaguir"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-21.0.7.6.1"/>
+    <property name="localRepository" value="C:\Users\joaaguir\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-21/issues/"/>
+    <property name="java.io.tmpdir" value="C:\Users\joaaguir\AppData\Local\Temp\"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="java.version" value="21.0.7"/>
+    <property name="user.dir" value="C:\Users\joaaguir\Documents\github\DoctorYa-Java-SpringBoot"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="28216"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Amazon Corretto\jdk21.0.7_6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Amazon Corretto\jdk21.0.7_6\bin;C:\Oracle21c\dbhomeXE\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\angular-cli-master;C:\Program Files\Amazon\SessionManagerPlugin\bin\;C:\Users\joaaguir\AppData\Roaming\npm\;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\RedHat\Podman\;C:\Users\joaaguir\Documents\Bancolombia\kubernetes;C:\Program Files\Git\cmd;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\nodejs\;C:\docker;C:\Program Files\Kubernetes\Minikube;C:\Program Files\dotnet\;C:\Users\joaaguir\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\joaaguir\AppData\Local\Programs\Python\Python313\;C:\Users\joaaguir\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\joaaguir\AppData\Local\Programs\Python\Python312\;C:\Users\joaaguir\AppData\Local\Microsoft\WindowsApps;;C:\Users\joaaguir\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\joaaguir\AppData\Roaming\npm;C:\Users\joaaguir\.dotnet\tools;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="21.0.7+6-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[doctorya] "/>
+  </properties>
+  <testcase name="testGetByIdAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="2.413">
+    <system-out><![CDATA[10:24:43.224 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.project.doctorya.AppointmentIntegrationTest]: AppointmentIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:24:43.611 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.project.doctorya.DoctoryaApplication for test class com.project.doctorya.AppointmentIntegrationTest
+10:24:43.966 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2025-06-24T10:24:44.472-05:00  INFO 28216 --- [doctorya] [           main] c.p.doctorya.AppointmentIntegrationTest  : Starting AppointmentIntegrationTest using Java 21.0.7 with PID 28216 (started by joaaguir in C:\Users\joaaguir\Documents\github\DoctorYa-Java-SpringBoot)
+2025-06-24T10:24:44.475-05:00  INFO 28216 --- [doctorya] [           main] c.p.doctorya.AppointmentIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2025-06-24T10:24:46.570-05:00  INFO 28216 --- [doctorya] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-24T10:24:46.714-05:00  INFO 28216 --- [doctorya] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 131 ms. Found 4 JPA repository interfaces.
+2025-06-24T10:24:47.863-05:00  INFO 28216 --- [doctorya] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-24T10:24:47.956-05:00  INFO 28216 --- [doctorya] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-06-24T10:24:48.007-05:00  INFO 28216 --- [doctorya] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-24T10:24:48.400-05:00  INFO 28216 --- [doctorya] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-24T10:24:48.450-05:00  INFO 28216 --- [doctorya] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-06-24T10:24:48.912-05:00  INFO 28216 --- [doctorya] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6b3eb57
+2025-06-24T10:24:48.916-05:00  INFO 28216 --- [doctorya] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-06-24T10:24:49.099-05:00  INFO 28216 --- [doctorya] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 13.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-24T10:24:50.562-05:00  INFO 28216 --- [doctorya] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: set client_min_messages = WARNING
+Hibernate: alter table if exists appointment drop constraint if exists FK4apif2ewfyf14077ichee8g06
+Hibernate: alter table if exists appointment drop constraint if exists FK68g9pht8khvj6imavqgopylme
+Hibernate: alter table if exists patient drop constraint if exists FKd0938jirih56x9extwo7ostuc
+Hibernate: alter table if exists physician drop constraint if exists FKhe1w4md7rlf6d2t2c2abtxjmw
+Hibernate: drop table if exists appointment cascade
+Hibernate: drop table if exists auth cascade
+Hibernate: drop table if exists patient cascade
+Hibernate: drop table if exists physician cascade
+Hibernate: create table appointment (duration integer not null, end_date timestamp(6) not null, start_date timestamp(6) not null, id uuid not null, patient_id uuid not null, physician_id uuid not null, reason varchar(255) not null, primary key (id))
+Hibernate: create table auth (id uuid not null, identification varchar(255) not null unique, password varchar(255) not null, role varchar(255) check (role in ('ADMIN','PATIENT','PHYSICIAN')), primary key (id))
+Hibernate: create table patient (auth_id uuid unique, id uuid not null, insurance varchar(255) not null, name varchar(255) not null, primary key (id))
+Hibernate: create table physician (auth_id uuid unique, id uuid not null, code varchar(255) not null, name varchar(255) not null, speciality varchar(255) not null, primary key (id))
+Hibernate: alter table if exists appointment add constraint FK4apif2ewfyf14077ichee8g06 foreign key (patient_id) references patient
+Hibernate: alter table if exists appointment add constraint FK68g9pht8khvj6imavqgopylme foreign key (physician_id) references physician
+Hibernate: alter table if exists patient add constraint FKd0938jirih56x9extwo7ostuc foreign key (auth_id) references auth
+Hibernate: alter table if exists physician add constraint FKhe1w4md7rlf6d2t2c2abtxjmw foreign key (auth_id) references auth
+2025-06-24T10:24:50.701-05:00  INFO 28216 --- [doctorya] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-24T10:24:51.067-05:00  INFO 28216 --- [doctorya] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-24T10:24:52.436-05:00  WARN 28216 --- [doctorya] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-24T10:24:52.483-05:00 DEBUG 28216 --- [doctorya] [           main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-06-24T10:24:53.291-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, BearerTokenAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-06-24T10:24:53.900-05:00  INFO 28216 --- [doctorya] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-06-24T10:24:53.900-05:00  INFO 28216 --- [doctorya] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-06-24T10:24:53.901-05:00  INFO 28216 --- [doctorya] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-06-24T10:24:53.929-05:00  INFO 28216 --- [doctorya] [           main] c.p.doctorya.AppointmentIntegrationTest  : Started AppointmentIntegrationTest in 9.986 seconds (process running for 12.973)
+2025-06-24T10:24:55.685-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:55.693-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:55.695-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:56.056-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:56.056-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:56.057-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+Hibernate: insert into appointment (duration,end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?,?)
+2025-06-24T10:24:56.174-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing GET /appointment/88fa5d7e-a9ad-440e-8306-7ad563a59a15
+2025-06-24T10:24:56.261-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:56.262-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@a7d068cd, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:56.262-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured GET /appointment/88fa5d7e-a9ad-440e-8306-7ad563a59a15
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.role,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.role,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: delete from appointment where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+]]></system-out>
+    <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\joaaguir\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+  </testcase>
+  <testcase name="testUpdateAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="0.187">
+    <error message="Request processing failed: org.springframework.dao.InvalidDataAccessApiUsageException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation: com.project.doctorya.appointment.infrastructure.entity.Appointment.patient -&gt; com.project.doctorya.patient.infrastructure.entity.Patient" type="jakarta.servlet.ServletException"><![CDATA[jakarta.servlet.ServletException: Request processing failed: org.springframework.dao.InvalidDataAccessApiUsageException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation: com.project.doctorya.appointment.infrastructure.entity.Appointment.patient -> com.project.doctorya.patient.infrastructure.entity.Patient
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1022)
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter.doFilterInternal(BearerTokenAuthenticationFilter.java:145)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)
+	at com.project.doctorya.AppointmentIntegrationTest.testUpdateAppointment(AppointmentIntegrationTest.java:256)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: org.springframework.dao.InvalidDataAccessApiUsageException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation: com.project.doctorya.appointment.infrastructure.entity.Appointment.patient -> com.project.doctorya.patient.infrastructure.entity.Patient
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:368)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:246)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:560)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:343)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
+	at jdk.proxy2/jdk.proxy2.$Proxy146.save(Unknown Source)
+	at com.project.doctorya.appointment.infrastructure.repository.AppointmentRespository.update(AppointmentRespository.java:59)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
+	at com.project.doctorya.appointment.infrastructure.repository.AppointmentRespository$$SpringCGLIB$$0.update(<generated>)
+	at com.project.doctorya.appointment.application.usecase.AppointmentUpdateUseCase.execute(AppointmentUpdateUseCase.java:20)
+	at com.project.doctorya.appointment.rest.controller.AppointmentController.update(AppointmentController.java:100)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:174)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
+	at com.project.doctorya.appointment.rest.controller.AppointmentController$$SpringCGLIB$$0.update(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	... 71 more
+Caused by: java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation: com.project.doctorya.appointment.infrastructure.entity.Appointment.patient -> com.project.doctorya.patient.infrastructure.entity.Patient
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:157)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:167)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:173)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:778)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:745)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:364)
+	at jdk.proxy2/jdk.proxy2.$Proxy141.persist(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:320)
+	at jdk.proxy2/jdk.proxy2.$Proxy141.persist(Unknown Source)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:636)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:515)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:284)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:731)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:174)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:149)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	... 108 more
+Caused by: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation: com.project.doctorya.appointment.infrastructure.entity.Appointment.patient -> com.project.doctorya.patient.infrastructure.entity.Patient
+	at org.hibernate.action.internal.UnresolvedEntityInsertActions.checkNoUnresolvedActionsAfterOperation(UnresolvedEntityInsertActions.java:123)
+	at org.hibernate.engine.spi.ActionQueue.checkNoUnresolvedActionsAfterOperation(ActionQueue.java:461)
+	at org.hibernate.internal.SessionImpl.checkNoUnresolvedActionsAfterOperation(SessionImpl.java:601)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:775)
+	... 137 more
+]]></error>
+    <system-out><![CDATA[2025-06-24T10:24:56.364-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:56.364-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:56.365-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:56.431-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:56.431-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:56.432-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+Hibernate: insert into appointment (duration,end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?,?)
+2025-06-24T10:24:56.502-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing PUT /appointment/73375f20-fea0-45b7-8d31-d9cc46dab7f0
+2025-06-24T10:24:56.503-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:56.503-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@a7d068cd, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:56.503-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured PUT /appointment/73375f20-fea0-45b7-8d31-d9cc46dab7f0
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.role,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.role,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+2025-06-24T10:24:56.516-05:00  WARN 28216 --- [doctorya] [           main] o.h.a.i.UnresolvedEntityInsertActions    : HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([com.project.doctorya.patient.infrastructure.entity.Patient#<null>])
+	Dependent entities: ([[com.project.doctorya.appointment.infrastructure.entity.Appointment#e5a8b1ee-0352-4775-94ef-28189a2b8613]])
+	Non-nullable association(s): ([com.project.doctorya.appointment.infrastructure.entity.Appointment.patient])
+2025-06-24T10:24:56.517-05:00  WARN 28216 --- [doctorya] [           main] o.h.a.i.UnresolvedEntityInsertActions    : HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([com.project.doctorya.physician.infrastructure.entity.Physician#<null>])
+	Dependent entities: ([[com.project.doctorya.appointment.infrastructure.entity.Appointment#e5a8b1ee-0352-4775-94ef-28189a2b8613]])
+	Non-nullable association(s): ([com.project.doctorya.appointment.infrastructure.entity.Appointment.physician])
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: delete from appointment where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /auth/register
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"50"]
+             Body = {"identification":"1053847601","password":"12345"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.project.doctorya.auth.rest.controller.AuthController
+           Method = com.project.doctorya.auth.rest.controller.AuthController#register(AuthDTO)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"identification":"1053847601"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"50"]
+             Body = {"identification":"1053847601","password":"12345"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.project.doctorya.auth.rest.controller.AuthController
+           Method = com.project.doctorya.auth.rest.controller.AuthController#login(AuthDTO)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDUzODQ3NjAxIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzUwNzc4Njk2LCJleHAiOjE3NTA3ODU4OTZ9.YOijVgy3e5sD03k9Aw7yQok8io5WDlbFbp80tge60lI"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="testPatientNotFoundCreateAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="0.173">
+    <system-out><![CDATA[2025-06-24T10:24:56.554-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:56.555-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:56.555-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:56.621-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:56.621-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:56.622-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+2025-06-24T10:24:56.692-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /appointment
+2025-06-24T10:24:56.692-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:56.692-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@a7d068cd, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:56.693-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /appointment
+2025-06-24T10:24:56.694-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.appointment.rest.controller.AppointmentController.create(com.project.doctorya.appointment.rest.dto.AppointmentDTO); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+2025-06-24T10:24:56.702-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.appointment.rest.controller.AppointmentController.create(com.project.doctorya.appointment.rest.dto.AppointmentDTO); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where a1_0.identification=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testDeleteAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="0.162">
+    <system-out><![CDATA[2025-06-24T10:24:56.728-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:56.728-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:56.729-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:56.792-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:56.792-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:56.793-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+Hibernate: insert into appointment (duration,end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?,?)
+2025-06-24T10:24:56.859-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing DELETE /appointment/bc4992fa-21cb-4ec9-9423-a7a21f28f256
+2025-06-24T10:24:56.860-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:56.860-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@a7d068cd, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:56.860-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured DELETE /appointment/bc4992fa-21cb-4ec9-9423-a7a21f28f256
+2025-06-24T10:24:56.861-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public void com.project.doctorya.appointment.rest.controller.AppointmentController.delete(java.util.UUID); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+2025-06-24T10:24:56.861-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public void com.project.doctorya.appointment.rest.controller.AppointmentController.delete(java.util.UUID); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.role,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.role,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: delete from appointment where id=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.role,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.role,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testDeleteNotFoundAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="0.184">
+    <failure message="Status expected:&lt;404&gt; but was:&lt;200&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status expected:<404> but was:<200>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:640)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.project.doctorya.AppointmentIntegrationTest.testDeleteNotFoundAppointment(AppointmentIntegrationTest.java:317)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[2025-06-24T10:24:56.892-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:56.892-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:56.893-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:56.968-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:56.968-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:56.968-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+2025-06-24T10:24:57.042-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing DELETE /appointment/c54c47cd-0f46-4419-a8e7-e905d741910e
+2025-06-24T10:24:57.043-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:57.043-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@14d56dec, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:57.043-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured DELETE /appointment/c54c47cd-0f46-4419-a8e7-e905d741910e
+2025-06-24T10:24:57.044-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public void com.project.doctorya.appointment.rest.controller.AppointmentController.delete(java.util.UUID); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+2025-06-24T10:24:57.044-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public void com.project.doctorya.appointment.rest.controller.AppointmentController.delete(java.util.UUID); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.role,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.role,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /auth/register
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"50"]
+             Body = {"identification":"1053847601","password":"12345"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.project.doctorya.auth.rest.controller.AuthController
+           Method = com.project.doctorya.auth.rest.controller.AuthController#register(AuthDTO)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"identification":"1053847601"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"50"]
+             Body = {"identification":"1053847601","password":"12345"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.project.doctorya.auth.rest.controller.AuthController
+           Method = com.project.doctorya.auth.rest.controller.AuthController#login(AuthDTO)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDUzODQ3NjAxIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzUwNzc4Njk3LCJleHAiOjE3NTA3ODU4OTd9.E4v4bHd61Dx5gUWbTf5FEx7ga3iaCq6G7jLHZS9tf7Q"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /appointment/c54c47cd-0f46-4419-a8e7-e905d741910e
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDUzODQ3NjAxIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzUwNzc4Njk3LCJleHAiOjE3NTA3ODU4OTd9.E4v4bHd61Dx5gUWbTf5FEx7ga3iaCq6G7jLHZS9tf7Q"]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.project.doctorya.appointment.rest.controller.AppointmentController
+           Method = com.project.doctorya.appointment.rest.controller.AppointmentController#delete(UUID)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="0.2">
+    <system-out><![CDATA[2025-06-24T10:24:57.078-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:57.078-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.079-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:57.157-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:57.157-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.157-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+Hibernate: insert into appointment (duration,end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?,?)
+2025-06-24T10:24:57.232-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing GET /appointment
+2025-06-24T10:24:57.232-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:57.233-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@14d56dec, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:57.233-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured GET /appointment
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: delete from appointment where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testGetByIdNotFoundAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="0.192">
+    <system-out><![CDATA[2025-06-24T10:24:57.278-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:57.279-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.279-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:57.351-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:57.352-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.352-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+2025-06-24T10:24:57.436-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing GET /appointment/90694f1f-8608-46bf-a1a6-5f750fc267cc
+2025-06-24T10:24:57.437-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:57.437-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@14d56dec, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:57.437-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured GET /appointment/90694f1f-8608-46bf-a1a6-5f750fc267cc
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.role,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.role,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="0.2">
+    <system-out><![CDATA[2025-06-24T10:24:57.473-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:57.474-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.474-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:57.550-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:57.550-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.550-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+2025-06-24T10:24:57.622-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /appointment
+2025-06-24T10:24:57.624-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:57.624-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@14d56dec, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:57.624-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /appointment
+2025-06-24T10:24:57.625-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.appointment.rest.controller.AppointmentController.create(com.project.doctorya.appointment.rest.dto.AppointmentDTO); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+2025-06-24T10:24:57.625-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.appointment.rest.controller.AppointmentController.create(com.project.doctorya.appointment.rest.dto.AppointmentDTO); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where a1_0.identification=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where a1_0.identification=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0 join physician p2_0 on p2_0.id=a1_0.physician_id join auth a2_0 on a2_0.id=p2_0.auth_id where a1_0.start_date<? and a1_0.end_date>? and a2_0.identification=?
+Hibernate: insert into appointment (duration,end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?,?)
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: delete from appointment where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateNotFoundAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="0.183">
+    <error message="Request processing failed: org.springframework.orm.jpa.JpaObjectRetrievalFailureException: Appointment not found" type="jakarta.servlet.ServletException"><![CDATA[jakarta.servlet.ServletException: Request processing failed: org.springframework.orm.jpa.JpaObjectRetrievalFailureException: Appointment not found
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1022)
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter.doFilterInternal(BearerTokenAuthenticationFilter.java:145)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)
+	at com.project.doctorya.AppointmentIntegrationTest.testUpdateNotFoundAppointment(AppointmentIntegrationTest.java:283)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: org.springframework.orm.jpa.JpaObjectRetrievalFailureException: Appointment not found
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:376)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:246)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:560)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:343)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
+	at com.project.doctorya.appointment.infrastructure.repository.AppointmentRespository$$SpringCGLIB$$0.update(<generated>)
+	at com.project.doctorya.appointment.application.usecase.AppointmentUpdateUseCase.execute(AppointmentUpdateUseCase.java:20)
+	at com.project.doctorya.appointment.rest.controller.AppointmentController.update(AppointmentController.java:100)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:174)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
+	at com.project.doctorya.appointment.rest.controller.AppointmentController$$SpringCGLIB$$0.update(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	... 71 more
+Caused by: jakarta.persistence.EntityNotFoundException: Appointment not found
+	at com.project.doctorya.appointment.infrastructure.repository.AppointmentRespository.update(AppointmentRespository.java:56)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	... 96 more
+]]></error>
+    <system-out><![CDATA[2025-06-24T10:24:57.672-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:57.672-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.672-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:57.746-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:57.746-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.746-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+Hibernate: insert into appointment (duration,end_date,patient_id,physician_id,reason,start_date,id) values (?,?,?,?,?,?,?)
+2025-06-24T10:24:57.824-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing PUT /appointment/f0b42666-a105-407c-b55f-0d0c125879a6
+2025-06-24T10:24:57.825-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:57.826-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@14d56dec, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:57.826-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured PUT /appointment/f0b42666-a105-407c-b55f-0d0c125879a6
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,p1_0.id,a2_0.id,a2_0.identification,a2_0.password,a2_0.role,p1_0.insurance,p1_0.name,a1_0.physician_id,p2_0.id,a3_0.id,a3_0.identification,a3_0.password,a3_0.role,p2_0.code,p2_0.name,p2_0.speciality,a1_0.reason,a1_0.start_date from appointment a1_0 join patient p1_0 on p1_0.id=a1_0.patient_id left join auth a2_0 on a2_0.id=p1_0.auth_id join physician p2_0 on p2_0.id=a1_0.physician_id left join auth a3_0 on a3_0.id=p2_0.auth_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: select p1_0.id,a1_0.id,a1_0.identification,a1_0.password,a1_0.role,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where p1_0.id=?
+Hibernate: delete from appointment where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /auth/register
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"50"]
+             Body = {"identification":"1053847601","password":"12345"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.project.doctorya.auth.rest.controller.AuthController
+           Method = com.project.doctorya.auth.rest.controller.AuthController#register(AuthDTO)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"identification":"1053847601"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"50"]
+             Body = {"identification":"1053847601","password":"12345"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.project.doctorya.auth.rest.controller.AuthController
+           Method = com.project.doctorya.auth.rest.controller.AuthController#login(AuthDTO)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDUzODQ3NjAxIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzUwNzc4Njk3LCJleHAiOjE3NTA3ODU4OTd9.E4v4bHd61Dx5gUWbTf5FEx7ga3iaCq6G7jLHZS9tf7Q"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="testPhysicianNotFoundCreateAppointment" classname="com.project.doctorya.AppointmentIntegrationTest" time="0.159">
+    <system-out><![CDATA[2025-06-24T10:24:57.857-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-06-24T10:24:57.857-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.857-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+2025-06-24T10:24:57.923-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-06-24T10:24:57.923-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-06-24T10:24:57.923-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.identification=?
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into patient (auth_id,insurance,name,id) values (?,?,?,?)
+Hibernate: insert into auth (identification,password,role,id) values (?,?,?,?)
+Hibernate: insert into physician (auth_id,code,name,speciality,id) values (?,?,?,?,?)
+2025-06-24T10:24:57.989-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Securing POST /appointment
+2025-06-24T10:24:57.990-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.s.o.s.r.a.JwtAuthenticationProvider  : Authenticated token
+2025-06-24T10:24:57.990-05:00 DEBUG 28216 --- [doctorya] [           main] .s.r.w.a.BearerTokenAuthenticationFilter : Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@14d56dec, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2025-06-24T10:24:57.990-05:00 DEBUG 28216 --- [doctorya] [           main] o.s.security.web.FilterChainProxy        : Secured POST /appointment
+2025-06-24T10:24:57.991-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.appointment.rest.controller.AppointmentController.create(com.project.doctorya.appointment.rest.dto.AppointmentDTO); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+2025-06-24T10:24:57.991-05:00 DEBUG 28216 --- [doctorya] [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.project.doctorya.appointment.rest.controller.AppointmentController.create(com.project.doctorya.appointment.rest.dto.AppointmentDTO); target is of class [com.project.doctorya.appointment.rest.controller.AppointmentController]
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where a1_0.identification=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0 left join auth a1_0 on a1_0.id=p1_0.auth_id where a1_0.identification=?
+Hibernate: select a1_0.id,a1_0.duration,a1_0.end_date,a1_0.patient_id,a1_0.physician_id,a1_0.reason,a1_0.start_date from appointment a1_0
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.insurance,p1_0.name from patient p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from patient where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select p1_0.id,p1_0.auth_id,p1_0.code,p1_0.name,p1_0.speciality from physician p1_0
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0 where a1_0.id=?
+Hibernate: delete from physician where id=?
+Hibernate: delete from auth where id=?
+Hibernate: select a1_0.id,a1_0.identification,a1_0.password,a1_0.role from auth a1_0
+Hibernate: delete from auth where id=?
+]]></system-out>
+  </testcase>
+</testsuite>

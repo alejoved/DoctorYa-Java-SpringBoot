@@ -16,8 +16,6 @@ import com.project.doctorya.patient.infrastructure.entity.Patient;
 import com.project.doctorya.patient.infrastructure.mapper.PatientMapper;
 import com.project.doctorya.shared.Constants;
 
-import jakarta.persistence.EntityNotFoundException;
-
 @Repository
 @Primary
 public class PatientRepository implements IPatientRepository {
@@ -58,12 +56,7 @@ public class PatientRepository implements IPatientRepository {
     }
 
     @Override
-    public PatientModel update(PatientModel patientModel, UUID id) {
-        Optional<Patient> physicianExists = patientRepository.findById(id);
-        if(physicianExists.isEmpty()){
-            throw new EntityNotFoundException(Constants.physicianNotFound);
-        }
-        patientModel.setId(id);
+    public PatientModel update(PatientModel patientModel) {
         Patient patient = PatientMapper.toEntity(patientModel);
         Patient response = patientRepository.save(patient);
         return PatientMapper.toDomain(response);

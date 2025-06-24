@@ -22,6 +22,7 @@ import com.project.doctorya.auth.infrastructure.repository.IAuthJpaRepository;
 import com.project.doctorya.auth.rest.dto.AuthDTO;
 import com.project.doctorya.physician.rest.dto.PhysicianDTO;
 import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
+import com.project.doctorya.shared.Role;
 import com.project.doctorya.physician.infrastructure.entity.Physician;
 import com.project.doctorya.physician.infrastructure.repository.IPhysicianJpaRepository;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -80,6 +81,7 @@ public class PhysicianIntegrationTest {
         physicianDB.setAuth(new Auth());
         physicianDB.getAuth().setIdentification("1053847620");
         physicianDB.getAuth().setPassword("12345");
+        physicianDB.getAuth().setRole(Role.PHYSICIAN);
     }
 
     @AfterEach
