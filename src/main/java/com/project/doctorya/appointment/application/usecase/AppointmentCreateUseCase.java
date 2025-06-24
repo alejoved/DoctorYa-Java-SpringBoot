@@ -46,6 +46,9 @@ public class AppointmentCreateUseCase implements IAppointmentCreateUseCase {
         if(appointmentFound.size() > 0){
             throw new EntityExistsException(Constants.appointmentExists);
         }
+        appointmentModel.setEndDate(endDate);
+        appointmentModel.setPatientModel(patientFound);
+        appointmentModel.setPhysicianModel(physicianFound);
         return appointmentRepository.create(appointmentModel);
     }
     

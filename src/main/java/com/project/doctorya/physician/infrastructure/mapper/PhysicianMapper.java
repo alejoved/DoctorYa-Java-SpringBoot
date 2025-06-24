@@ -8,6 +8,7 @@ import com.project.doctorya.physician.infrastructure.entity.Physician;
 public class PhysicianMapper{
     public static PhysicianModel toDomain(Physician physician){
         PhysicianModel physicianModel = new PhysicianModel();
+        physicianModel.setId(physician.getId());
         physicianModel.setName(physician.getName());
         physicianModel.setCode(physician.getCode());
         physicianModel.setSpeciality(physician.getSpeciality());
@@ -25,6 +26,7 @@ public class PhysicianMapper{
         physician.setAuth(new Auth());
         physician.getAuth().setIdentification(physicianModel.getAuthModel().getIdentification());
         physician.getAuth().setPassword(physicianModel.getAuthModel().getPassword());
+        physician.getAuth().setRole(physicianModel.getAuthModel().getRole());
         return physician;
     }
 }

@@ -8,11 +8,11 @@ import com.project.doctorya.patient.infrastructure.entity.Patient;
 public class PatientMapper {
     public static PatientModel toDomain(Patient patient){
         PatientModel patientModel = new PatientModel();
+        patientModel.setId(patient.getId());
         patientModel.setName(patient.getName());
         patientModel.setInsurance(patient.getInsurance());
         patientModel.setAuthModel(new AuthModel());
         patientModel.getAuthModel().setIdentification(patient.getAuth().getIdentification());
-        patientModel.getAuthModel().setRole(patient.getAuth().getRole());
         return patientModel;
 
     }
@@ -21,7 +21,9 @@ public class PatientMapper {
         patient.setName(patientModel.getName());
         patient.setInsurance(patientModel.getInsurance());
         patient.setAuth(new Auth());
-        patient.getAuth().setId(patientModel.getAuthModel().getId());
+        patient.getAuth().setIdentification(patientModel.getAuthModel().getIdentification());
+        patient.getAuth().setPassword(patientModel.getAuthModel().getPassword());
+        patient.getAuth().setRole(patientModel.getAuthModel().getRole());
         return patient;
     }
 }
