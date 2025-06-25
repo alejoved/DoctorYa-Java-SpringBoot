@@ -1,6 +1,15 @@
 
 # 🩺 API de Reservas de Citas Médicas — *DoctorYa*
 
+[![Build](https://github.com/alejoved/DoctorYa-Java-SpringBoot/actions/workflows/ci.yml/badge.svg)](https://github.com/alejoved/DoctorYa-Java-SpringBoot/actions)
+[![License](https://img.shields.io/github/license/alejoved/DoctorYa-Java-SpringBoot)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/alejoved/DoctorYa-Java-SpringBoot)](https://github.com/alejoved/DoctorYa-Java-SpringBoot/commits)
+[![Java](https://img.shields.io/badge/java-17-blue.svg)](https://openjdk.org/projects/jdk/17/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.0+-brightgreen)](https://spring.io/projects/spring-boot)
+[![Dockerized](https://img.shields.io/badge/docker-ready-blue)](#docker)
+
+---
+
 Sistema backend para la gestión de citas médicas entre pacientes y doctores. Este proyecto ha sido desarrollado como una muestra de habilidades de un **desarrollador backend senior**, incorporando buenas prácticas de arquitectura, reglas de negocio robustas, pruebas automatizadas y despliegue en contenedores.
 
 ---
