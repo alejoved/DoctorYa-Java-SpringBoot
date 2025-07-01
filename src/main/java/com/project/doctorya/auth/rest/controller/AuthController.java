@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.doctorya.auth.application.port.IAuthLoginUseCase;
-import com.project.doctorya.auth.application.port.IAuthRegisterUseCase;
-import com.project.doctorya.auth.domain.model.AuthModel;
+import com.project.doctorya.auth.application.interfaces.IAuthLoginUseCase;
+import com.project.doctorya.auth.application.interfaces.IAuthRegisterUseCase;
+import com.project.doctorya.auth.domain.models.AuthModel;
 import com.project.doctorya.auth.rest.dto.AuthDTO;
 import com.project.doctorya.auth.rest.dto.AuthResponseDTO;
 import com.project.doctorya.auth.rest.dto.TokenResponseDTO;

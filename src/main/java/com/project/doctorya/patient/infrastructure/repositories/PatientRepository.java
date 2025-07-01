@@ -1,4 +1,4 @@
-package com.project.doctorya.patient.infrastructure.repository;
+package com.project.doctorya.patient.infrastructure.repositories;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.project.doctorya.exceptions.EntityNotExistsException;
-import com.project.doctorya.patient.domain.model.PatientModel;
-import com.project.doctorya.patient.domain.repository.IPatientRepository;
-import com.project.doctorya.patient.infrastructure.entity.Patient;
-import com.project.doctorya.patient.infrastructure.mapper.PatientMapper;
+import com.project.doctorya.patient.domain.models.PatientModel;
+import com.project.doctorya.patient.domain.repositories.IPatientRepository;
+import com.project.doctorya.patient.infrastructure.entities.Patient;
+import com.project.doctorya.patient.infrastructure.mappers.PatientMapper;
 import com.project.doctorya.shared.Constants;
 
 @Repository

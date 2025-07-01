@@ -12,13 +12,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.doctorya.auth.infrastructure.entity.Auth;
-import com.project.doctorya.auth.infrastructure.repository.IAuthJpaRepository;
+import com.project.doctorya.auth.infrastructure.entities.Auth;
+import com.project.doctorya.auth.infrastructure.repositories.IAuthJpaRepository;
 import com.project.doctorya.auth.rest.dto.AuthDTO;
 import com.project.doctorya.patient.rest.dto.PatientDTO;
 import com.project.doctorya.patient.rest.dto.PatientResponseDTO;
-import com.project.doctorya.patient.infrastructure.entity.Patient;
-import com.project.doctorya.patient.infrastructure.repository.IPatientJpaRepository;
+import com.project.doctorya.patient.infrastructure.entities.Patient;
+import com.project.doctorya.patient.infrastructure.repositories.IPatientJpaRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

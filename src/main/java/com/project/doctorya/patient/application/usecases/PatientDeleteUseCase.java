@@ -1,11 +1,11 @@
-package com.project.doctorya.patient.application.usecase;
+package com.project.doctorya.patient.application.usecases;
 
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.doctorya.patient.application.port.IPatientDeleteUseCase;
-import com.project.doctorya.patient.domain.repository.IPatientRepository;
+import com.project.doctorya.patient.application.interfaces.IPatientDeleteUseCase;
+import com.project.doctorya.patient.domain.repositories.IPatientRepository;
 
 @Service
 public class PatientDeleteUseCase implements IPatientDeleteUseCase {

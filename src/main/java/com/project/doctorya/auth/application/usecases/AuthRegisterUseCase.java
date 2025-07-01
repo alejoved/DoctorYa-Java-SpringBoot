@@ -1,12 +1,12 @@
-package com.project.doctorya.auth.application.usecase;
+package com.project.doctorya.auth.application.usecases;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.project.doctorya.auth.application.port.IAuthRegisterUseCase;
-import com.project.doctorya.auth.domain.model.AuthModel;
-import com.project.doctorya.auth.domain.repository.IAuthRepository;
+import com.project.doctorya.auth.application.interfaces.IAuthRegisterUseCase;
+import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.auth.domain.repositories.IAuthRepository;
 import com.project.doctorya.exceptions.EntityExistsException;
 import com.project.doctorya.shared.Constants;
 import com.project.doctorya.shared.Role;

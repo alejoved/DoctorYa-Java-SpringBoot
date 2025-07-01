@@ -1,8 +1,8 @@
-package com.project.doctorya.auth.domain.repository;
+package com.project.doctorya.auth.domain.repositories;
 
 import java.util.List;
 
-import com.project.doctorya.auth.domain.model.AuthModel;
+import com.project.doctorya.auth.domain.models.AuthModel;
 
 public interface IAuthRepository {
     public List<AuthModel> get();

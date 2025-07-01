@@ -1,13 +1,13 @@
-package com.project.doctorya.appointment.infrastructure.mapper;
+package com.project.doctorya.appointment.infrastructure.mappers;
 
-import com.project.doctorya.appointment.domain.model.AppointmentModel;
-import com.project.doctorya.appointment.infrastructure.entity.Appointment;
-import com.project.doctorya.auth.domain.model.AuthModel;
-import com.project.doctorya.auth.infrastructure.entity.Auth;
-import com.project.doctorya.patient.domain.model.PatientModel;
-import com.project.doctorya.patient.infrastructure.entity.Patient;
-import com.project.doctorya.physician.domain.model.PhysicianModel;
-import com.project.doctorya.physician.infrastructure.entity.Physician;
+import com.project.doctorya.appointment.domain.models.AppointmentModel;
+import com.project.doctorya.appointment.infrastructure.entities.Appointment;
+import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.auth.infrastructure.entities.Auth;
+import com.project.doctorya.patient.domain.models.PatientModel;
+import com.project.doctorya.patient.infrastructure.entities.Patient;
+import com.project.doctorya.physician.domain.models.PhysicianModel;
+import com.project.doctorya.physician.infrastructure.entities.Physician;
 
 public class AppointmentMapper {
     public static AppointmentModel toDomain(Appointment appointment){

@@ -1,8 +1,8 @@
-package com.project.doctorya.physician.domain.repository;
+package com.project.doctorya.physician.domain.repositories;
 import java.util.List;
 import java.util.UUID;
 
-import com.project.doctorya.physician.domain.model.PhysicianModel;
+import com.project.doctorya.physician.domain.models.PhysicianModel;
 
 public interface IPhysicianRepository {
     public List<PhysicianModel> get();

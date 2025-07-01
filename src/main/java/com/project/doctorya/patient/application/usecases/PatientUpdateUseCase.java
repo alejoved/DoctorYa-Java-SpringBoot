@@ -1,4 +1,4 @@
-package com.project.doctorya.patient.application.usecase;
+package com.project.doctorya.patient.application.usecases;
 
 import java.util.UUID;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.doctorya.exceptions.EntityNotExistsException;
-import com.project.doctorya.patient.application.port.IPatientUpdateUseCase;
-import com.project.doctorya.patient.domain.model.PatientModel;
-import com.project.doctorya.patient.domain.repository.IPatientRepository;
+import com.project.doctorya.patient.application.interfaces.IPatientUpdateUseCase;
+import com.project.doctorya.patient.domain.models.PatientModel;
+import com.project.doctorya.patient.domain.repositories.IPatientRepository;
 import com.project.doctorya.shared.Constants;
 
 @Service

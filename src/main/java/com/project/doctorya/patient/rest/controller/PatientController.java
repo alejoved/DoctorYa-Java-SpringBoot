@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.project.doctorya.patient.application.port.IPatientCreateUseCase;
-import com.project.doctorya.patient.application.port.IPatientDeleteUseCase;
-import com.project.doctorya.patient.application.port.IPatientGetUseCase;
-import com.project.doctorya.patient.application.port.IPatientUpdateUseCase;
-import com.project.doctorya.patient.domain.model.PatientModel;
+
+import com.project.doctorya.patient.application.interfaces.IPatientCreateUseCase;
+import com.project.doctorya.patient.application.interfaces.IPatientDeleteUseCase;
+import com.project.doctorya.patient.application.interfaces.IPatientGetUseCase;
+import com.project.doctorya.patient.application.interfaces.IPatientUpdateUseCase;
+import com.project.doctorya.patient.domain.models.PatientModel;
 import com.project.doctorya.patient.rest.dto.PatientDTO;
 import com.project.doctorya.patient.rest.dto.PatientResponseDTO;
 import com.project.doctorya.patient.rest.mapper.PatientRestMapper;

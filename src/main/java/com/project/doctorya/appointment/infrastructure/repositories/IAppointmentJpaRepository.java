@@ -1,4 +1,4 @@
-package com.project.doctorya.appointment.infrastructure.repository;
+package com.project.doctorya.appointment.infrastructure.repositories;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.project.doctorya.appointment.infrastructure.entity.Appointment;
+import com.project.doctorya.appointment.infrastructure.entities.Appointment;
 
 @Repository
 public interface IAppointmentJpaRepository extends JpaRepository<Appointment, UUID> {

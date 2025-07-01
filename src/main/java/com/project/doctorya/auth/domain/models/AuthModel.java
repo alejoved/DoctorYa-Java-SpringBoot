@@ -1,4 +1,4 @@
-package com.project.doctorya.auth.domain.model;
+package com.project.doctorya.auth.domain.models;
 
 import java.util.UUID;
 import com.project.doctorya.shared.Role;

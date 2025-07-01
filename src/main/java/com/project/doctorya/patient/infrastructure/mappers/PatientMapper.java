@@ -1,9 +1,9 @@
-package com.project.doctorya.patient.infrastructure.mapper;
+package com.project.doctorya.patient.infrastructure.mappers;
 
-import com.project.doctorya.auth.domain.model.AuthModel;
-import com.project.doctorya.auth.infrastructure.entity.Auth;
-import com.project.doctorya.patient.domain.model.PatientModel;
-import com.project.doctorya.patient.infrastructure.entity.Patient;
+import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.auth.infrastructure.entities.Auth;
+import com.project.doctorya.patient.domain.models.PatientModel;
+import com.project.doctorya.patient.infrastructure.entities.Patient;
 
 public class PatientMapper {
     public static PatientModel toDomain(Patient patient){

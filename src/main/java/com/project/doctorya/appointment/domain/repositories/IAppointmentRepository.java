@@ -1,9 +1,10 @@
-package com.project.doctorya.appointment.domain.repository;
+package com.project.doctorya.appointment.domain.repositories;
 
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
-import com.project.doctorya.appointment.domain.model.AppointmentModel;
+
+import com.project.doctorya.appointment.domain.models.AppointmentModel;
 
 public interface IAppointmentRepository {
     public List<AppointmentModel> get();

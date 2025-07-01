@@ -1,10 +1,10 @@
-package com.project.doctorya.appointment.infrastructure.entity;
+package com.project.doctorya.appointment.infrastructure.entities;
 
 import java.sql.Timestamp;
 import java.util.UUID;
 
-import com.project.doctorya.patient.infrastructure.entity.Patient;
-import com.project.doctorya.physician.infrastructure.entity.Physician;
+import com.project.doctorya.patient.infrastructure.entities.Patient;
+import com.project.doctorya.physician.infrastructure.entities.Physician;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

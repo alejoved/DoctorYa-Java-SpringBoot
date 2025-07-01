@@ -1,4 +1,4 @@
-package com.project.doctorya.appointment.infrastructure.repository;
+package com.project.doctorya.appointment.infrastructure.repositories;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
-import com.project.doctorya.appointment.domain.model.AppointmentModel;
-import com.project.doctorya.appointment.domain.repository.IAppointmentRepository;
-import com.project.doctorya.appointment.infrastructure.entity.Appointment;
-import com.project.doctorya.appointment.infrastructure.mapper.AppointmentMapper;
+import com.project.doctorya.appointment.domain.models.AppointmentModel;
+import com.project.doctorya.appointment.domain.repositories.IAppointmentRepository;
+import com.project.doctorya.appointment.infrastructure.entities.Appointment;
+import com.project.doctorya.appointment.infrastructure.mappers.AppointmentMapper;
 import com.project.doctorya.exceptions.EntityNotExistsException;
 import com.project.doctorya.shared.Constants;
 

@@ -1,4 +1,4 @@
-package com.project.doctorya.appointment.application.usecase;
+package com.project.doctorya.appointment.application.usecases;
 
 import java.sql.Timestamp;
 import java.time.temporal.ChronoUnit;
@@ -7,15 +7,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.doctorya.appointment.application.port.IAppointmentCreateUseCase;
-import com.project.doctorya.appointment.domain.model.AppointmentModel;
-import com.project.doctorya.appointment.domain.repository.IAppointmentRepository;
+import com.project.doctorya.appointment.application.interfaces.IAppointmentCreateUseCase;
+import com.project.doctorya.appointment.domain.models.AppointmentModel;
+import com.project.doctorya.appointment.domain.repositories.IAppointmentRepository;
 import com.project.doctorya.exceptions.EntityExistsException;
 import com.project.doctorya.exceptions.EntityNotExistsException;
-import com.project.doctorya.patient.domain.model.PatientModel;
-import com.project.doctorya.patient.domain.repository.IPatientRepository;
-import com.project.doctorya.physician.domain.model.PhysicianModel;
-import com.project.doctorya.physician.domain.repository.IPhysicianRepository;
+import com.project.doctorya.patient.domain.models.PatientModel;
+import com.project.doctorya.patient.domain.repositories.IPatientRepository;
+import com.project.doctorya.physician.domain.models.PhysicianModel;
+import com.project.doctorya.physician.domain.repositories.IPhysicianRepository;
 import com.project.doctorya.shared.Constants;
 
 @Service

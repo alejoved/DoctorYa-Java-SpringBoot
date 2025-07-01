@@ -1,6 +1,6 @@
 package com.project.doctorya.auth.rest.mapper;
 
-import com.project.doctorya.auth.domain.model.AuthModel;
+import com.project.doctorya.auth.domain.models.AuthModel;
 import com.project.doctorya.auth.rest.dto.AuthDTO;
 import com.project.doctorya.auth.rest.dto.AuthResponseDTO;
 import com.project.doctorya.auth.rest.dto.TokenResponseDTO;

@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.doctorya.appointment.application.port.IAppointmentCreateUseCase;
-import com.project.doctorya.appointment.application.port.IAppointmentDeleteUseCase;
-import com.project.doctorya.appointment.application.port.IAppointmentGetUseCase;
-import com.project.doctorya.appointment.application.port.IAppointmentUpdateUseCase;
-import com.project.doctorya.appointment.domain.model.AppointmentModel;
+import com.project.doctorya.appointment.application.interfaces.IAppointmentCreateUseCase;
+import com.project.doctorya.appointment.application.interfaces.IAppointmentDeleteUseCase;
+import com.project.doctorya.appointment.application.interfaces.IAppointmentGetUseCase;
+import com.project.doctorya.appointment.application.interfaces.IAppointmentUpdateUseCase;
+import com.project.doctorya.appointment.domain.models.AppointmentModel;
 import com.project.doctorya.appointment.rest.dto.AppointmentDTO;
 import com.project.doctorya.appointment.rest.dto.AppointmentResponseDTO;
 import com.project.doctorya.appointment.rest.mapper.AppointmentRestMapper;

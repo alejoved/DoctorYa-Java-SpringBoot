@@ -1,8 +1,8 @@
-package com.project.doctorya.patient.infrastructure.entity;
+package com.project.doctorya.patient.infrastructure.entities;
 
 import java.util.UUID;
 
-import com.project.doctorya.auth.infrastructure.entity.Auth;
+import com.project.doctorya.auth.infrastructure.entities.Auth;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

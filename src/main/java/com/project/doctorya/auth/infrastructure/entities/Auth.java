@@ -1,4 +1,4 @@
-package com.project.doctorya.auth.infrastructure.entity;
+package com.project.doctorya.auth.infrastructure.entities;
 
 import java.util.UUID;
 

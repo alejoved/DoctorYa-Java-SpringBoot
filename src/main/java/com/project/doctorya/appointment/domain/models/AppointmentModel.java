@@ -1,10 +1,10 @@
-package com.project.doctorya.appointment.domain.model;
+package com.project.doctorya.appointment.domain.models;
 
 import java.sql.Timestamp;
 import java.util.UUID;
 
-import com.project.doctorya.patient.domain.model.PatientModel;
-import com.project.doctorya.physician.domain.model.PhysicianModel;
+import com.project.doctorya.patient.domain.models.PatientModel;
+import com.project.doctorya.physician.domain.models.PhysicianModel;
 
 import lombok.Data;
 

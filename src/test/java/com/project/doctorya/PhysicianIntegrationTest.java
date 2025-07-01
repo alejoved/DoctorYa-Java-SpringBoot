@@ -17,14 +17,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.doctorya.auth.infrastructure.entity.Auth;
-import com.project.doctorya.auth.infrastructure.repository.IAuthJpaRepository;
+import com.project.doctorya.auth.infrastructure.entities.Auth;
+import com.project.doctorya.auth.infrastructure.repositories.IAuthJpaRepository;
 import com.project.doctorya.auth.rest.dto.AuthDTO;
 import com.project.doctorya.physician.rest.dto.PhysicianDTO;
 import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
 import com.project.doctorya.shared.Role;
-import com.project.doctorya.physician.infrastructure.entity.Physician;
-import com.project.doctorya.physician.infrastructure.repository.IPhysicianJpaRepository;
+import com.project.doctorya.physician.infrastructure.entities.Physician;
+import com.project.doctorya.physician.infrastructure.repositories.IPhysicianJpaRepository;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 

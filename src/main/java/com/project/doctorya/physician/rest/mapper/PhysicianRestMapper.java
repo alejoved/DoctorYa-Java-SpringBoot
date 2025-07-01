@@ -1,7 +1,7 @@
 package com.project.doctorya.physician.rest.mapper;
 
-import com.project.doctorya.auth.domain.model.AuthModel;
-import com.project.doctorya.physician.domain.model.PhysicianModel;
+import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.physician.domain.models.PhysicianModel;
 import com.project.doctorya.physician.rest.dto.PhysicianDTO;
 import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
 

@@ -1,12 +1,12 @@
 package com.project.doctorya.appointment.rest.mapper;
 
-import com.project.doctorya.appointment.domain.model.AppointmentModel;
+import com.project.doctorya.appointment.domain.models.AppointmentModel;
 import com.project.doctorya.appointment.rest.dto.AppointmentDTO;
 import com.project.doctorya.appointment.rest.dto.AppointmentResponseDTO;
-import com.project.doctorya.auth.domain.model.AuthModel;
-import com.project.doctorya.patient.domain.model.PatientModel;
+import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.patient.domain.models.PatientModel;
 import com.project.doctorya.patient.rest.dto.PatientResponseDTO;
-import com.project.doctorya.physician.domain.model.PhysicianModel;
+import com.project.doctorya.physician.domain.models.PhysicianModel;
 import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
 
 public class AppointmentRestMapper {

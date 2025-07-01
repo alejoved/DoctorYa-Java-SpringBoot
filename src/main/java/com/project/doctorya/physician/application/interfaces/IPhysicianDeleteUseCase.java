@@ -1,4 +1,4 @@
-package com.project.doctorya.physician.application.port;
+package com.project.doctorya.physician.application.interfaces;
 
 import java.util.UUID;
 

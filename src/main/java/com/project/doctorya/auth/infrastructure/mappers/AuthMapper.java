@@ -1,7 +1,7 @@
-package com.project.doctorya.auth.infrastructure.mapper;
+package com.project.doctorya.auth.infrastructure.mappers;
 
-import com.project.doctorya.auth.domain.model.AuthModel;
-import com.project.doctorya.auth.infrastructure.entity.Auth;
+import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.auth.infrastructure.entities.Auth;
 
 public class AuthMapper {
     public static AuthModel toDomain(Auth auth){

@@ -1,6 +1,6 @@
-package com.project.doctorya.auth.application.port;
+package com.project.doctorya.auth.application.interfaces;
 
-import com.project.doctorya.auth.domain.model.AuthModel;
+import com.project.doctorya.auth.domain.models.AuthModel;
 
 public interface IAuthRegisterUseCase {
     public AuthModel register(AuthModel authModel);

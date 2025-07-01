@@ -1,6 +1,8 @@
-package com.project.doctorya.patient.domain.model;
+package com.project.doctorya.patient.domain.models;
 import java.util.UUID;
-import com.project.doctorya.auth.domain.model.AuthModel;
+
+import com.project.doctorya.auth.domain.models.AuthModel;
+
 import lombok.Data;
 
 @Data
