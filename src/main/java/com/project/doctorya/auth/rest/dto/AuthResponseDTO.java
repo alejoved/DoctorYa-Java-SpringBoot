@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-public class AuthResponseDTO {
+public class AuthResponseDto {
     @Schema(description = "Primary identification for the admin, patient, physician")
     private String identification;
 }

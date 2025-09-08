@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class AppointmentDTO {
+public class AppointmentDto {
     @Schema(description = "Initial date of the appointment", example = "2025-05-10 14:00:00")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @NotNull

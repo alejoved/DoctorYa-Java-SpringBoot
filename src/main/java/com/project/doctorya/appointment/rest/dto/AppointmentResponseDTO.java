@@ -4,14 +4,14 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.project.doctorya.patient.rest.dto.PatientResponseDTO;
-import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
+import com.project.doctorya.patient.rest.dto.PatientResponseDto;
+import com.project.doctorya.physician.rest.dto.PhysicianResponseDto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-public class AppointmentResponseDTO {
+public class AppointmentResponseDto {
     @Schema(description = "Appointment ID")
     private UUID  id;
     @Schema(description = "Date for to start medical appointment", example = "2025-05-10 14:00:00")
@@ -23,7 +23,7 @@ public class AppointmentResponseDTO {
     @Schema(description = "Description about the appointment")
     private String reason;
     @Schema(description = "Main data about the patient")
-    private PatientResponseDTO patient;
+    private PatientResponseDto patient;
     @Schema(description = "Main data about the physician")
-    private PhysicianResponseDTO physician;
+    private PhysicianResponseDto physician;
 }

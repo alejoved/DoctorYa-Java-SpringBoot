@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-public class PatientResponseDTO {
+public class PatientResponseDto {
     @Schema(description = "Patient ID")
     private UUID id;
     @Schema(description = "Patient full name")

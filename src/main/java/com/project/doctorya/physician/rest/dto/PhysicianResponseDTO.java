@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-public class PhysicianResponseDTO {
+public class PhysicianResponseDto {
     @Schema(description = "Physician full name")
     private String name;
     @Schema(description = "General medical code")

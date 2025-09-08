@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.doctorya.auth.application.interfaces.IAuthLoginUseCase;
 import com.project.doctorya.auth.application.interfaces.IAuthRegisterUseCase;
 import com.project.doctorya.auth.domain.models.Auth;
-import com.project.doctorya.auth.rest.dto.AuthDTO;
-import com.project.doctorya.auth.rest.dto.AuthResponseDTO;
-import com.project.doctorya.auth.rest.dto.TokenResponseDTO;
+import com.project.doctorya.auth.rest.dto.AuthDto;
+import com.project.doctorya.auth.rest.dto.AuthResponseDto;
+import com.project.doctorya.auth.rest.dto.TokenResponseDto;
 import com.project.doctorya.auth.rest.mapper.AuthMapper;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,10 +40,10 @@ public class AuthController {
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })    
     @PostMapping("/login")
-    public ResponseEntity<TokenResponseDTO> login(@RequestBody @Valid AuthDTO authDTO) {
+    public ResponseEntity<TokenResponseDto> login(@RequestBody @Valid AuthDto authDTO) {
         Auth authModel = AuthMapper.toDomain(authDTO);
         String token = authLoginUseCase.login(authModel);
-        TokenResponseDTO tokenResponseDTO = AuthMapper.toTokenResponseDTO(token);
+        TokenResponseDto tokenResponseDTO = AuthMapper.toTokenResponseDTO(token);
         return ResponseEntity.ok(tokenResponseDTO);
     }
     @Operation(summary = "Sign up with credentials, identification and password")
@@ -53,10 +53,10 @@ public class AuthController {
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })  
     @PostMapping("/register")
-    public ResponseEntity<AuthResponseDTO> register(@RequestBody @Valid AuthDTO authDTO) {
+    public ResponseEntity<AuthResponseDto> register(@RequestBody @Valid AuthDto authDTO) {
         Auth authModel = AuthMapper.toDomain(authDTO);
         Auth response = authRegisterUseCase.register(authModel);
-        AuthResponseDTO authResponseDTO = AuthMapper.toDTO(response);
+        AuthResponseDto authResponseDTO = AuthMapper.toDTO(response);
         return ResponseEntity.ok(authResponseDTO);
     }
 }

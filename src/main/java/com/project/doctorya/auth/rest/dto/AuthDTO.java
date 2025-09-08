@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class AuthDTO {
+public class AuthDto {
     @Schema(description = "Identification for the login")
     @NotNull
     @Size(min = 4)

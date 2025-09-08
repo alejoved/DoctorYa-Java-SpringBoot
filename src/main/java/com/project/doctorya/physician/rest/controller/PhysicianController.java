@@ -22,8 +22,8 @@ import com.project.doctorya.physician.application.interfaces.IPhysicianDeleteUse
 import com.project.doctorya.physician.application.interfaces.IPhysicianGetUseCase;
 import com.project.doctorya.physician.application.interfaces.IPhysicianUpdateUseCase;
 import com.project.doctorya.physician.domain.models.Physician;
-import com.project.doctorya.physician.rest.dto.PhysicianDTO;
-import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
+import com.project.doctorya.physician.rest.dto.PhysicianDto;
+import com.project.doctorya.physician.rest.dto.PhysicianResponseDto;
 import com.project.doctorya.physician.rest.mapper.PhysicianRestMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -53,9 +53,9 @@ public class PhysicianController {
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping
-    public ResponseEntity<List<PhysicianResponseDTO>> getAll() {
+    public ResponseEntity<List<PhysicianResponseDto>> getAll() {
         List<Physician> physicians = physicianGetUseCase.execute();
-        List<PhysicianResponseDTO> physicianResponseDTOs = physicians.stream().map(PhysicianRestMapper::toDTO).collect(Collectors.toList());
+        List<PhysicianResponseDto> physicianResponseDTOs = physicians.stream().map(PhysicianRestMapper::toDto).collect(Collectors.toList());
         return ResponseEntity.ok(physicianResponseDTOs);
     }
 
@@ -67,10 +67,10 @@ public class PhysicianController {
     })
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
-    public ResponseEntity<PhysicianResponseDTO> getById(@Parameter(description = "uuid for filter physician") @PathVariable UUID id) {
+    public ResponseEntity<PhysicianResponseDto> getById(@Parameter(description = "uuid for filter physician") @PathVariable UUID id) {
         Physician physicianModel = physicianGetUseCase.executeById(id);
-        PhysicianResponseDTO physicianResponseDTO = PhysicianRestMapper.toDTO(physicianModel);
-        return ResponseEntity.ok(physicianResponseDTO);
+        PhysicianResponseDto physicianResponseDto = PhysicianRestMapper.toDto(physicianModel);
+        return ResponseEntity.ok(physicianResponseDto);
     }
 
     @Operation(summary = "Get an physician existing by identification")
@@ -80,10 +80,10 @@ public class PhysicianController {
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping("/identification/{identification}")
-    public ResponseEntity<PhysicianResponseDTO> getByIdentification(@Parameter(description = "Identification for filter physician") @PathVariable String identification) {
-        Physician physicianModel = physicianGetUseCase.executeByIdentification(identification);
-        PhysicianResponseDTO physicianResponseDTO = PhysicianRestMapper.toDTO(physicianModel);
-        return ResponseEntity.ok(physicianResponseDTO);
+    public ResponseEntity<PhysicianResponseDto> getByIdentification(@Parameter(description = "Identification for filter physician") @PathVariable String identification) {
+        Physician physician = physicianGetUseCase.executeByIdentification(identification);
+        PhysicianResponseDto physicianResponseDto = PhysicianRestMapper.toDto(physician);
+        return ResponseEntity.ok(physicianResponseDto);
     }
 
     @Operation(summary = "Create a new physician associated with a name and medical code")
@@ -94,10 +94,10 @@ public class PhysicianController {
     })
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<PhysicianResponseDTO> create(@RequestBody @Valid PhysicianDTO physicianDTO) {
+    public ResponseEntity<PhysicianResponseDto> create(@RequestBody @Valid PhysicianDto physicianDTO) {
         Physician physicianModel = PhysicianRestMapper.toDomain(physicianDTO);
         Physician response = physicianCreateUseCase.execute(physicianModel);
-        PhysicianResponseDTO physicianResponseDTO = PhysicianRestMapper.toDTO(response);
+        PhysicianResponseDto physicianResponseDTO = PhysicianRestMapper.toDto(response);
         return ResponseEntity.ok(physicianResponseDTO);
     }
     @Operation(summary = "Update data about a physician by uuid")
@@ -107,11 +107,11 @@ public class PhysicianController {
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @PutMapping("/{id}")
-    public ResponseEntity<PhysicianResponseDTO> update(@PathVariable UUID id, @RequestBody @Valid PhysicianDTO physicianDTO) {
-        Physician physicianModel = PhysicianRestMapper.toDomain(physicianDTO);
-        Physician response = physicianUpdateUseCase.execute(physicianModel, id);
-        PhysicianResponseDTO physicianResponseDTO = PhysicianRestMapper.toDTO(response);
-        return ResponseEntity.ok(physicianResponseDTO);
+    public ResponseEntity<PhysicianResponseDto> update(@PathVariable UUID id, @RequestBody @Valid PhysicianDto physicianDto) {
+        Physician physician = PhysicianRestMapper.toDomain(physicianDto);
+        Physician response = physicianUpdateUseCase.execute(physician, id);
+        PhysicianResponseDto physicianResponseDto = PhysicianRestMapper.toDto(response);
+        return ResponseEntity.ok(physicianResponseDto);
     }
     @Operation(summary = "Update data about a physician by uuid")
     @ApiResponses(value = {

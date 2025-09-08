@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class PhysicianDTO {
+public class PhysicianDto {
     @Schema(description = "Primary identification for the physician")
     @NotNull
     private String identification;

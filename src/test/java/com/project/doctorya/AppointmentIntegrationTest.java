@@ -14,13 +14,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
 import com.project.doctorya.auth.infrastructure.repositories.IAuthJpaRepository;
-import com.project.doctorya.auth.rest.dto.AuthDTO;
+import com.project.doctorya.auth.rest.dto.AuthDto;
 import com.project.doctorya.patient.infrastructure.entities.PatientEntity;
 import com.project.doctorya.patient.infrastructure.repositories.IPatientJpaRepository;
 import com.project.doctorya.physician.infrastructure.entities.PhysicianEntity;
 import com.project.doctorya.physician.infrastructure.repositories.IPhysicianJpaRepository;
-import com.project.doctorya.appointment.rest.dto.AppointmentDTO;
-import com.project.doctorya.appointment.rest.dto.AppointmentResponseDTO;
+import com.project.doctorya.appointment.rest.dto.AppointmentDto;
+import com.project.doctorya.appointment.rest.dto.AppointmentResponseDto;
 import com.project.doctorya.appointment.infrastructure.entities.AppointmentEntity;
 import com.project.doctorya.appointment.infrastructure.repositories.IAppointmentJpaRepository;
 
@@ -63,7 +63,7 @@ public class AppointmentIntegrationTest {
 
     @BeforeEach
     void beforeTest() throws Exception {
-        AuthDTO authDTO = new AuthDTO();
+        AuthDto authDTO = new AuthDto();
         authDTO.setIdentification("1053847601");
         authDTO.setPassword("12345");
 
@@ -73,7 +73,7 @@ public class AppointmentIntegrationTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        AuthDTO loginDTO = new AuthDTO();
+        AuthDto loginDTO = new AuthDto();
         loginDTO.setIdentification(authDTO.getIdentification());
         loginDTO.setPassword(authDTO.getPassword());
 
@@ -122,7 +122,7 @@ public class AppointmentIntegrationTest {
 
     @Test
     void testCreateAppointment() throws Exception {
-        AppointmentDTO appointmentDTO = new AppointmentDTO();
+        AppointmentDto appointmentDTO = new AppointmentDto();
         appointmentDTO.setStartDate(Timestamp.valueOf("2025-05-01 10:00:00"));
         appointmentDTO.setDuration(20);
         appointmentDTO.setReason("Test Reason");
@@ -138,7 +138,7 @@ public class AppointmentIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        AppointmentResponseDTO appointment = objectMapper.readValue(responseJson, AppointmentResponseDTO.class);
+        AppointmentResponseDto appointment = objectMapper.readValue(responseJson, AppointmentResponseDto.class);
         assertNotNull(appointment);
         assertEquals(appointment.getPatient().getIdentification(), appointmentDTO.getPatientIdentification());
         assertEquals(appointment.getPhysician().getIdentification(), appointmentDTO.getPhysicianIdentification());
@@ -148,7 +148,7 @@ public class AppointmentIntegrationTest {
 
     @Test
     void testPatientNotFoundCreateAppointment() throws Exception {
-        AppointmentDTO appointmentDTO = new AppointmentDTO();
+        AppointmentDto appointmentDTO = new AppointmentDto();
         appointmentDTO.setStartDate(Timestamp.valueOf("2025-05-01 10:00:00"));
         appointmentDTO.setDuration(20);
         appointmentDTO.setReason("Test Reason");
@@ -172,7 +172,7 @@ public class AppointmentIntegrationTest {
 
     @Test
     void testPhysicianNotFoundCreateAppointment() throws Exception {
-        AppointmentDTO appointmentDTO = new AppointmentDTO();
+        AppointmentDto appointmentDTO = new AppointmentDto();
         appointmentDTO.setStartDate(Timestamp.valueOf("2025-05-01 10:00:00"));
         appointmentDTO.setDuration(20);
         appointmentDTO.setReason("Test Reason");
@@ -205,7 +205,7 @@ public class AppointmentIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        List<AppointmentResponseDTO> appointmentResponseDTO = objectMapper.readValue(responseJson, new TypeReference<List<AppointmentResponseDTO>>(){});
+        List<AppointmentResponseDto> appointmentResponseDTO = objectMapper.readValue(responseJson, new TypeReference<List<AppointmentResponseDto>>(){});
         assertNotNull(appointmentResponseDTO);
         assertFalse(appointmentResponseDTO.isEmpty());
     }
@@ -220,7 +220,7 @@ public class AppointmentIntegrationTest {
                             .andReturn()
                             .getResponse()
                             .getContentAsString();
-        AppointmentResponseDTO appointmentResponseDTO = objectMapper.readValue(responseJson, AppointmentResponseDTO.class);
+        AppointmentResponseDto appointmentResponseDTO = objectMapper.readValue(responseJson, AppointmentResponseDto.class);
         assertNotNull(appointmentResponseDTO);
         assertEquals(appointmentResponseDTO.getPatient().getIdentification(), appointment.getPatientEntity().getAuthEntity().getIdentification());
         assertEquals(appointmentResponseDTO.getPhysician().getIdentification(), appointment.getPhysicianEntity().getAuthEntity().getIdentification());
@@ -247,7 +247,7 @@ public class AppointmentIntegrationTest {
     @Test
     void testUpdateAppointment() throws Exception {
         AppointmentEntity appointment = appointmentRepository.save(this.appointmentDB);
-        AppointmentDTO appointmentDTO = new AppointmentDTO();
+        AppointmentDto appointmentDTO = new AppointmentDto();
         appointmentDTO.setPatientIdentification(appointment.getPatientEntity().getAuthEntity().getIdentification());
         appointmentDTO.setPhysicianIdentification(appointment.getPhysicianEntity().getAuthEntity().getIdentification());
         appointmentDTO.setDuration(50);
@@ -262,7 +262,7 @@ public class AppointmentIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        AppointmentResponseDTO appointmentResponseDTO = objectMapper.readValue(responseJson, AppointmentResponseDTO.class);
+        AppointmentResponseDto appointmentResponseDTO = objectMapper.readValue(responseJson, AppointmentResponseDto.class);
         assertNotNull(appointmentResponseDTO);
         assertEquals(appointmentResponseDTO.getPatient().getIdentification(), appointmentDTO.getPatientIdentification());
         assertEquals(appointmentResponseDTO.getPhysician().getIdentification(), appointmentDTO.getPhysicianIdentification());
@@ -273,7 +273,7 @@ public class AppointmentIntegrationTest {
     @Test
     void testUpdateNotFoundAppointment() throws Exception {
         AppointmentEntity appointment = appointmentRepository.save(this.appointmentDB);
-        AppointmentDTO appointmentDTO = new AppointmentDTO();
+        AppointmentDto appointmentDTO = new AppointmentDto();
         appointmentDTO.setPatientIdentification(appointment.getPatientEntity().getAuthEntity().getIdentification());
         appointmentDTO.setPhysicianIdentification(appointment.getPhysicianEntity().getAuthEntity().getIdentification());
         appointmentDTO.setDuration(50);

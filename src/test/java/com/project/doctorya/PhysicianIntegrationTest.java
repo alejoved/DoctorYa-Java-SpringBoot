@@ -19,8 +19,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
 import com.project.doctorya.auth.infrastructure.repositories.IAuthJpaRepository;
-import com.project.doctorya.auth.rest.dto.AuthDTO;
-import com.project.doctorya.physician.rest.dto.PhysicianDTO;
+import com.project.doctorya.auth.rest.dto.AuthDto;
+import com.project.doctorya.physician.rest.dto.PhysicianDto;
 import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
 import com.project.doctorya.shared.Role;
 import com.project.doctorya.physician.infrastructure.entities.PhysicianEntity;
@@ -51,7 +51,7 @@ public class PhysicianIntegrationTest {
 
     @BeforeEach
     void beforeTest() throws Exception {
-        AuthDTO registerDTO = new AuthDTO();
+        AuthDto registerDTO = new AuthDto();
         registerDTO.setIdentification("1053847601");
         registerDTO.setPassword("12345");
 
@@ -61,7 +61,7 @@ public class PhysicianIntegrationTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        AuthDTO loginDTO = new AuthDTO();
+        AuthDto loginDTO = new AuthDto();
         loginDTO.setIdentification(registerDTO.getIdentification());
         loginDTO.setPassword(registerDTO.getPassword());
 
@@ -93,7 +93,7 @@ public class PhysicianIntegrationTest {
 
     @Test
     void testCreatePhysician() throws Exception {
-        PhysicianDTO physicianDTO = new PhysicianDTO();
+        PhysicianDto physicianDTO = new PhysicianDto();
         physicianDTO.setIdentification("1053847620");
         physicianDTO.setPassword("password");
         physicianDTO.setName("Test Name");
@@ -119,7 +119,7 @@ public class PhysicianIntegrationTest {
     @Test
     void testExistsCreatePhysician() throws Exception {
         physicianRepository.save(this.physicianDB);
-        PhysicianDTO physicianDTO = new PhysicianDTO();
+        PhysicianDto physicianDTO = new PhysicianDto();
         physicianDTO.setIdentification("1053847620");
         physicianDTO.setPassword("password");
         physicianDTO.setName("Test Name");
@@ -230,7 +230,7 @@ public class PhysicianIntegrationTest {
     @Test
     void testUpdatePhysician() throws Exception {
         PhysicianEntity physician = physicianRepository.save(this.physicianDB);
-        PhysicianDTO physicianDTO = new PhysicianDTO();
+        PhysicianDto physicianDTO = new PhysicianDto();
         physicianDTO.setIdentification(physician.getAuthEntity().getIdentification());
         physicianDTO.setPassword(physician.getAuthEntity().getPassword());
         physicianDTO.setName("Test Name 2");
@@ -257,7 +257,7 @@ public class PhysicianIntegrationTest {
     void testNotFoundUpdatePhysician() throws Exception {
         UUID id = UUID.randomUUID();
         PhysicianEntity physician = physicianRepository.save(this.physicianDB);
-        PhysicianDTO physicianDTO = new PhysicianDTO();
+        PhysicianDto physicianDTO = new PhysicianDto();
         physicianDTO.setIdentification(physician.getAuthEntity().getIdentification());
         physicianDTO.setPassword(physician.getAuthEntity().getPassword());
         physicianDTO.setName("Test Name 2");

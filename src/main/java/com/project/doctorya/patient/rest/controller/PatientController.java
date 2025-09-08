@@ -22,8 +22,8 @@ import com.project.doctorya.patient.application.interfaces.IPatientDeleteUseCase
 import com.project.doctorya.patient.application.interfaces.IPatientGetUseCase;
 import com.project.doctorya.patient.application.interfaces.IPatientUpdateUseCase;
 import com.project.doctorya.patient.domain.models.Patient;
-import com.project.doctorya.patient.rest.dto.PatientDTO;
-import com.project.doctorya.patient.rest.dto.PatientResponseDTO;
+import com.project.doctorya.patient.rest.dto.PatientDto;
+import com.project.doctorya.patient.rest.dto.PatientResponseDto;
 import com.project.doctorya.patient.rest.mapper.PatientRestMapper;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -54,9 +54,9 @@ public class PatientController {
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping
-    public ResponseEntity<List<PatientResponseDTO>> getAll() {
+    public ResponseEntity<List<PatientResponseDto>> getAll() {
         List<Patient> patients = patientGetUsecase.execute();
-        List<PatientResponseDTO> patientResponseDTO = patients.stream().map(PatientRestMapper::toDTO).collect(Collectors.toList());
+        List<PatientResponseDto> patientResponseDTO = patients.stream().map(PatientRestMapper::toDto).collect(Collectors.toList());
         return ResponseEntity.ok(patientResponseDTO);
     }
 
@@ -68,9 +68,9 @@ public class PatientController {
     })
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
-    public ResponseEntity<PatientResponseDTO> getById(@Parameter(description = "uuid for filter patient") @PathVariable UUID id) {
+    public ResponseEntity<PatientResponseDto> getById(@Parameter(description = "uuid for filter patient") @PathVariable UUID id) {
         Patient patient = patientGetUsecase.executeById(id);
-        PatientResponseDTO patientResponseDTO = PatientRestMapper.toDTO(patient);
+        PatientResponseDto patientResponseDTO = PatientRestMapper.toDto(patient);
         return ResponseEntity.ok(patientResponseDTO);
     }
 
@@ -81,9 +81,9 @@ public class PatientController {
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping("/identification/{identification}")
-    public ResponseEntity<PatientResponseDTO> getByIdentification(@Parameter(description = "Identification for filter patient") @PathVariable String identification) {
+    public ResponseEntity<PatientResponseDto> getByIdentification(@Parameter(description = "Identification for filter patient") @PathVariable String identification) {
         Patient patient = patientGetUsecase.executeByIdentification(identification);
-        PatientResponseDTO patientResponseDTO = PatientRestMapper.toDTO(patient);
+        PatientResponseDto patientResponseDTO = PatientRestMapper.toDto(patient);
         return ResponseEntity.ok(patientResponseDTO);
     }
 
@@ -95,10 +95,10 @@ public class PatientController {
     })
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<PatientResponseDTO> create(@RequestBody @Valid PatientDTO patientDTO) {
+    public ResponseEntity<PatientResponseDto> create(@RequestBody @Valid PatientDto patientDTO) {
         Patient patient = PatientRestMapper.toDomain(patientDTO);
         Patient response = patientCreateUseCase.execute(patient);
-        PatientResponseDTO patientResponseDTO = PatientRestMapper.toDTO(response);
+        PatientResponseDto patientResponseDTO = PatientRestMapper.toDto(response);
         return ResponseEntity.ok(patientResponseDTO);
     }
     @Operation(summary = "Update data about a patient by uuid")
@@ -108,10 +108,10 @@ public class PatientController {
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @PutMapping("/{id}")
-    public ResponseEntity<PatientResponseDTO> update(@Parameter(description = "uuid for filter patient") @PathVariable UUID id, @RequestBody @Valid PatientDTO patientDTO) {
+    public ResponseEntity<PatientResponseDto> update(@Parameter(description = "uuid for filter patient") @PathVariable UUID id, @RequestBody @Valid PatientDto patientDTO) {
         Patient patient = PatientRestMapper.toDomain(patientDTO);
         Patient response = patientUpdateUseCase.execute(patient, id);
-        PatientResponseDTO patientResponseDTO = PatientRestMapper.toDTO(response);
+        PatientResponseDto patientResponseDTO = PatientRestMapper.toDto(response);
         return ResponseEntity.ok(patientResponseDTO);
     }
     @Operation(summary = "Delete an patient by uuid")

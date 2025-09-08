@@ -14,9 +14,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
 import com.project.doctorya.auth.infrastructure.repositories.IAuthJpaRepository;
-import com.project.doctorya.auth.rest.dto.AuthDTO;
-import com.project.doctorya.patient.rest.dto.PatientDTO;
-import com.project.doctorya.patient.rest.dto.PatientResponseDTO;
+import com.project.doctorya.auth.rest.dto.AuthDto;
+import com.project.doctorya.patient.rest.dto.PatientDto;
+import com.project.doctorya.patient.rest.dto.PatientResponseDto;
 import com.project.doctorya.patient.infrastructure.entities.PatientEntity;
 import com.project.doctorya.patient.infrastructure.repositories.IPatientJpaRepository;
 
@@ -51,7 +51,7 @@ public class PatientIntegrationTest {
 
     @BeforeEach
     void beforeTest() throws Exception {
-        AuthDTO registerDTO = new AuthDTO();
+        AuthDto registerDTO = new AuthDto();
         registerDTO.setIdentification("1053847601");
         registerDTO.setPassword("12345");
 
@@ -61,7 +61,7 @@ public class PatientIntegrationTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        AuthDTO loginDTO = new AuthDTO();
+        AuthDto loginDTO = new AuthDto();
         loginDTO.setIdentification(registerDTO.getIdentification());
         loginDTO.setPassword(registerDTO.getPassword());
 
@@ -91,7 +91,7 @@ public class PatientIntegrationTest {
 
     @Test
     void testCreatePatient() throws Exception {
-        PatientDTO patientDTO = new PatientDTO();
+        PatientDto patientDTO = new PatientDto();
         patientDTO.setIdentification("1053847610");
         patientDTO.setPassword("password");
         patientDTO.setName("Test Name");
@@ -106,7 +106,7 @@ public class PatientIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PatientResponseDTO patient = objectMapper.readValue(responseJson, PatientResponseDTO.class);
+        PatientResponseDto patient = objectMapper.readValue(responseJson, PatientResponseDto.class);
         assertNotNull(patient);
         assertEquals(patient.getIdentification(), patientDTO.getIdentification());
         assertEquals(patient.getName(), patientDTO.getName());
@@ -116,7 +116,7 @@ public class PatientIntegrationTest {
     @Test
     void testExistsCreatePatient() throws Exception {
         patientRepository.save(this.patientDB);
-        PatientDTO patientDTO = new PatientDTO();
+        PatientDto patientDTO = new PatientDto();
         patientDTO.setIdentification("1053847610");
         patientDTO.setPassword("password");
         patientDTO.setName("Test Name");
@@ -147,7 +147,7 @@ public class PatientIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        List<PatientResponseDTO> patientResponseDTO = objectMapper.readValue(responseJson, new TypeReference<List<PatientResponseDTO>>(){});
+        List<PatientResponseDto> patientResponseDTO = objectMapper.readValue(responseJson, new TypeReference<List<PatientResponseDto>>(){});
         assertNotNull(patientResponseDTO);
         assertFalse(patientResponseDTO.isEmpty());
     }
@@ -163,7 +163,7 @@ public class PatientIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
+        PatientResponseDto patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDto.class);
         assertNotNull(patientResponseDTO);
         assertEquals(patientResponseDTO.getIdentification(), patient.getAuthEntity().getIdentification());
         assertEquals(patientResponseDTO.getName(), patient.getName());
@@ -197,7 +197,7 @@ public class PatientIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
+        PatientResponseDto patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDto.class);
         assertNotNull(patientResponseDTO);
         assertEquals(patientResponseDTO.getIdentification(), patient.getAuthEntity().getIdentification());
         assertEquals(patientResponseDTO.getName(), patient.getName());
@@ -223,7 +223,7 @@ public class PatientIntegrationTest {
     @Test
     void testUpdatePatient() throws Exception {
         PatientEntity patient = patientRepository.save(this.patientDB);
-        PatientDTO patientDTO = new PatientDTO();
+        PatientDto patientDTO = new PatientDto();
         patientDTO.setIdentification(patient.getAuthEntity().getIdentification());
         patientDTO.setPassword(patient.getAuthEntity().getPassword());
         patientDTO.setName("Test Name 2");
@@ -237,7 +237,7 @@ public class PatientIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
+        PatientResponseDto patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDto.class);
         assertNotNull(patientResponseDTO);
         assertEquals(patientResponseDTO.getIdentification(), patientDTO.getIdentification());
         assertEquals(patientResponseDTO.getName(), patientDTO.getName());
@@ -248,7 +248,7 @@ public class PatientIntegrationTest {
     void testNotFoundUpdatePatient() throws Exception {
         UUID id = UUID.randomUUID();
         PatientEntity patient = patientRepository.save(this.patientDB);
-        PatientDTO patientDTO = new PatientDTO();
+        PatientDto patientDTO = new PatientDto();
         patientDTO.setIdentification(patient.getAuthEntity().getIdentification());
         patientDTO.setPassword(patient.getAuthEntity().getPassword());
         patientDTO.setName("Test Name 2");

@@ -22,8 +22,8 @@ import com.project.doctorya.appointment.application.interfaces.IAppointmentDelet
 import com.project.doctorya.appointment.application.interfaces.IAppointmentGetUseCase;
 import com.project.doctorya.appointment.application.interfaces.IAppointmentUpdateUseCase;
 import com.project.doctorya.appointment.domain.models.Appointment;
-import com.project.doctorya.appointment.rest.dto.AppointmentDTO;
-import com.project.doctorya.appointment.rest.dto.AppointmentResponseDTO;
+import com.project.doctorya.appointment.rest.dto.AppointmentDto;
+import com.project.doctorya.appointment.rest.dto.AppointmentResponseDto;
 import com.project.doctorya.appointment.rest.mapper.AppointmentRestMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -54,9 +54,9 @@ public class AppointmentController {
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping
-    public ResponseEntity<List<AppointmentResponseDTO>> getAll() {
+    public ResponseEntity<List<AppointmentResponseDto>> getAll() {
         List<Appointment> appointmentModels = appointmentGetUseCase.execute();
-        List<AppointmentResponseDTO> appointments = appointmentModels.stream().map(AppointmentRestMapper::toDTO).collect(Collectors.toList());
+        List<AppointmentResponseDto> appointments = appointmentModels.stream().map(AppointmentRestMapper::toDTO).collect(Collectors.toList());
         return ResponseEntity.ok(appointments);
     }
 
@@ -67,9 +67,9 @@ public class AppointmentController {
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @GetMapping("/{id}")
-    public ResponseEntity<AppointmentResponseDTO> getById(@Parameter(description = "uuid for filter appointment") @PathVariable UUID id) {
+    public ResponseEntity<AppointmentResponseDto> getById(@Parameter(description = "uuid for filter appointment") @PathVariable UUID id) {
         Appointment appointmentModel = appointmentGetUseCase.executeById(id);
-        AppointmentResponseDTO appointment = AppointmentRestMapper.toDTO(appointmentModel);
+        AppointmentResponseDto appointment = AppointmentRestMapper.toDTO(appointmentModel);
         return ResponseEntity.ok(appointment);
     }
 
@@ -81,10 +81,10 @@ public class AppointmentController {
     })
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<AppointmentResponseDTO> create(@RequestBody @Valid AppointmentDTO appointmentDTO) {
+    public ResponseEntity<AppointmentResponseDto> create(@RequestBody @Valid AppointmentDto appointmentDTO) {
         Appointment appointmentModel = AppointmentRestMapper.toDomain(appointmentDTO);
         Appointment response = appointmentCreateUseCase.execute(appointmentModel);
-        AppointmentResponseDTO appointment = AppointmentRestMapper.toDTO(response);
+        AppointmentResponseDto appointment = AppointmentRestMapper.toDTO(response);
         return ResponseEntity.ok(appointment);
     }
 
@@ -95,10 +95,10 @@ public class AppointmentController {
         @ApiResponse(responseCode = "500", description = "Internal server error",content = @Content)
     })
     @PutMapping("/{id}")
-    public ResponseEntity<AppointmentResponseDTO> update(@Parameter(description = "uuid for filter appointment") @PathVariable UUID id, @RequestBody @Valid AppointmentDTO appointmentDTO) {
+    public ResponseEntity<AppointmentResponseDto> update(@Parameter(description = "uuid for filter appointment") @PathVariable UUID id, @RequestBody @Valid AppointmentDto appointmentDTO) {
         Appointment appointmentModel = AppointmentRestMapper.toDomain(appointmentDTO);
         Appointment response = appointmentUpdateUseCase.execute(appointmentModel, id);
-        AppointmentResponseDTO appointment = AppointmentRestMapper.toDTO(response);
+        AppointmentResponseDto appointment = AppointmentRestMapper.toDTO(response);
         return ResponseEntity.ok(appointment);
     }
 
