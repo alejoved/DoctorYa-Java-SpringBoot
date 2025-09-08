@@ -6,10 +6,10 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.project.doctorya.physician.infrastructure.entities.Physician;
+import com.project.doctorya.physician.infrastructure.entities.PhysicianEntity;
 
 @Repository
-public interface IPhysicianJpaRepository extends JpaRepository<Physician, UUID> {
-    Optional<Physician> findByAuthIdentification(String identification);
+public interface IPhysicianJpaRepository extends JpaRepository<PhysicianEntity, UUID> {
+    Optional<PhysicianEntity> findByAuthEntityIdentification(String identification);
 
 }

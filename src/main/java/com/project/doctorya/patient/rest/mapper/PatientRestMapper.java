@@ -1,26 +1,27 @@
 package com.project.doctorya.patient.rest.mapper;
 
-import com.project.doctorya.auth.domain.models.AuthModel;
-import com.project.doctorya.patient.domain.models.PatientModel;
+import com.project.doctorya.auth.domain.models.Auth;
+import com.project.doctorya.patient.domain.models.Patient;
 import com.project.doctorya.patient.rest.dto.PatientDTO;
 import com.project.doctorya.patient.rest.dto.PatientResponseDTO;
 
 public class PatientRestMapper {
-    public static PatientModel toDomain(PatientDTO patientDTO){
-        PatientModel patientModel = new PatientModel();
-        patientModel.setName(patientDTO.getName());
-        patientModel.setInsurance(patientDTO.getInsurance());
-        patientModel.setAuthModel(new AuthModel());
-        patientModel.getAuthModel().setIdentification(patientDTO.getIdentification());
-        patientModel.getAuthModel().setPassword(patientDTO.getPassword());
-        return patientModel;
+    public static Patient toDomain(PatientDTO patientDTO){
+        Patient patient = new Patient();
+        patient.setName(patientDTO.getName());
+        patient.setInsurance(patientDTO.getInsurance());
+        patient.setAuth(new Auth());
+        patient.getAuth().setIdentification(patientDTO.getIdentification());
+        patient.getAuth().setPassword(patientDTO.getPassword());
+        return patient;
 
     }
-    public static PatientResponseDTO toDTO(PatientModel patientModel){
+    public static PatientResponseDTO toDTO(Patient patient){
         PatientResponseDTO patientResponseDTO = new PatientResponseDTO();
-        patientResponseDTO.setName(patientModel.getName());
-        patientResponseDTO.setInsurance(patientModel.getInsurance());
-        patientResponseDTO.setIdentification(patientModel.getAuthModel().getIdentification());
+        patientResponseDTO.setId(patient.getId());
+        patientResponseDTO.setName(patient.getName());
+        patientResponseDTO.setInsurance(patient.getInsurance());
+        patientResponseDTO.setIdentification(patient.getAuth().getIdentification());
         return patientResponseDTO;
     }
 }

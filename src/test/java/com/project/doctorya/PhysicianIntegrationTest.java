@@ -17,13 +17,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.doctorya.auth.infrastructure.entities.Auth;
+import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
 import com.project.doctorya.auth.infrastructure.repositories.IAuthJpaRepository;
 import com.project.doctorya.auth.rest.dto.AuthDTO;
 import com.project.doctorya.physician.rest.dto.PhysicianDTO;
 import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
 import com.project.doctorya.shared.Role;
-import com.project.doctorya.physician.infrastructure.entities.Physician;
+import com.project.doctorya.physician.infrastructure.entities.PhysicianEntity;
 import com.project.doctorya.physician.infrastructure.repositories.IPhysicianJpaRepository;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -47,7 +47,7 @@ public class PhysicianIntegrationTest {
 
     private String accessToken;
     
-    private Physician physicianDB;
+    private PhysicianEntity physicianDB;
 
     @BeforeEach
     void beforeTest() throws Exception {
@@ -75,14 +75,14 @@ public class PhysicianIntegrationTest {
 
         JsonNode jsonNode = objectMapper.readTree(response);
         accessToken = jsonNode.get("token").asText(); 
-        physicianDB = new Physician();
+        physicianDB = new PhysicianEntity();
         physicianDB.setName("Test Name");
         physicianDB.setCode("Test Code");
         physicianDB.setSpeciality("Test Speciality");
-        physicianDB.setAuth(new Auth());
-        physicianDB.getAuth().setIdentification("1053847620");
-        physicianDB.getAuth().setPassword("12345");
-        physicianDB.getAuth().setRole(Role.PHYSICIAN);
+        physicianDB.setAuthEntity(new AuthEntity());
+        physicianDB.getAuthEntity().setIdentification("1053847620");
+        physicianDB.getAuthEntity().setPassword("12345");
+        physicianDB.getAuthEntity().setRole(Role.PHYSICIAN);
     }
 
     @AfterEach
@@ -159,7 +159,7 @@ public class PhysicianIntegrationTest {
 
     @Test
     void testGetByIdPhysician() throws Exception {
-        Physician physician = physicianRepository.save(this.physicianDB);
+        PhysicianEntity physician = physicianRepository.save(this.physicianDB);
         String responseJson = mockMvc.perform(get("/physician/"+physician.getId())
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
@@ -170,7 +170,7 @@ public class PhysicianIntegrationTest {
 
         PhysicianResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
         assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getIdentification(), physician.getAuth().getIdentification());
+        assertEquals(patientResponseDTO.getIdentification(), physician.getAuthEntity().getIdentification());
         assertEquals(patientResponseDTO.getName(), physician.getName());
         assertEquals(patientResponseDTO.getCode(), physician.getCode());
         assertEquals(patientResponseDTO.getSpeciality(), physician.getSpeciality());
@@ -194,8 +194,8 @@ public class PhysicianIntegrationTest {
 
     @Test
     void testGetByIdentificationPhysician() throws Exception {
-        Physician physician = physicianRepository.save(physicianDB);
-        String responseJson = mockMvc.perform(get("/physician/identification/" + physician.getAuth().getIdentification())
+        PhysicianEntity physician = physicianRepository.save(physicianDB);
+        String responseJson = mockMvc.perform(get("/physician/identification/" + physician.getAuthEntity().getIdentification())
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
                             .andExpect(status().isOk())
@@ -205,7 +205,7 @@ public class PhysicianIntegrationTest {
 
         PhysicianResponseDTO physicianResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
         assertNotNull(physicianResponseDTO);
-        assertEquals(physicianResponseDTO.getIdentification(), physician.getAuth().getIdentification());
+        assertEquals(physicianResponseDTO.getIdentification(), physician.getAuthEntity().getIdentification());
         assertEquals(physicianResponseDTO.getName(), physician.getName());
         assertEquals(physicianResponseDTO.getCode(), physician.getCode());
         assertEquals(physicianResponseDTO.getSpeciality(), physician.getSpeciality());
@@ -229,10 +229,10 @@ public class PhysicianIntegrationTest {
 
     @Test
     void testUpdatePhysician() throws Exception {
-        Physician physician = physicianRepository.save(this.physicianDB);
+        PhysicianEntity physician = physicianRepository.save(this.physicianDB);
         PhysicianDTO physicianDTO = new PhysicianDTO();
-        physicianDTO.setIdentification(physician.getAuth().getIdentification());
-        physicianDTO.setPassword(physician.getAuth().getPassword());
+        physicianDTO.setIdentification(physician.getAuthEntity().getIdentification());
+        physicianDTO.setPassword(physician.getAuthEntity().getPassword());
         physicianDTO.setName("Test Name 2");
         physicianDTO.setCode("Test Code 2");
         physicianDTO.setSpeciality("Test Speciality 2");
@@ -256,10 +256,10 @@ public class PhysicianIntegrationTest {
     @Test
     void testNotFoundUpdatePhysician() throws Exception {
         UUID id = UUID.randomUUID();
-        Physician physician = physicianRepository.save(this.physicianDB);
+        PhysicianEntity physician = physicianRepository.save(this.physicianDB);
         PhysicianDTO physicianDTO = new PhysicianDTO();
-        physicianDTO.setIdentification(physician.getAuth().getIdentification());
-        physicianDTO.setPassword(physician.getAuth().getPassword());
+        physicianDTO.setIdentification(physician.getAuthEntity().getIdentification());
+        physicianDTO.setPassword(physician.getAuthEntity().getPassword());
         physicianDTO.setName("Test Name 2");
         physicianDTO.setCode("Test Code 2");
         physicianDTO.setSpeciality("Test Speciality 2");
@@ -280,7 +280,7 @@ public class PhysicianIntegrationTest {
 
     @Test
     void testDeletePhysician() throws Exception {
-        Physician physician = physicianRepository.save(this.physicianDB);
+        PhysicianEntity physician = physicianRepository.save(this.physicianDB);
         mockMvc.perform(delete("/physician/"+ physician.getId())
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON))

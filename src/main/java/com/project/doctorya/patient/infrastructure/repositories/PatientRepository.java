@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.project.doctorya.exceptions.EntityNotExistsException;
-import com.project.doctorya.patient.domain.models.PatientModel;
+import com.project.doctorya.patient.domain.models.Patient;
 import com.project.doctorya.patient.domain.repositories.IPatientRepository;
-import com.project.doctorya.patient.infrastructure.entities.Patient;
+import com.project.doctorya.patient.infrastructure.entities.PatientEntity;
 import com.project.doctorya.patient.infrastructure.mappers.PatientMapper;
 import com.project.doctorya.shared.Constants;
 
@@ -24,14 +24,14 @@ public class PatientRepository implements IPatientRepository {
     private IPatientJpaRepository patientRepository;
 
     @Override
-    public List<PatientModel> get() {
-        List<Patient> patients = patientRepository.findAll();
+    public List<Patient> get() {
+        List<PatientEntity> patients = patientRepository.findAll();
         return patients.stream().map(PatientMapper::toDomain).collect(Collectors.toList());
     }
 
     @Override
-    public PatientModel getById(UUID id) {
-        Optional<Patient> patient = patientRepository.findById(id);
+    public Patient getById(UUID id) {
+        Optional<PatientEntity> patient = patientRepository.findById(id);
         if(patient.isEmpty()){
             return null;
         }
@@ -40,8 +40,8 @@ public class PatientRepository implements IPatientRepository {
     }
 
     @Override
-    public PatientModel getByIdentification(String identification) {
-        Optional<Patient> patient = patientRepository.findByAuthIdentification(identification);
+    public Patient getByIdentification(String identification) {
+        Optional<PatientEntity> patient = patientRepository.findByAuthEntityIdentification(identification);
         if(patient.isEmpty()){
             return null;
         }
@@ -49,22 +49,22 @@ public class PatientRepository implements IPatientRepository {
     }
 
     @Override
-    public PatientModel create(PatientModel patientModel) {
-        Patient patient = PatientMapper.toEntity(patientModel);
-        Patient response = patientRepository.save(patient);
+    public Patient create(Patient patient) {
+        PatientEntity patientEntity = PatientMapper.toEntity(patient);
+        PatientEntity response = patientRepository.save(patientEntity);
         return PatientMapper.toDomain(response);
     }
 
     @Override
-    public PatientModel update(PatientModel patientModel) {
-        Patient patient = PatientMapper.toEntity(patientModel);
-        Patient response = patientRepository.save(patient);
+    public Patient update(Patient patient) {
+        PatientEntity patientEntity = PatientMapper.toEntity(patient);
+        PatientEntity response = patientRepository.save(patientEntity);
         return PatientMapper.toDomain(response);
     }
 
     @Override
     public void delete(UUID id) {
-        Optional<Patient> patient = patientRepository.findById(id);
+        Optional<PatientEntity> patient = patientRepository.findById(id);
         if(patient.isEmpty()){
             throw new EntityNotExistsException(Constants.patientNotFound);
         }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.doctorya.auth.application.interfaces.IAuthLoginUseCase;
 import com.project.doctorya.auth.application.interfaces.IAuthRegisterUseCase;
-import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.auth.domain.models.Auth;
 import com.project.doctorya.auth.rest.dto.AuthDTO;
 import com.project.doctorya.auth.rest.dto.AuthResponseDTO;
 import com.project.doctorya.auth.rest.dto.TokenResponseDTO;
@@ -41,7 +41,7 @@ public class AuthController {
     })    
     @PostMapping("/login")
     public ResponseEntity<TokenResponseDTO> login(@RequestBody @Valid AuthDTO authDTO) {
-        AuthModel authModel = AuthMapper.toDomain(authDTO);
+        Auth authModel = AuthMapper.toDomain(authDTO);
         String token = authLoginUseCase.login(authModel);
         TokenResponseDTO tokenResponseDTO = AuthMapper.toTokenResponseDTO(token);
         return ResponseEntity.ok(tokenResponseDTO);
@@ -54,8 +54,8 @@ public class AuthController {
     })  
     @PostMapping("/register")
     public ResponseEntity<AuthResponseDTO> register(@RequestBody @Valid AuthDTO authDTO) {
-        AuthModel authModel = AuthMapper.toDomain(authDTO);
-        AuthModel response = authRegisterUseCase.register(authModel);
+        Auth authModel = AuthMapper.toDomain(authDTO);
+        Auth response = authRegisterUseCase.register(authModel);
         AuthResponseDTO authResponseDTO = AuthMapper.toDTO(response);
         return ResponseEntity.ok(authResponseDTO);
     }

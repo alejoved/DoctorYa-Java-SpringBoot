@@ -6,7 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.project.doctorya.auth.application.interfaces.IAuthLoginUseCase;
-import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.auth.domain.models.Auth;
 import com.project.doctorya.auth.domain.repositories.IAuthRepository;
 import com.project.doctorya.shared.Constants;
 import com.project.doctorya.shared.config.JwtUtils;
@@ -22,12 +22,12 @@ public class AuthLoginUseCase implements IAuthLoginUseCase {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public String login(AuthModel authModel) {
-        AuthModel authExists = authRepository.getByIdentification(authModel.getIdentification());
+    public String login(Auth auth) {
+        Auth authExists = authRepository.getByIdentification(auth.getIdentification());
         if(authExists == null){
             throw new EntityNotExistsException(Constants.authNotFound);
         }
-        if (!passwordEncoder.matches(authModel.getPassword(), authExists.getPassword())) {
+        if (!passwordEncoder.matches(auth.getPassword(), authExists.getPassword())) {
             throw new BadCredentialsException(Constants.credentialsNotValid);
         }
         String token = JwtUtils.generateToken(authExists.getIdentification(), authExists.getRole().name());

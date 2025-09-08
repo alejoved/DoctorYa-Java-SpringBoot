@@ -1,8 +1,8 @@
-package com.project.doctorya.patient.infrastructure.entities;
+package com.project.doctorya.physician.infrastructure.entities;
 
 import java.util.UUID;
 
-import com.project.doctorya.auth.infrastructure.entities.Auth;
+import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -16,17 +16,19 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "patient")
-public class Patient {
+@Table(name = "physician")
+public class PhysicianEntity {
     @Id
     @GeneratedValue
     private UUID id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private String insurance;
+    private String code;
+    @Column(nullable = false)
+    private String speciality;
 
-    @OneToOne(cascade = {CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JoinColumn(name = "auth_id")
-    private Auth auth;
+    private AuthEntity authEntity;
 }

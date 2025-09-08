@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.project.doctorya.auth.application.interfaces.IAuthRegisterUseCase;
-import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.auth.domain.models.Auth;
 import com.project.doctorya.auth.domain.repositories.IAuthRepository;
 import com.project.doctorya.exceptions.EntityExistsException;
 import com.project.doctorya.shared.Constants;
@@ -21,8 +21,8 @@ public class AuthRegisterUseCase implements IAuthRegisterUseCase {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public AuthModel register(AuthModel authModel) {
-        AuthModel authFound = authRepository.getByIdentification(authModel.getIdentification());
+    public Auth register(Auth authModel) {
+        Auth authFound = authRepository.getByIdentification(authModel.getIdentification());
         if(authFound != null){
             throw new EntityExistsException(Constants.authExists);
         }

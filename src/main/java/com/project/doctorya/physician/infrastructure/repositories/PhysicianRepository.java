@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.project.doctorya.exceptions.EntityNotExistsException;
-import com.project.doctorya.physician.domain.models.PhysicianModel;
+import com.project.doctorya.physician.domain.models.Physician;
 import com.project.doctorya.physician.domain.repositories.IPhysicianRepository;
-import com.project.doctorya.physician.infrastructure.entities.Physician;
+import com.project.doctorya.physician.infrastructure.entities.PhysicianEntity;
 import com.project.doctorya.physician.infrastructure.mappers.PhysicianMapper;
 import com.project.doctorya.shared.Constants;
 
@@ -22,14 +22,14 @@ public class PhysicianRepository implements IPhysicianRepository {
     private IPhysicianJpaRepository physicianRepository;
 
     @Override
-    public List<PhysicianModel> get() {
-        List<Physician> physicians = physicianRepository.findAll();
+    public List<Physician> get() {
+        List<PhysicianEntity> physicians = physicianRepository.findAll();
         return physicians.stream().map(PhysicianMapper::toDomain).collect(Collectors.toList());
     }
 
     @Override
-    public PhysicianModel getById(UUID id) {
-        Optional<Physician> physician = physicianRepository.findById(id);
+    public Physician getById(UUID id) {
+        Optional<PhysicianEntity> physician = physicianRepository.findById(id);
         if(physician.isEmpty()){
             return null;
         }
@@ -38,31 +38,31 @@ public class PhysicianRepository implements IPhysicianRepository {
     }
 
     @Override
-    public PhysicianModel getByIdentification(String identification) {
-        Optional<Physician> physician = physicianRepository.findByAuthIdentification(identification);
-        if(physician.isEmpty()){
+    public Physician getByIdentification(String identification) {
+        Optional<PhysicianEntity> physicianEntity = physicianRepository.findByAuthEntityIdentification(identification);
+        if(physicianEntity.isEmpty()){
             return null;
         }
-        return PhysicianMapper.toDomain(physician.get());
+        return PhysicianMapper.toDomain(physicianEntity.get());
     }
 
     @Override
-    public PhysicianModel create(PhysicianModel physicianModel) {
-        Physician physician = PhysicianMapper.toEntity(physicianModel);
-        Physician response = physicianRepository.save(physician);
+    public Physician create(Physician physician) {
+        PhysicianEntity physicianEntity = PhysicianMapper.toEntity(physician);
+        PhysicianEntity response = physicianRepository.save(physicianEntity);
         return PhysicianMapper.toDomain(response);
     }
 
     @Override
-    public PhysicianModel update(PhysicianModel physicianModel) {
-        Physician physician = PhysicianMapper.toEntity(physicianModel);
-        Physician response = physicianRepository.save(physician);
+    public Physician update(Physician physician) {
+        PhysicianEntity physicianEntity = PhysicianMapper.toEntity(physician);
+        PhysicianEntity response = physicianRepository.save(physicianEntity);
         return PhysicianMapper.toDomain(response);
     }
 
     @Override
     public void delete(UUID id) {
-        Optional<Physician> physician = physicianRepository.findById(id);
+        Optional<PhysicianEntity> physician = physicianRepository.findById(id);
         if(physician.isEmpty()){
             throw new EntityNotExistsException(Constants.physicianNotFound);
         }

@@ -21,7 +21,7 @@ import com.project.doctorya.physician.application.interfaces.IPhysicianCreateUse
 import com.project.doctorya.physician.application.interfaces.IPhysicianDeleteUseCase;
 import com.project.doctorya.physician.application.interfaces.IPhysicianGetUseCase;
 import com.project.doctorya.physician.application.interfaces.IPhysicianUpdateUseCase;
-import com.project.doctorya.physician.domain.models.PhysicianModel;
+import com.project.doctorya.physician.domain.models.Physician;
 import com.project.doctorya.physician.rest.dto.PhysicianDTO;
 import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
 import com.project.doctorya.physician.rest.mapper.PhysicianRestMapper;
@@ -54,7 +54,7 @@ public class PhysicianController {
     })
     @GetMapping
     public ResponseEntity<List<PhysicianResponseDTO>> getAll() {
-        List<PhysicianModel> physicians = physicianGetUseCase.execute();
+        List<Physician> physicians = physicianGetUseCase.execute();
         List<PhysicianResponseDTO> physicianResponseDTOs = physicians.stream().map(PhysicianRestMapper::toDTO).collect(Collectors.toList());
         return ResponseEntity.ok(physicianResponseDTOs);
     }
@@ -68,7 +68,7 @@ public class PhysicianController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<PhysicianResponseDTO> getById(@Parameter(description = "uuid for filter physician") @PathVariable UUID id) {
-        PhysicianModel physicianModel = physicianGetUseCase.executeById(id);
+        Physician physicianModel = physicianGetUseCase.executeById(id);
         PhysicianResponseDTO physicianResponseDTO = PhysicianRestMapper.toDTO(physicianModel);
         return ResponseEntity.ok(physicianResponseDTO);
     }
@@ -81,7 +81,7 @@ public class PhysicianController {
     })
     @GetMapping("/identification/{identification}")
     public ResponseEntity<PhysicianResponseDTO> getByIdentification(@Parameter(description = "Identification for filter physician") @PathVariable String identification) {
-        PhysicianModel physicianModel = physicianGetUseCase.executeByIdentification(identification);
+        Physician physicianModel = physicianGetUseCase.executeByIdentification(identification);
         PhysicianResponseDTO physicianResponseDTO = PhysicianRestMapper.toDTO(physicianModel);
         return ResponseEntity.ok(physicianResponseDTO);
     }
@@ -95,8 +95,8 @@ public class PhysicianController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<PhysicianResponseDTO> create(@RequestBody @Valid PhysicianDTO physicianDTO) {
-        PhysicianModel physicianModel = PhysicianRestMapper.toDomain(physicianDTO);
-        PhysicianModel response = physicianCreateUseCase.execute(physicianModel);
+        Physician physicianModel = PhysicianRestMapper.toDomain(physicianDTO);
+        Physician response = physicianCreateUseCase.execute(physicianModel);
         PhysicianResponseDTO physicianResponseDTO = PhysicianRestMapper.toDTO(response);
         return ResponseEntity.ok(physicianResponseDTO);
     }
@@ -108,8 +108,8 @@ public class PhysicianController {
     })
     @PutMapping("/{id}")
     public ResponseEntity<PhysicianResponseDTO> update(@PathVariable UUID id, @RequestBody @Valid PhysicianDTO physicianDTO) {
-        PhysicianModel physicianModel = PhysicianRestMapper.toDomain(physicianDTO);
-        PhysicianModel response = physicianUpdateUseCase.execute(physicianModel, id);
+        Physician physicianModel = PhysicianRestMapper.toDomain(physicianDTO);
+        Physician response = physicianUpdateUseCase.execute(physicianModel, id);
         PhysicianResponseDTO physicianResponseDTO = PhysicianRestMapper.toDTO(response);
         return ResponseEntity.ok(physicianResponseDTO);
     }

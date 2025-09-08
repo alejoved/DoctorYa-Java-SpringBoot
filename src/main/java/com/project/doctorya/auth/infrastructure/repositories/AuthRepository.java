@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
-import com.project.doctorya.auth.domain.models.AuthModel;
+import com.project.doctorya.auth.domain.models.Auth;
 import com.project.doctorya.auth.domain.repositories.IAuthRepository;
-import com.project.doctorya.auth.infrastructure.entities.Auth;
+import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
 import com.project.doctorya.auth.infrastructure.mappers.AuthMapper;
 
 @Repository
@@ -20,24 +20,24 @@ public class AuthRepository implements IAuthRepository {
     private IAuthJpaRepository authRepository;
 
     @Override
-    public List<AuthModel> get() {
-        List<Auth> auth = authRepository.findAll();
-        return auth.stream().map(AuthMapper::toDomain).collect(Collectors.toList());
+    public List<Auth> get() {
+        List<AuthEntity> authEntity = authRepository.findAll();
+        return authEntity.stream().map(AuthMapper::toDomain).collect(Collectors.toList());
     }
 
     @Override
-    public AuthModel getByIdentification(String identification) {
-        Optional<Auth> auth = authRepository.findByIdentification(identification);
-        if(auth.isEmpty()){
+    public Auth getByIdentification(String identification) {
+        Optional<AuthEntity> authEntity = authRepository.findByIdentification(identification);
+        if(authEntity.isEmpty()){
             return null;
         }
-        return AuthMapper.toDomain(auth.get());
+        return AuthMapper.toDomain(authEntity.get());
     }
 
     @Override
-    public AuthModel create(AuthModel authModel) {
-        Auth auth = AuthMapper.toEntity(authModel);
-        Auth response = authRepository.save(auth);
+    public Auth create(Auth auth) {
+        AuthEntity authEntity = AuthMapper.toEntity(auth);
+        AuthEntity response = authRepository.save(authEntity);
         return AuthMapper.toDomain(response);
     }
     

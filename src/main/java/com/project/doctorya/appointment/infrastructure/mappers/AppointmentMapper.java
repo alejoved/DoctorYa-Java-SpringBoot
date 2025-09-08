@@ -1,62 +1,62 @@
 package com.project.doctorya.appointment.infrastructure.mappers;
 
-import com.project.doctorya.appointment.domain.models.AppointmentModel;
-import com.project.doctorya.appointment.infrastructure.entities.Appointment;
-import com.project.doctorya.auth.domain.models.AuthModel;
-import com.project.doctorya.auth.infrastructure.entities.Auth;
-import com.project.doctorya.patient.domain.models.PatientModel;
-import com.project.doctorya.patient.infrastructure.entities.Patient;
-import com.project.doctorya.physician.domain.models.PhysicianModel;
-import com.project.doctorya.physician.infrastructure.entities.Physician;
+import com.project.doctorya.appointment.domain.models.Appointment;
+import com.project.doctorya.appointment.infrastructure.entities.AppointmentEntity;
+import com.project.doctorya.auth.domain.models.Auth;
+import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
+import com.project.doctorya.patient.domain.models.Patient;
+import com.project.doctorya.patient.infrastructure.entities.PatientEntity;
+import com.project.doctorya.physician.domain.models.Physician;
+import com.project.doctorya.physician.infrastructure.entities.PhysicianEntity;
 
 public class AppointmentMapper {
-    public static AppointmentModel toDomain(Appointment appointment){
-        AppointmentModel appointmentModel = new AppointmentModel();
-        appointmentModel.setId(appointment.getId());
-        appointmentModel.setReason(appointment.getReason());
-        appointmentModel.setDuration(appointment.getDuration());
-        appointmentModel.setStartDate(appointment.getStartDate());
-        appointmentModel.setEndDate(appointment.getEndDate());
-        appointmentModel.setPatientModel(new PatientModel());
-        appointmentModel.getPatientModel().setId(appointment.getPatient().getId());
-        appointmentModel.getPatientModel().setName(appointment.getPatient().getName());
-        appointmentModel.getPatientModel().setInsurance(appointment.getPatient().getInsurance());
-        appointmentModel.getPatientModel().setAuthModel(new AuthModel());
-        appointmentModel.getPatientModel().getAuthModel().setId(appointment.getPatient().getAuth().getId());
-        appointmentModel.getPatientModel().getAuthModel().setIdentification(appointment.getPatient().getAuth().getIdentification());
-        appointmentModel.setPhysicianModel(new PhysicianModel());
-        appointmentModel.getPhysicianModel().setId(appointment.getPhysician().getId());
-        appointmentModel.getPhysicianModel().setName(appointment.getPhysician().getName());
-        appointmentModel.getPhysicianModel().setCode(appointment.getPhysician().getCode());
-        appointmentModel.getPhysicianModel().setSpeciality(appointment.getPhysician().getSpeciality());
-        appointmentModel.getPhysicianModel().setAuthModel(new AuthModel());
-        appointmentModel.getPhysicianModel().getAuthModel().setId(appointment.getPhysician().getAuth().getId());
-        appointmentModel.getPhysicianModel().getAuthModel().setIdentification(appointment.getPhysician().getAuth().getIdentification());
-        return appointmentModel;
+    public static Appointment toDomain(AppointmentEntity appointmentEntity){
+        Appointment appointment = new Appointment();
+        appointment.setId(appointmentEntity.getId());
+        appointment.setReason(appointmentEntity.getReason());
+        appointment.setDuration(appointmentEntity.getDuration());
+        appointment.setStartDate(appointmentEntity.getStartDate());
+        appointment.setEndDate(appointmentEntity.getEndDate());
+        appointment.setPatient(new Patient());
+        appointment.getPatient().setId(appointmentEntity.getPatientEntity().getId());
+        appointment.getPatient().setName(appointmentEntity.getPatientEntity().getName());
+        appointment.getPatient().setInsurance(appointmentEntity.getPatientEntity().getInsurance());
+        appointment.getPatient().setAuth(new Auth());
+        appointment.getPatient().getAuth().setId(appointmentEntity.getPatientEntity().getAuthEntity().getId());
+        appointment.getPatient().getAuth().setIdentification(appointmentEntity.getPatientEntity().getAuthEntity().getIdentification());
+        appointment.setPhysician(new Physician());
+        appointment.getPhysician().setId(appointmentEntity.getPhysicianEntity().getId());
+        appointment.getPhysician().setName(appointmentEntity.getPhysicianEntity().getName());
+        appointment.getPhysician().setCode(appointmentEntity.getPhysicianEntity().getCode());
+        appointment.getPhysician().setSpeciality(appointmentEntity.getPhysicianEntity().getSpeciality());
+        appointment.getPhysician().setAuth(new Auth());
+        appointment.getPhysician().getAuth().setId(appointmentEntity.getPhysicianEntity().getAuthEntity().getId());
+        appointment.getPhysician().getAuth().setIdentification(appointmentEntity.getPhysicianEntity().getAuthEntity().getIdentification());
+        return appointment;
 
     }
-    public static Appointment toEntity(AppointmentModel appointmentModel){
-        Appointment appointment = new Appointment();
-        appointment.setId(appointmentModel.getId());
-        appointment.setReason(appointmentModel.getReason());
-        appointment.setDuration(appointmentModel.getDuration());
-        appointment.setStartDate(appointmentModel.getStartDate());
-        appointment.setEndDate(appointmentModel.getEndDate());
-        appointment.setPatient(new Patient());
-        appointment.getPatient().setId(appointmentModel.getPatientModel().getId());
-        appointment.getPatient().setName(appointmentModel.getPatientModel().getName());
-        appointment.getPatient().setInsurance(appointmentModel.getPatientModel().getInsurance());
-        appointment.getPatient().setAuth(new Auth());
-        appointment.getPatient().getAuth().setId(appointmentModel.getPatientModel().getAuthModel().getId());
-        appointment.getPatient().getAuth().setIdentification(appointmentModel.getPatientModel().getAuthModel().getIdentification());
-        appointment.setPhysician(new Physician());
-        appointment.getPhysician().setId(appointmentModel.getPhysicianModel().getId());
-        appointment.getPhysician().setName(appointmentModel.getPhysicianModel().getName());
-        appointment.getPhysician().setCode(appointmentModel.getPhysicianModel().getCode());
-        appointment.getPhysician().setSpeciality(appointmentModel.getPhysicianModel().getSpeciality());
-        appointment.getPhysician().setAuth(new Auth());
-        appointment.getPhysician().getAuth().setId(appointmentModel.getPhysicianModel().getAuthModel().getId());
-        appointment.getPhysician().getAuth().setIdentification(appointmentModel.getPhysicianModel().getAuthModel().getIdentification());
-        return appointment;
+    public static AppointmentEntity toEntity(Appointment appointment){
+        AppointmentEntity appointmentEntity = new AppointmentEntity();
+        appointmentEntity.setId(appointment.getId());
+        appointmentEntity.setReason(appointment.getReason());
+        appointmentEntity.setDuration(appointment.getDuration());
+        appointmentEntity.setStartDate(appointment.getStartDate());
+        appointmentEntity.setEndDate(appointment.getEndDate());
+        appointmentEntity.setPatientEntity(new PatientEntity());
+        appointmentEntity.getPatientEntity().setId(appointment.getPatient().getId());
+        appointmentEntity.getPatientEntity().setName(appointment.getPatient().getName());
+        appointmentEntity.getPatientEntity().setInsurance(appointment.getPatient().getInsurance());
+        appointmentEntity.getPatientEntity().setAuthEntity(new AuthEntity());
+        appointmentEntity.getPatientEntity().getAuthEntity().setId(appointment.getPatient().getAuth().getId());
+        appointmentEntity.getPatientEntity().getAuthEntity().setIdentification(appointment.getPatient().getAuth().getIdentification());
+        appointmentEntity.setPhysicianEntity(new PhysicianEntity());
+        appointmentEntity.getPhysicianEntity().setId(appointment.getPhysician().getId());
+        appointmentEntity.getPhysicianEntity().setName(appointment.getPhysician().getName());
+        appointmentEntity.getPhysicianEntity().setCode(appointment.getPhysician().getCode());
+        appointmentEntity.getPhysicianEntity().setSpeciality(appointment.getPhysician().getSpeciality());
+        appointmentEntity.getPhysicianEntity().setAuthEntity(new AuthEntity());
+        appointmentEntity.getPhysicianEntity().getAuthEntity().setId(appointment.getPhysician().getAuth().getId());
+        appointmentEntity.getPhysicianEntity().getAuthEntity().setIdentification(appointment.getPhysician().getAuth().getIdentification());
+        return appointmentEntity;
     }
 }

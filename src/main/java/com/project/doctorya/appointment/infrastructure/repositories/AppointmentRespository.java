@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
-import com.project.doctorya.appointment.domain.models.AppointmentModel;
+import com.project.doctorya.appointment.domain.models.Appointment;
 import com.project.doctorya.appointment.domain.repositories.IAppointmentRepository;
-import com.project.doctorya.appointment.infrastructure.entities.Appointment;
+import com.project.doctorya.appointment.infrastructure.entities.AppointmentEntity;
 import com.project.doctorya.appointment.infrastructure.mappers.AppointmentMapper;
 import com.project.doctorya.exceptions.EntityNotExistsException;
 import com.project.doctorya.shared.Constants;
@@ -25,32 +25,32 @@ public class AppointmentRespository implements IAppointmentRepository{
     private IAppointmentJpaRepository appointmentRepository;
 
     @Override
-    public List<AppointmentModel> get() {
-        List<Appointment> appointments = appointmentRepository.findAll();
-        return appointments.stream().map(AppointmentMapper::toDomain).collect(Collectors.toList());
+    public List<Appointment> get() {
+        List<AppointmentEntity> appointmentEntity = appointmentRepository.findAll();
+        return appointmentEntity.stream().map(AppointmentMapper::toDomain).collect(Collectors.toList());
         
     }
 
     @Override
-    public AppointmentModel getById(UUID id) {
-        Optional<Appointment> appointment = appointmentRepository.findById(id);
-        if(appointment.isEmpty()){
+    public Appointment getById(UUID id) {
+        Optional<AppointmentEntity> appointmentEntity = appointmentRepository.findById(id);
+        if(appointmentEntity.isEmpty()){
             throw new EntityNotExistsException(Constants.appointmentNotFound);
         }
-        return AppointmentMapper.toDomain(appointment.get());
+        return AppointmentMapper.toDomain(appointmentEntity.get());
     }
 
     @Override
-    public AppointmentModel create(AppointmentModel apppointmentModel) {
-        Appointment appointment = AppointmentMapper.toEntity(apppointmentModel);
-        Appointment response = appointmentRepository.save(appointment);
+    public Appointment create(Appointment apppointmentModel) {
+        AppointmentEntity appointmentEntity = AppointmentMapper.toEntity(apppointmentModel);
+        AppointmentEntity response = appointmentRepository.save(appointmentEntity);
         return AppointmentMapper.toDomain(response);
     }
 
     @Override
-    public AppointmentModel update(AppointmentModel appointmentModel) {
-        Appointment appointment = AppointmentMapper.toEntity(appointmentModel);
-        Appointment response = appointmentRepository.save(appointment);
+    public Appointment update(Appointment appointmentModel) {
+        AppointmentEntity appointmentEntity = AppointmentMapper.toEntity(appointmentModel);
+        AppointmentEntity response = appointmentRepository.save(appointmentEntity);
         return AppointmentMapper.toDomain(response);
     }
 
@@ -60,9 +60,9 @@ public class AppointmentRespository implements IAppointmentRepository{
     }
 
     @Override
-    public List<AppointmentModel> getOverLapping(Timestamp startDate, Timestamp endDate, String physicianIdentification) {
-        List<Appointment> appointments = appointmentRepository.findOverlapping(startDate, endDate, physicianIdentification);
-        return appointments.stream().map(AppointmentMapper::toDomain).collect(Collectors.toList());
+    public List<Appointment> getOverLapping(Timestamp startDate, Timestamp endDate, String physicianIdentification) {
+        List<AppointmentEntity> appointmentEntity = appointmentRepository.findOverlapping(startDate, endDate, physicianIdentification);
+        return appointmentEntity.stream().map(AppointmentMapper::toDomain).collect(Collectors.toList());
     }
     
 }

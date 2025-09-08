@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.doctorya.appointment.application.interfaces.IAppointmentUpdateUseCase;
-import com.project.doctorya.appointment.domain.models.AppointmentModel;
+import com.project.doctorya.appointment.domain.models.Appointment;
 import com.project.doctorya.appointment.domain.repositories.IAppointmentRepository;
 import com.project.doctorya.exceptions.EntityNotExistsException;
-import com.project.doctorya.patient.domain.models.PatientModel;
+import com.project.doctorya.patient.domain.models.Patient;
 import com.project.doctorya.patient.domain.repositories.IPatientRepository;
-import com.project.doctorya.physician.domain.models.PhysicianModel;
+import com.project.doctorya.physician.domain.models.Physician;
 import com.project.doctorya.physician.domain.repositories.IPhysicianRepository;
 import com.project.doctorya.shared.Constants;
 
@@ -28,22 +28,22 @@ public class AppointmentUpdateUseCase implements IAppointmentUpdateUseCase {
     private IPhysicianRepository physicianRepository;
 
     @Override
-    public AppointmentModel execute(AppointmentModel appointmentModel, UUID id) {
-        AppointmentModel appointmentExists = appointmentRepository.getById(id);
+    public Appointment execute(Appointment appointmentModel, UUID id) {
+        Appointment appointmentExists = appointmentRepository.getById(id);
         if(appointmentExists == null){
             throw new EntityNotExistsException(Constants.appointmentNotFound);
         }
         appointmentModel.setId(id);
-        PatientModel patientModel = patientRepository.getByIdentification(appointmentModel.getPatientModel().getAuthModel().getIdentification());
-        if(patientModel == null){
+        Patient patient = patientRepository.getByIdentification(appointmentModel.getPatient().getAuth().getIdentification());
+        if(patient == null){
             throw new EntityNotExistsException(Constants.patientNotFound);
         }
-        appointmentModel.setPatientModel(patientModel);
-        PhysicianModel physicianModel = physicianRepository.getByIdentification(appointmentModel.getPhysicianModel().getAuthModel().getIdentification());
+        appointmentModel.setPatient(patient);
+        Physician physicianModel = physicianRepository.getByIdentification(appointmentModel.getPhysician().getAuth().getIdentification());
         if(physicianModel == null){
             throw new EntityNotExistsException(Constants.physicianNotFound);
         }
-        appointmentModel.setPhysicianModel(physicianModel);
+        appointmentModel.setPhysician(physicianModel);
         Timestamp endDate = Timestamp.from(appointmentModel.getStartDate().toInstant().plus(appointmentModel.getDuration(), ChronoUnit.MINUTES));
         appointmentModel.setEndDate(endDate);
         return appointmentRepository.update(appointmentModel);

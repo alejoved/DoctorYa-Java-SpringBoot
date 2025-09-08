@@ -5,7 +5,7 @@ import com.project.doctorya.shared.Role;
 import lombok.Data;
 
 @Data
-public class AuthModel {
+public class Auth {
     private UUID id;
     private String identification;
     private String password;

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.doctorya.appointment.application.interfaces.IAppointmentGetUseCase;
-import com.project.doctorya.appointment.domain.models.AppointmentModel;
+import com.project.doctorya.appointment.domain.models.Appointment;
 import com.project.doctorya.appointment.domain.repositories.IAppointmentRepository;
 import com.project.doctorya.exceptions.EntityNotExistsException;
 import com.project.doctorya.shared.Constants;
@@ -19,14 +19,14 @@ public class AppointmentGetUseCase implements IAppointmentGetUseCase {
     private IAppointmentRepository appointmentRepository;
 
     @Override
-    public List<AppointmentModel> execute() {
-        List<AppointmentModel> appointments = appointmentRepository.get();
+    public List<Appointment> execute() {
+        List<Appointment> appointments = appointmentRepository.get();
         return appointments;
     }
 
     @Override
-    public AppointmentModel executeById(UUID id) {
-        AppointmentModel appointmentModel = appointmentRepository.getById(id);
+    public Appointment executeById(UUID id) {
+        Appointment appointmentModel = appointmentRepository.getById(id);
         if (appointmentModel == null){
             throw new EntityNotExistsException(Constants.appointmentNotFound);
         }

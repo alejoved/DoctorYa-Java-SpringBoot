@@ -12,12 +12,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.doctorya.auth.infrastructure.entities.Auth;
+import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
 import com.project.doctorya.auth.infrastructure.repositories.IAuthJpaRepository;
 import com.project.doctorya.auth.rest.dto.AuthDTO;
 import com.project.doctorya.patient.rest.dto.PatientDTO;
 import com.project.doctorya.patient.rest.dto.PatientResponseDTO;
-import com.project.doctorya.patient.infrastructure.entities.Patient;
+import com.project.doctorya.patient.infrastructure.entities.PatientEntity;
 import com.project.doctorya.patient.infrastructure.repositories.IPatientJpaRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -47,7 +47,7 @@ public class PatientIntegrationTest {
 
     private String accessToken;
     
-    private Patient patientDB;
+    private PatientEntity patientDB;
 
     @BeforeEach
     void beforeTest() throws Exception {
@@ -75,12 +75,12 @@ public class PatientIntegrationTest {
 
         JsonNode jsonNode = objectMapper.readTree(response);
         accessToken = jsonNode.get("token").asText(); 
-        patientDB = new Patient();
+        patientDB = new PatientEntity();
         patientDB.setName("Test Name");
         patientDB.setInsurance("Test Insurance");
-        patientDB.setAuth(new Auth());
-        patientDB.getAuth().setIdentification("1053847610");
-        patientDB.getAuth().setPassword("12345");
+        patientDB.setAuthEntity(new AuthEntity());
+        patientDB.getAuthEntity().setIdentification("1053847610");
+        patientDB.getAuthEntity().setPassword("12345");
     }
 
     @AfterEach
@@ -154,7 +154,7 @@ public class PatientIntegrationTest {
 
     @Test
     void testGetByIdPatient() throws Exception {
-        Patient patient = patientRepository.save(this.patientDB);
+        PatientEntity patient = patientRepository.save(this.patientDB);
         String responseJson = mockMvc.perform(get("/patient/"+patient.getId())
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
@@ -165,7 +165,7 @@ public class PatientIntegrationTest {
 
         PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
         assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getIdentification(), patient.getAuth().getIdentification());
+        assertEquals(patientResponseDTO.getIdentification(), patient.getAuthEntity().getIdentification());
         assertEquals(patientResponseDTO.getName(), patient.getName());
         assertEquals(patientResponseDTO.getInsurance(), patient.getInsurance());
     }
@@ -188,8 +188,8 @@ public class PatientIntegrationTest {
 
     @Test
     void testGetByIdentificationPatient() throws Exception {
-        Patient patient = patientRepository.save(patientDB);
-        String responseJson = mockMvc.perform(get("/patient/identification/"+patient.getAuth().getIdentification())
+        PatientEntity patient = patientRepository.save(patientDB);
+        String responseJson = mockMvc.perform(get("/patient/identification/"+patient.getAuthEntity().getIdentification())
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
                             .andExpect(status().isOk())
@@ -199,7 +199,7 @@ public class PatientIntegrationTest {
 
         PatientResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PatientResponseDTO.class);
         assertNotNull(patientResponseDTO);
-        assertEquals(patientResponseDTO.getIdentification(), patient.getAuth().getIdentification());
+        assertEquals(patientResponseDTO.getIdentification(), patient.getAuthEntity().getIdentification());
         assertEquals(patientResponseDTO.getName(), patient.getName());
         assertEquals(patientResponseDTO.getInsurance(), patient.getInsurance());
     }
@@ -222,10 +222,10 @@ public class PatientIntegrationTest {
 
     @Test
     void testUpdatePatient() throws Exception {
-        Patient patient = patientRepository.save(this.patientDB);
+        PatientEntity patient = patientRepository.save(this.patientDB);
         PatientDTO patientDTO = new PatientDTO();
-        patientDTO.setIdentification(patient.getAuth().getIdentification());
-        patientDTO.setPassword(patient.getAuth().getPassword());
+        patientDTO.setIdentification(patient.getAuthEntity().getIdentification());
+        patientDTO.setPassword(patient.getAuthEntity().getPassword());
         patientDTO.setName("Test Name 2");
         patientDTO.setInsurance("Test Insurance 2");
         String responseJson = mockMvc.perform(put("/patient/"+ patient.getId())
@@ -247,10 +247,10 @@ public class PatientIntegrationTest {
     @Test
     void testNotFoundUpdatePatient() throws Exception {
         UUID id = UUID.randomUUID();
-        Patient patient = patientRepository.save(this.patientDB);
+        PatientEntity patient = patientRepository.save(this.patientDB);
         PatientDTO patientDTO = new PatientDTO();
-        patientDTO.setIdentification(patient.getAuth().getIdentification());
-        patientDTO.setPassword(patient.getAuth().getPassword());
+        patientDTO.setIdentification(patient.getAuthEntity().getIdentification());
+        patientDTO.setPassword(patient.getAuthEntity().getPassword());
         patientDTO.setName("Test Name 2");
         patientDTO.setInsurance("Test Insurance 2");
         String responseJson = mockMvc.perform(put("/patient/"+ id)
@@ -270,7 +270,7 @@ public class PatientIntegrationTest {
 
     @Test
     void testDeletePatient() throws Exception {
-        Patient patient = patientRepository.save(this.patientDB);
+        PatientEntity patient = patientRepository.save(this.patientDB);
         mockMvc.perform(delete("/patient/"+ patient.getId())
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON))

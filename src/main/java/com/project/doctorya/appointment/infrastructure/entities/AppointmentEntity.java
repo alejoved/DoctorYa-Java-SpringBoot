@@ -3,8 +3,8 @@ package com.project.doctorya.appointment.infrastructure.entities;
 import java.sql.Timestamp;
 import java.util.UUID;
 
-import com.project.doctorya.patient.infrastructure.entities.Patient;
-import com.project.doctorya.physician.infrastructure.entities.Physician;
+import com.project.doctorya.patient.infrastructure.entities.PatientEntity;
+import com.project.doctorya.physician.infrastructure.entities.PhysicianEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,7 +18,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "appointment")
-public class Appointment {
+public class AppointmentEntity {
     @Id
     @GeneratedValue
     private UUID id;
@@ -33,9 +33,9 @@ public class Appointment {
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
-    private Patient patient;
+    private PatientEntity patientEntity;
 
     @ManyToOne
     @JoinColumn(name = "physician_id", nullable = false)
-    private Physician physician;    
+    private PhysicianEntity physicianEntity;    
 }

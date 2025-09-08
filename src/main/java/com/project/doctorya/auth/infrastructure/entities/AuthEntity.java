@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "auth")
-public class Auth {
+public class AuthEntity {
     @Id
     @GeneratedValue
     private UUID id;

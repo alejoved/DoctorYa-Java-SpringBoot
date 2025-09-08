@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.doctorya.exceptions.EntityNotExistsException;
 import com.project.doctorya.physician.application.interfaces.IPhysicianUpdateUseCase;
-import com.project.doctorya.physician.domain.models.PhysicianModel;
+import com.project.doctorya.physician.domain.models.Physician;
 import com.project.doctorya.physician.domain.repositories.IPhysicianRepository;
 import com.project.doctorya.shared.Constants;
 
@@ -18,13 +18,13 @@ public class PhysicianUpdateUseCase implements IPhysicianUpdateUseCase {
     private IPhysicianRepository physicianRepository;
 
     @Override
-    public PhysicianModel execute(PhysicianModel physicianModel, UUID id) {
-        PhysicianModel physicianExists = physicianRepository.getById(id);
+    public Physician execute(Physician physicianModel, UUID id) {
+        Physician physicianExists = physicianRepository.getById(id);
         if(physicianExists == null){
             throw new EntityNotExistsException(Constants.physicianNotFound);
         }
         physicianModel.setId(id);
-        physicianModel.setAuthModel(physicianExists.getAuthModel());
+        physicianModel.setAuth(physicianExists.getAuth());
         return physicianRepository.update(physicianModel);
     }
     

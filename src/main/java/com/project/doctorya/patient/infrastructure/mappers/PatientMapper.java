@@ -1,34 +1,34 @@
 package com.project.doctorya.patient.infrastructure.mappers;
 
-import com.project.doctorya.auth.domain.models.AuthModel;
-import com.project.doctorya.auth.infrastructure.entities.Auth;
-import com.project.doctorya.patient.domain.models.PatientModel;
-import com.project.doctorya.patient.infrastructure.entities.Patient;
+import com.project.doctorya.auth.domain.models.Auth;
+import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
+import com.project.doctorya.patient.domain.models.Patient;
+import com.project.doctorya.patient.infrastructure.entities.PatientEntity;
 
 public class PatientMapper {
-    public static PatientModel toDomain(Patient patient){
-        PatientModel patientModel = new PatientModel();
-        patientModel.setId(patient.getId());
-        patientModel.setName(patient.getName());
-        patientModel.setInsurance(patient.getInsurance());
-        patientModel.setAuthModel(new AuthModel());
-        patientModel.getAuthModel().setId(patient.getAuth().getId());
-        patientModel.getAuthModel().setIdentification(patient.getAuth().getIdentification());
-        patientModel.getAuthModel().setPassword(patient.getAuth().getPassword());
-        patientModel.getAuthModel().setRole(patient.getAuth().getRole());
-        return patientModel;
+    public static Patient toDomain(PatientEntity patientEntity){
+        Patient patient = new Patient();
+        patient.setId(patientEntity.getId());
+        patient.setName(patientEntity.getName());
+        patient.setInsurance(patientEntity.getInsurance());
+        patient.setAuth(new Auth());
+        patient.getAuth().setId(patientEntity.getAuthEntity().getId());
+        patient.getAuth().setIdentification(patientEntity.getAuthEntity().getIdentification());
+        patient.getAuth().setPassword(patientEntity.getAuthEntity().getPassword());
+        patient.getAuth().setRole(patientEntity.getAuthEntity().getRole());
+        return patient;
 
     }
-    public static Patient toEntity(PatientModel patientModel){
-        Patient patient = new Patient();
-        patient.setId(patientModel.getId());
-        patient.setName(patientModel.getName());
-        patient.setInsurance(patientModel.getInsurance());
-        patient.setAuth(new Auth());
-        patient.getAuth().setId(patientModel.getAuthModel().getId());
-        patient.getAuth().setIdentification(patientModel.getAuthModel().getIdentification());
-        patient.getAuth().setPassword(patientModel.getAuthModel().getPassword());
-        patient.getAuth().setRole(patientModel.getAuthModel().getRole());
-        return patient;
+    public static PatientEntity toEntity(Patient patient){
+        PatientEntity patientEntity = new PatientEntity();
+        patientEntity.setId(patient.getId());
+        patientEntity.setName(patient.getName());
+        patientEntity.setInsurance(patient.getInsurance());
+        patientEntity.setAuthEntity(new AuthEntity());
+        patientEntity.getAuthEntity().setId(patient.getAuth().getId());
+        patientEntity.getAuthEntity().setIdentification(patient.getAuth().getIdentification());
+        patientEntity.getAuthEntity().setPassword(patient.getAuth().getPassword());
+        patientEntity.getAuthEntity().setRole(patient.getAuth().getRole());
+        return patientEntity;
     }
 }

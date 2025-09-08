@@ -1,7 +1,7 @@
 package com.project.doctorya.physician.application.interfaces;
 
-import com.project.doctorya.physician.domain.models.PhysicianModel;
+import com.project.doctorya.physician.domain.models.Physician;
 
 public interface IPhysicianCreateUseCase {
-    public PhysicianModel execute(PhysicianModel physicianModel);
+    public Physician execute(Physician physicianModel);
 }

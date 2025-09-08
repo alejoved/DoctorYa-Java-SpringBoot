@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.doctorya.exceptions.EntityNotExistsException;
 import com.project.doctorya.physician.application.interfaces.IPhysicianGetUseCase;
-import com.project.doctorya.physician.domain.models.PhysicianModel;
+import com.project.doctorya.physician.domain.models.Physician;
 import com.project.doctorya.physician.domain.repositories.IPhysicianRepository;
 import com.project.doctorya.shared.Constants;
 
@@ -19,13 +19,13 @@ public class PhysicianGetUseCase implements IPhysicianGetUseCase {
     private IPhysicianRepository physicianRepository;
 
     @Override
-    public List<PhysicianModel> execute() {
+    public List<Physician> execute() {
         return physicianRepository.get();
     }
 
     @Override
-    public PhysicianModel executeById(UUID id) {
-        PhysicianModel physicianModel = physicianRepository.getById(id);
+    public Physician executeById(UUID id) {
+        Physician physicianModel = physicianRepository.getById(id);
         if (physicianModel == null){
             throw new EntityNotExistsException(Constants.physicianNotFound);
         }
@@ -33,8 +33,8 @@ public class PhysicianGetUseCase implements IPhysicianGetUseCase {
     }
 
     @Override
-    public PhysicianModel executeByIdentification(String identification) {
-        PhysicianModel physicianModel =  physicianRepository.getByIdentification(identification);
+    public Physician executeByIdentification(String identification) {
+        Physician physicianModel =  physicianRepository.getByIdentification(identification);
         if (physicianModel == null){
             throw new EntityNotExistsException(Constants.physicianNotFound);
         }

@@ -9,11 +9,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.project.doctorya.appointment.infrastructure.entities.Appointment;
+import com.project.doctorya.appointment.infrastructure.entities.AppointmentEntity;
 
 @Repository
-public interface IAppointmentJpaRepository extends JpaRepository<Appointment, UUID> {
-    @Query("select a from Appointment a where a.startDate < :endDate and a.endDate > :startDate and a.physician.auth.identification = :physicianIdentification")
-    List<Appointment> findOverlapping(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate, @Param("physicianIdentification") String physicianIdentification);
+public interface IAppointmentJpaRepository extends JpaRepository<AppointmentEntity, UUID> {
+    @Query("select a from AppointmentEntity a where a.startDate < :endDate and a.endDate > :startDate and a.physicianEntity.authEntity.identification = :physicianIdentification")
+    List<AppointmentEntity> findOverlapping(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate, @Param("physicianIdentification") String physicianIdentification);
 
 }

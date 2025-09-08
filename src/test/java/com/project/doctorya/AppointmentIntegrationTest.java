@@ -12,16 +12,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.doctorya.auth.infrastructure.entities.Auth;
+import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
 import com.project.doctorya.auth.infrastructure.repositories.IAuthJpaRepository;
 import com.project.doctorya.auth.rest.dto.AuthDTO;
-import com.project.doctorya.patient.infrastructure.entities.Patient;
+import com.project.doctorya.patient.infrastructure.entities.PatientEntity;
 import com.project.doctorya.patient.infrastructure.repositories.IPatientJpaRepository;
-import com.project.doctorya.physician.infrastructure.entities.Physician;
+import com.project.doctorya.physician.infrastructure.entities.PhysicianEntity;
 import com.project.doctorya.physician.infrastructure.repositories.IPhysicianJpaRepository;
 import com.project.doctorya.appointment.rest.dto.AppointmentDTO;
 import com.project.doctorya.appointment.rest.dto.AppointmentResponseDTO;
-import com.project.doctorya.appointment.infrastructure.entities.Appointment;
+import com.project.doctorya.appointment.infrastructure.entities.AppointmentEntity;
 import com.project.doctorya.appointment.infrastructure.repositories.IAppointmentJpaRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -59,7 +59,7 @@ public class AppointmentIntegrationTest {
 
     private String accessToken;
     
-    private Appointment appointmentDB;
+    private AppointmentEntity appointmentDB;
 
     @BeforeEach
     void beforeTest() throws Exception {
@@ -87,29 +87,29 @@ public class AppointmentIntegrationTest {
 
         JsonNode jsonNode = objectMapper.readTree(response);
         accessToken = jsonNode.get("token").asText();
-        Patient patientDB = new Patient();
+        PatientEntity patientDB = new PatientEntity();
         patientDB.setName("Test Name");
         patientDB.setInsurance("Test Insurance");
-        patientDB.setAuth(new Auth());
-        patientDB.getAuth().setIdentification("1053847610");
-        patientDB.getAuth().setPassword("12345");
+        patientDB.setAuthEntity(new AuthEntity());
+        patientDB.getAuthEntity().setIdentification("1053847610");
+        patientDB.getAuthEntity().setPassword("12345");
         patientDB = patientRepository.save(patientDB);
 
-        Physician physicianDB = new Physician();
+        PhysicianEntity physicianDB = new PhysicianEntity();
         physicianDB.setName("Test Name");
         physicianDB.setCode("Test Code");
         physicianDB.setSpeciality("Test Speciality");
-        physicianDB.setAuth(new Auth());
-        physicianDB.getAuth().setIdentification("1053847620");
-        physicianDB.getAuth().setPassword("12345");
+        physicianDB.setAuthEntity(new AuthEntity());
+        physicianDB.getAuthEntity().setIdentification("1053847620");
+        physicianDB.getAuthEntity().setPassword("12345");
         physicianDB = physicianRepository.save(physicianDB);
         
-        appointmentDB = new Appointment();
+        appointmentDB = new AppointmentEntity();
         appointmentDB.setStartDate(Timestamp.valueOf("2025-05-01 10:00:00"));
         appointmentDB.setEndDate(Timestamp.valueOf("2025-05-01 10:30:00"));
         appointmentDB.setReason("Test Reason");
-        appointmentDB.setPatient(patientDB);
-        appointmentDB.setPhysician(physicianDB);
+        appointmentDB.setPatientEntity(patientDB);
+        appointmentDB.setPhysicianEntity(physicianDB);
     }
 
     @AfterEach
@@ -212,7 +212,7 @@ public class AppointmentIntegrationTest {
 
     @Test
     void testGetByIdAppointment() throws Exception {
-        Appointment appointment = appointmentRepository.save(this.appointmentDB);
+        AppointmentEntity appointment = appointmentRepository.save(this.appointmentDB);
         String responseJson = mockMvc.perform(get("/appointment/" + appointment.getId())
                             .header("Authorization", "Bearer " + accessToken)
                             .contentType(MediaType.APPLICATION_JSON))
@@ -222,8 +222,8 @@ public class AppointmentIntegrationTest {
                             .getContentAsString();
         AppointmentResponseDTO appointmentResponseDTO = objectMapper.readValue(responseJson, AppointmentResponseDTO.class);
         assertNotNull(appointmentResponseDTO);
-        assertEquals(appointmentResponseDTO.getPatient().getIdentification(), appointment.getPatient().getAuth().getIdentification());
-        assertEquals(appointmentResponseDTO.getPhysician().getIdentification(), appointment.getPhysician().getAuth().getIdentification());
+        assertEquals(appointmentResponseDTO.getPatient().getIdentification(), appointment.getPatientEntity().getAuthEntity().getIdentification());
+        assertEquals(appointmentResponseDTO.getPhysician().getIdentification(), appointment.getPhysicianEntity().getAuthEntity().getIdentification());
         assertEquals(appointmentResponseDTO.getReason(), appointment.getReason());
         assertEquals(appointmentResponseDTO.getStartDate(), appointment.getStartDate());
     }
@@ -246,10 +246,10 @@ public class AppointmentIntegrationTest {
 
     @Test
     void testUpdateAppointment() throws Exception {
-        Appointment appointment = appointmentRepository.save(this.appointmentDB);
+        AppointmentEntity appointment = appointmentRepository.save(this.appointmentDB);
         AppointmentDTO appointmentDTO = new AppointmentDTO();
-        appointmentDTO.setPatientIdentification(appointment.getPatient().getAuth().getIdentification());
-        appointmentDTO.setPhysicianIdentification(appointment.getPhysician().getAuth().getIdentification());
+        appointmentDTO.setPatientIdentification(appointment.getPatientEntity().getAuthEntity().getIdentification());
+        appointmentDTO.setPhysicianIdentification(appointment.getPhysicianEntity().getAuthEntity().getIdentification());
         appointmentDTO.setDuration(50);
         appointmentDTO.setReason("Test Reason 2");
         appointmentDTO.setStartDate(Timestamp.valueOf("2025-05-01 15:00:00"));
@@ -272,10 +272,10 @@ public class AppointmentIntegrationTest {
 
     @Test
     void testUpdateNotFoundAppointment() throws Exception {
-        Appointment appointment = appointmentRepository.save(this.appointmentDB);
+        AppointmentEntity appointment = appointmentRepository.save(this.appointmentDB);
         AppointmentDTO appointmentDTO = new AppointmentDTO();
-        appointmentDTO.setPatientIdentification(appointment.getPatient().getAuth().getIdentification());
-        appointmentDTO.setPhysicianIdentification(appointment.getPhysician().getAuth().getIdentification());
+        appointmentDTO.setPatientIdentification(appointment.getPatientEntity().getAuthEntity().getIdentification());
+        appointmentDTO.setPhysicianIdentification(appointment.getPhysicianEntity().getAuthEntity().getIdentification());
         appointmentDTO.setDuration(50);
         appointmentDTO.setReason("Test Reason 2");
         appointmentDTO.setStartDate(Timestamp.valueOf("2025-05-01 15:00:00"));
@@ -297,7 +297,7 @@ public class AppointmentIntegrationTest {
 
     @Test
     void testDeleteAppointment() throws Exception {
-        Appointment appointment = appointmentRepository.save(this.appointmentDB);
+        AppointmentEntity appointment = appointmentRepository.save(this.appointmentDB);
         mockMvc.perform(delete("/appointment/"+ appointment.getId())
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON))

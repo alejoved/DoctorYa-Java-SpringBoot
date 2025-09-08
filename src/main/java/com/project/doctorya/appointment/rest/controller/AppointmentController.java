@@ -21,7 +21,7 @@ import com.project.doctorya.appointment.application.interfaces.IAppointmentCreat
 import com.project.doctorya.appointment.application.interfaces.IAppointmentDeleteUseCase;
 import com.project.doctorya.appointment.application.interfaces.IAppointmentGetUseCase;
 import com.project.doctorya.appointment.application.interfaces.IAppointmentUpdateUseCase;
-import com.project.doctorya.appointment.domain.models.AppointmentModel;
+import com.project.doctorya.appointment.domain.models.Appointment;
 import com.project.doctorya.appointment.rest.dto.AppointmentDTO;
 import com.project.doctorya.appointment.rest.dto.AppointmentResponseDTO;
 import com.project.doctorya.appointment.rest.mapper.AppointmentRestMapper;
@@ -55,7 +55,7 @@ public class AppointmentController {
     })
     @GetMapping
     public ResponseEntity<List<AppointmentResponseDTO>> getAll() {
-        List<AppointmentModel> appointmentModels = appointmentGetUseCase.execute();
+        List<Appointment> appointmentModels = appointmentGetUseCase.execute();
         List<AppointmentResponseDTO> appointments = appointmentModels.stream().map(AppointmentRestMapper::toDTO).collect(Collectors.toList());
         return ResponseEntity.ok(appointments);
     }
@@ -68,7 +68,7 @@ public class AppointmentController {
     })
     @GetMapping("/{id}")
     public ResponseEntity<AppointmentResponseDTO> getById(@Parameter(description = "uuid for filter appointment") @PathVariable UUID id) {
-        AppointmentModel appointmentModel = appointmentGetUseCase.executeById(id);
+        Appointment appointmentModel = appointmentGetUseCase.executeById(id);
         AppointmentResponseDTO appointment = AppointmentRestMapper.toDTO(appointmentModel);
         return ResponseEntity.ok(appointment);
     }
@@ -82,8 +82,8 @@ public class AppointmentController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<AppointmentResponseDTO> create(@RequestBody @Valid AppointmentDTO appointmentDTO) {
-        AppointmentModel appointmentModel = AppointmentRestMapper.toDomain(appointmentDTO);
-        AppointmentModel response = appointmentCreateUseCase.execute(appointmentModel);
+        Appointment appointmentModel = AppointmentRestMapper.toDomain(appointmentDTO);
+        Appointment response = appointmentCreateUseCase.execute(appointmentModel);
         AppointmentResponseDTO appointment = AppointmentRestMapper.toDTO(response);
         return ResponseEntity.ok(appointment);
     }
@@ -96,8 +96,8 @@ public class AppointmentController {
     })
     @PutMapping("/{id}")
     public ResponseEntity<AppointmentResponseDTO> update(@Parameter(description = "uuid for filter appointment") @PathVariable UUID id, @RequestBody @Valid AppointmentDTO appointmentDTO) {
-        AppointmentModel appointmentModel = AppointmentRestMapper.toDomain(appointmentDTO);
-        AppointmentModel response = appointmentUpdateUseCase.execute(appointmentModel, id);
+        Appointment appointmentModel = AppointmentRestMapper.toDomain(appointmentDTO);
+        Appointment response = appointmentUpdateUseCase.execute(appointmentModel, id);
         AppointmentResponseDTO appointment = AppointmentRestMapper.toDTO(response);
         return ResponseEntity.ok(appointment);
     }
