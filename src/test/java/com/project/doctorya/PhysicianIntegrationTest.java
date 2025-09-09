@@ -21,7 +21,7 @@ import com.project.doctorya.auth.infrastructure.entities.AuthEntity;
 import com.project.doctorya.auth.infrastructure.repositories.IAuthJpaRepository;
 import com.project.doctorya.auth.rest.dto.AuthDto;
 import com.project.doctorya.physician.rest.dto.PhysicianDto;
-import com.project.doctorya.physician.rest.dto.PhysicianResponseDTO;
+import com.project.doctorya.physician.rest.dto.PhysicianResponseDto;
 import com.project.doctorya.shared.Role;
 import com.project.doctorya.physician.infrastructure.entities.PhysicianEntity;
 import com.project.doctorya.physician.infrastructure.repositories.IPhysicianJpaRepository;
@@ -109,7 +109,7 @@ public class PhysicianIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PhysicianResponseDTO physician = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
+        PhysicianResponseDto physician = objectMapper.readValue(responseJson, PhysicianResponseDto.class);
         assertNotNull(physician);
         assertEquals(physician.getIdentification(), physicianDTO.getIdentification());
         assertEquals(physician.getName(), physicianDTO.getName());
@@ -152,7 +152,7 @@ public class PhysicianIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        List<PhysicianResponseDTO> physicianResponseDTO = objectMapper.readValue(responseJson, new TypeReference<List<PhysicianResponseDTO>>(){});
+        List<PhysicianResponseDto> physicianResponseDTO = objectMapper.readValue(responseJson, new TypeReference<List<PhysicianResponseDto>>(){});
         assertNotNull(physicianResponseDTO);
         assertFalse(physicianResponseDTO.isEmpty());
     }
@@ -168,7 +168,7 @@ public class PhysicianIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PhysicianResponseDTO patientResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
+        PhysicianResponseDto patientResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDto.class);
         assertNotNull(patientResponseDTO);
         assertEquals(patientResponseDTO.getIdentification(), physician.getAuthEntity().getIdentification());
         assertEquals(patientResponseDTO.getName(), physician.getName());
@@ -203,7 +203,7 @@ public class PhysicianIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PhysicianResponseDTO physicianResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
+        PhysicianResponseDto physicianResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDto.class);
         assertNotNull(physicianResponseDTO);
         assertEquals(physicianResponseDTO.getIdentification(), physician.getAuthEntity().getIdentification());
         assertEquals(physicianResponseDTO.getName(), physician.getName());
@@ -245,12 +245,12 @@ public class PhysicianIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-        PhysicianResponseDTO physicianResponseDTO = objectMapper.readValue(responseJson, PhysicianResponseDTO.class);
-        assertNotNull(physicianResponseDTO);
-        assertEquals(physicianResponseDTO.getIdentification(), physicianDTO.getIdentification());
-        assertEquals(physicianResponseDTO.getName(), physicianDTO.getName());
-        assertEquals(physicianResponseDTO.getCode(), physicianDTO.getCode());
-        assertEquals(physicianResponseDTO.getSpeciality(), physicianDTO.getSpeciality());
+        PhysicianResponseDto physicianResponseDto = objectMapper.readValue(responseJson, PhysicianResponseDto.class);
+        assertNotNull(physicianResponseDto);
+        assertEquals(physicianResponseDto.getIdentification(), physicianDTO.getIdentification());
+        assertEquals(physicianResponseDto.getName(), physicianDTO.getName());
+        assertEquals(physicianResponseDto.getCode(), physicianDTO.getCode());
+        assertEquals(physicianResponseDto.getSpeciality(), physicianDTO.getSpeciality());
     }
 
     @Test
